@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kosmo.project.festival.board.model.FestivalVO;
 import com.kosmo.project.festival.board.service.FestivalService;
-import com.kosmo.project.festival.util.Constants;
+import com.kosmo.project.util.Constants;
 
 @RestController
 @RequestMapping(value = "/festival")
