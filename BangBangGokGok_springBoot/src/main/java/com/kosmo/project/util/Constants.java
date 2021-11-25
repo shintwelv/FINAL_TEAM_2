@@ -1,4 +1,4 @@
-package com.kosmo.project.festival.util;
+package com.kosmo.project.util;
 
 public class Constants {
 	
