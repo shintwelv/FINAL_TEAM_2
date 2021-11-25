@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +45,6 @@ public class FestivalController {
 	
 	@RequestMapping(value = "insertProcess.do")
 	public boolean insertProcess(FestivalVO vo, MultipartFile file) throws Exception {
-		vo.setFestivalstartDate(new Date());
-		vo.setFestivalendDate(new Date());
 		try {
 			service.insertFestival(vo,file);
 			return true;
@@ -60,8 +57,6 @@ public class FestivalController {
 
 	@RequestMapping(value = "updateProcess.do")
 	public boolean updateProcess(FestivalVO vo, MultipartFile file) throws Exception {
-		vo.setFestivalstartDate(new Date());
-		vo.setFestivalendDate(new Date());
 		try {
 			service.updateFestival(vo,file);
 			return true;

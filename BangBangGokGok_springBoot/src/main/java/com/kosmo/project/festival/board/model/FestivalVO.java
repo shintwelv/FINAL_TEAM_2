@@ -32,11 +32,8 @@ public class FestivalVO {
 	@Column(name = "festival_content")
 	private String festivalContent;
 	
-	@Column(name = "festival_start_date")
-	private Date festivalstartDate;
-	
-	@Column(name = "festival_end_date")
-	private Date festivalendDate;
+	@Column(name = "FESTIVAL_DURATION")
+	private String festivalDuration;
 	
 	@Column(name = "festival_fee")
 	private int festivalFee;
