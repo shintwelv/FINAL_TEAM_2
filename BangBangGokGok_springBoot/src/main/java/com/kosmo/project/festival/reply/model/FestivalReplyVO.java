@@ -31,7 +31,7 @@ public class FestivalReplyVO {
 	@Column(name = "REPLY_ID")
 	@GeneratedValue(
             strategy=GenerationType.SEQUENCE, //사용할 전략을 시퀀스로  선택
-            generator="FESTIVAL_REPLY_SEQ" //식별자 생성기를 설정해놓은  FESTIVAL_REPLY_SEQ으로 설정        
+            generator="FESTIVAL_REPLY_SEQ_GEN" //식별자 생성기를 설정해놓은  FESTIVAL_REPLY_SEQ_GEN으로 설정        
             )
 	private int replyId;
 	@Column(name = "FESTIVAL_ID")
