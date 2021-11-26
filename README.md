@@ -8,7 +8,7 @@ front_test는 App.js에서 axios를 활용하여 select 테스트 용도
 이하 테스트 데이터
 
 
-insert into festival (FESTIVAL_ID, FESTIVAL_LOCATION, FESTIVAL_NAME, FESTIVAL_CONTENT, FESTIVAL_START_DATE, FESTIVAL_END_DATE, FESTIVAL_FEE, FESTIVAL_OWNER) values (FESTIVAL_SEQ.nextval, '강원', '강원도 불꽃 축제', '불꽃 축제에 초대합니다', sysdate, sysdate, 3000, '강원도청');
+insert into festival (FESTIVAL_ID, FESTIVAL_LOCATION, FESTIVAL_NAME, FESTIVAL_CONTENT, FESTIVAL_DURATION, FESTIVAL_FEE, FESTIVAL_OWNER) values (FESTIVAL_SEQ.nextval, '제주', '제주도 불꽃 축제', '불꽃 축제에 초대합니다', '2021.11.25 ~ 2022.01.15', 3000, '제주도청');
 
 insert into users (USER_ID, USER_PW, USER_NAME, NICKNAME) values ('myId', 'myPw', '허신일', 'shinil');
 
