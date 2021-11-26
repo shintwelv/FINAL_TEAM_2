@@ -58,7 +58,7 @@ public class Review {
     private Integer reviewViewCount; // 조회수
 
     @Column(name = "review_star")
-    private Float reviewStar; // 별점
+    private Double reviewStar; // 별점
 
     @Column(name = "review_like")
     private Integer reviewLike; // 좋아요

@@ -29,11 +29,17 @@ public class ReviewService {
     }
 
     // 후기 상세
-    public ResponseEntity<Review> getReview(Integer reviewId) {
-        Review review = reviewRepository.findById(reviewId)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Review Data by reviewId : ["+reviewId+"]"));
-        return ResponseEntity.ok(review);
-    }
+    public Review getReview(Integer reviewId) {
+    	Review review = reviewRepository.findById(reviewId)
+              .orElseThrow(() -> new ResourceNotFoundException("Not exist Review Data by reviewId : ["+reviewId+"]"));
+    	return review;
+	}
+    
+//    public ResponseEntity<Review> getReview(Integer reviewId) {
+//        Review review = reviewRepository.findById(reviewId)
+//                .orElseThrow(() -> new ResourceNotFoundException("Not exist Review Data by reviewId : ["+reviewId+"]"));
+//        return ResponseEntity.ok(review);
+//    }
 
     // 후기 수정
     public ResponseEntity<Review> updateReview(

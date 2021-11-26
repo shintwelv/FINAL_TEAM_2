@@ -43,6 +43,6 @@ public class ReviewReplyVO {
 	@Column(name = "REPLY_DATE")
 	private Date replyDate;
 	@Column(name = "REPLY_RATING")
-	private float replyRating;
+	private double replyRating;
 
 }

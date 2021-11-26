@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/review")
 @Slf4j
 public class ReviewController {
 
@@ -30,35 +30,35 @@ public class ReviewController {
     private ReviewService reviewService;
 
     // 후기 목록
-    @GetMapping("/review")
+    @GetMapping("/")
     public List<Review> getAllReviews() {
         log.info("reviewService.getAllReview() : {}", reviewService.getAllReview());
         return reviewService.getAllReview();
     }
 
     // 후기 작성
-    @PostMapping("/review")
+    @PostMapping("/")
     public Review createReview(@RequestBody Review review) {
         System.out.println(review);
         return reviewService.createReview(review);
     }
 
     // 후기 상세
-    @GetMapping("/review/{reviewId}")
+    @GetMapping("/{reviewId}")
     public ResponseEntity<Review> getReviewByReviewId(
             @PathVariable Integer reviewId) {
-        return reviewService.getReview(reviewId);
+        return ResponseEntity.ok(reviewService.getReview(reviewId));
     }
 
     // 후기 수정
-    @PutMapping("/review/{reviewId}")
+    @PutMapping("/{reviewId}")
     public ResponseEntity<Review> updateReviewByReviewId(
             @PathVariable Integer reviewId, @RequestBody Review review) {
         return reviewService.updateReview(reviewId, review);
     }
 
     // 후기 삭제
-    @DeleteMapping("/review/{reviewId}")
+    @DeleteMapping("/{reviewId}")
     public ResponseEntity<Map<String, Boolean>> deleteReviewByReviewId(
             @PathVariable Integer reviewId) {
         return reviewService.deleteReview(reviewId);

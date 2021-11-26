@@ -16,7 +16,8 @@ public class FestivalServiceimpl implements FestivalService{
 	@Autowired 
 	private FestivalRepository repo;
 	
-	private String projectPath = Constants.FESTIVAL_IMAGE_LOCATION;
+	private String ImgLocation = Constants.DEFAULT_DIR + "festival";
+	private String ImgLocation_for_DB = "./fesitval/";
 	
 	@Override
 	public List<FestivalVO> getAllFestival(){
@@ -32,11 +33,11 @@ public class FestivalServiceimpl implements FestivalService{
 	public void updateFestival(FestivalVO vo, MultipartFile file) throws Exception{ 
 		String fileName = file.getOriginalFilename();
 		
-		File saveFile = new File(projectPath, fileName);
+		File saveFile = new File(ImgLocation, fileName);
 		
 		file.transferTo(saveFile);
 		
-		vo.setFestivalImage("/festival_image_location/"+fileName);
+		vo.setFestivalImage(ImgLocation_for_DB + fileName);
 		
 		repo.save(vo);
 	}
@@ -51,11 +52,11 @@ public class FestivalServiceimpl implements FestivalService{
 	public void insertFestival(FestivalVO vo, MultipartFile file) throws Exception{
 		String fileName = file.getOriginalFilename();
 		
-		File saveFile = new File(projectPath, fileName);
+		File saveFile = new File(ImgLocation, fileName);
 		
 		file.transferTo(saveFile);
 		
-		vo.setFestivalImage("/festival_image_location/"+fileName);
+		vo.setFestivalImage(ImgLocation_for_DB + fileName);
 		
 		repo.save(vo);
 	}

@@ -1,4 +1,4 @@
-package com.kosmo.project.festival.board.controller;
+package com.kosmo.project.free.board.controller;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.kosmo.project.festival.board.model.FestivalVO;
-import com.kosmo.project.festival.board.service.FestivalService;
+import com.kosmo.project.free.board.model.FreeVO;
+import com.kosmo.project.free.board.service.FreeService;
 import com.kosmo.project.util.Constants;
 
 @RestController
-@RequestMapping(value = "/festival")
 @CrossOrigin
-public class FestivalController {
-	@Autowired FestivalService service;
+@RequestMapping(value = "/free")
+public class FreeController {
 	
-//	이 위치에 축제 게시글의 사진 저장
-	private static final String FESTIVAL_IMAGE_LOCATION = Constants.DEFAULT_DIR + "festival" ;
+	@Autowired
+	private FreeService service;
 	
-//	축제 게시글 사진 저장 폴더가 없을 시 생성
-	public FestivalController(){
-		Path path = Paths.get(FESTIVAL_IMAGE_LOCATION);
+	private static final String FREE_IMAGE_LOCATION = Constants.DEFAULT_DIR + "free";
+	
+	public FreeController(){
+		Path path = Paths.get(FREE_IMAGE_LOCATION);
 		try {
 			Files.createDirectories(path);
 		} catch (IOException e) {
@@ -36,17 +36,17 @@ public class FestivalController {
 	}
 	
 	@RequestMapping(value = "list.do")
-	public List<FestivalVO> getAllBoards() {
-		List<FestivalVO> boardList = null;
-		boardList = service.getAllFestival();
+	public List<FreeVO> getAllBoards() {
+		List<FreeVO> boardList = null;
+		boardList = service.getAllFree();
 
 		return boardList;
 	}
 	
 	@RequestMapping(value = "insertProcess.do")
-	public boolean insertProcess(FestivalVO vo, MultipartFile file) throws Exception {
+	public boolean insertProcess(FreeVO vo, MultipartFile file) throws Exception {
 		try {
-			service.insertFestival(vo,file);
+			service.insertFree(vo,file);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -56,9 +56,9 @@ public class FestivalController {
 	}
 
 	@RequestMapping(value = "updateProcess.do")
-	public boolean updateProcess(FestivalVO vo, MultipartFile file) throws Exception {
+	public boolean updateProcess(FreeVO vo, MultipartFile file) throws Exception {
 		try {
-			service.updateFestival(vo,file);
+			service.updateFree(vo,file);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -67,9 +67,9 @@ public class FestivalController {
 	}
 
 	@RequestMapping(value = "deleteProcess.do")
-	public boolean deleteProcess(FestivalVO vo) {
+	public boolean deleteProcess(FreeVO vo) {
 		try {
-			service.deleteFestival(vo);
+			service.deleteFree(vo);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -78,9 +78,9 @@ public class FestivalController {
 	}
 	
 	@RequestMapping(value = "view.do")
-	public FestivalVO getBoard(FestivalVO vo) {
+	public FreeVO getBoard(FreeVO vo) {
 		try {
-			FestivalVO board = service.getFindFestival(vo.getFestivalId());
+			FreeVO board = service.getFree(vo.getFreeId());
 			return board;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -90,19 +90,18 @@ public class FestivalController {
 	}
 //		
 //	private int getPageCount() {
-//		List<FestivalVO> allPage = service.getAllFestival();
+//		List<FreeVO> allPage = service.getAllFree();
 //		return allPage.size();
 //	}
 //	
-//	private int getFestivalPageNum(int articlesPerPage) {
+//	private int getFreePageNum(int articlesPerPage) {
 ////		한 페이지에 게시글이 5개 보이도록 처리
-//		int festivalCount = getPageCount();
-//		int totalPage = festivalCount/articlesPerPage;
-//		if (totalPage * articlesPerPage < festivalCount) {
+//		int FreeCount = getPageCount();
+//		int totalPage = FreeCount/articlesPerPage;
+//		if (totalPage * articlesPerPage < FreeCount) {
 //			totalPage++;
 //		}
 //		
 //		return totalPage;
 //	}
-	
 }

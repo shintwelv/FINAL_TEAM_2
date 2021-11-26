@@ -1,3 +1,7 @@
+<체크 필요>
+Review.java reviewCreatedDate, reviewUpdatedDate
+
+
 front_test는 App.js에서 axios를 활용하여 select 테스트 용도
 (이후 insert 등은 프론트 작업물과 연동 예정)
 
