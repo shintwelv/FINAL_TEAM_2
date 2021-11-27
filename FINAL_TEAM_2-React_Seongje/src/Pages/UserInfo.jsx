@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { Col, Container, Form, Image, Row, Button } from 'react-bootstrap'
 import { useHistory, useLocation } from 'react-router'
@@ -9,27 +10,56 @@ function UserInfo(props) {
 
   const [profile, setProfile] = useState(null)
 
-  const [formData, setFormData] = useState({
-    profile: null,
-    userId: '',
-    userPw: '',
-    userName: '',
-    nickName: '',
+  const [userInfo, setUserInfo] = useState({
+    profile_image: null,
+    user_id: '',
+    user_pw: '',
+    user_name: '',
+    nickname: '',
     birth: null,
     gender: '',
     email: '',
-    phone: '',
-    basicAddress: '',
-    detailAddress: '',
+    phone_number: '',
+    user_basic_address: '',
+    user_detail_address: '',
   })
 
   const handleValueChange = (event) => {
     // API 요청에 날릴 Form state에 정보를 추가합니다.
-    console.log(formData)
-    setFormData({
-      ...formData,
+    console.log(userInfo)
+    setUserInfo({
+      ...userInfo,
       [event.target.name]: event.target.value,
     })
+  }
+
+  const onFileChangeHandler = (e) => {
+    e.preventDefault()
+    userInfo['profile_image'] = e.target.files[0]
+  }
+
+  const config = {
+    headers: {
+      'content-Type': 'multipart/form-data',
+    },
+  }
+
+  const createUser = () => {
+    let formData = new FormData()
+
+    for (var key in userInfo) {
+      console.log(key + ': ' + userInfo[key])
+      formData.append(key, userInfo[key])
+    }
+
+    // for (var values in formData.values()) {
+    //   console.log(values)
+    // }
+
+    axios
+      .post('project/user/insertProcess.do', formData, config)
+      .then((res) => console.log(res.data))
+      .catch((err) => alert('error: ' + err.response.data.msg))
   }
 
   return (
@@ -49,49 +79,49 @@ function UserInfo(props) {
           <Form>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="userId"
+              controlId="user_id"
             >
               <Form.Label className="user-info-label">아이디</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="userId"
+                name="user_id"
                 onChange={handleValueChange}
               />
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="userPw"
+              controlId="user_pw"
             >
               <Form.Label className="user-info-label">비밀번호</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="password"
-                name="userPw"
+                name="user_pw"
                 onChange={handleValueChange}
               />
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="userName"
+              controlId="user_name"
             >
               <Form.Label className="user-info-label">이름</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="userName"
+                name="user_name"
                 onChange={handleValueChange}
               />
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="nickName"
+              controlId="nickname"
             >
               <Form.Label className="user-info-label">닉네임</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="nickName"
+                name="nickname"
                 onChange={handleValueChange}
               />
             </Form.Group>
@@ -140,40 +170,37 @@ function UserInfo(props) {
                 onChange={handleValueChange}
               />
             </Form.Group>
-            <Form.Group
-              className="user-info-form-group mt-3"
-              controlId="phoneNumber"
-            >
+            <Form.Group className="user-info-form-group mt-3" controlId="phone">
               <Form.Label className="user-info-label">전화번호</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="tel"
-                pattern="010-[0-9]{4}-[0-9]{4}"
-                placeholder="010-1111-2222"
-                name="phones"
+                pattern="010[0-9]{4}[0-9]{4}"
+                placeholder="숫자만 입력하세요"
+                name="phone_number"
                 onChange={handleValueChange}
               />
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="basicAddress"
+              controlId="user_basic_address"
             >
               <Form.Label className="user-info-label">주소</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="basicAddress"
+                name="user_basic_address"
                 onChange={handleValueChange}
               ></Form.Control>
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="detailAddress"
+              controlId="user_detail_address"
             >
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="detailAddress"
+                name="user_detail_address"
                 onChange={handleValueChange}
               ></Form.Control>
             </Form.Group>
@@ -182,11 +209,15 @@ function UserInfo(props) {
               <Form.Control
                 className="user-info-input-image user-info-input"
                 type="file"
-                name="profile"
-                onChange={handleValueChange}
+                name="profile_image"
+                onChange={onFileChangeHandler}
               ></Form.Control>
             </Form.Group>
-            <Button className="user-info-btn d-block mb-2 mt-3" type="button">
+            <Button
+              className="user-info-btn d-block mb-2 mt-3"
+              type="button"
+              onClick={createUser}
+            >
               수정
             </Button>
             <Button className="user-info-btn d-block mb-3">취소</Button>

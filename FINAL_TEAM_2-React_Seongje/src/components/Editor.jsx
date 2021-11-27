@@ -1,19 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactQuill from 'react-quill'
 import EditorToolbar, { modules, formats } from './EditorToolbar'
 import 'react-quill/dist/quill.snow.css'
 
 export const Editor = () => {
-  const [state, setState] = React.useState({ value: null })
+  const [content, setContent] = useState({ value: null })
   const handleChange = (value) => {
-    setState({ value })
+    setContent({ value })
+    console.log(content)
   }
   return (
     <div className="text-editor">
       <EditorToolbar />
       <ReactQuill
         theme="snow"
-        value={state.value}
+        value={content.value}
         onChange={handleChange}
         placeholder={''}
         modules={modules}
