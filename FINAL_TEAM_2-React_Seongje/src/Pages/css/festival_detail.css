@@ -1,0 +1,176 @@
+.detail-festival-container {
+  margin-top: 28px;
+  background-color: white;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.detail-festival-container div table {
+  background-color: white;
+}
+
+.detail-festival-container div table tr td {
+  background-color: white;
+}
+
+.detail-festival-title {
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: -0.01em;
+  color: #0593f0;
+}
+
+.detail-festival-image {
+  height: 228px;
+  width: 346px;
+  left: 0px;
+  top: 122px;
+  border-radius: 0px;
+}
+
+.detail-festival-subtitle {
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.005em;
+  color: #191a20;
+}
+
+.detail-festival-description-title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  border-bottom: 2px solid #191a20;
+}
+
+.detail-festival-description {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.map-graphic {
+  min-height: 181px;
+  width: 344px;
+}
+
+.detail-festival-button {
+  height: 60px;
+  text-align: center;
+}
+
+.detail-festival-button > Button {
+  margin-top: 14px;
+  width: 64px;
+  border-color: #0593f0;
+  border-radius: 6px;
+  background: #0593f0;
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+}
+
+.detail-festival-info-list {
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+.detail-festival-info {
+  margin-top: 15px;
+}
+
+.detail-festival-reply-container {
+  margin-top: 10px;
+}
+
+.aReply {
+  background: #c8e9ff;
+  border-bottom: 1px solid #8c8d96;
+}
+
+.detail-festival-listBtn {
+  text-align: left;
+}
+
+.aReply > table {
+  width: 100%;
+}
+
+.reply-content {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  width: 80%;
+}
+
+.reply-btn {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  color: #8c8d96;
+}
+
+.reply-writer-date {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  color: #8c8d96;
+}
+
+.reply-writer-date > td {
+  padding-left: 4px;
+  padding-right: 8px;
+}
+
+.reply-writer-date > td td:first-child {
+  border-right: 1px solid #8c8d96;
+}
+
+.aReply table {
+  background-color: #c8e9ff;
+}
+
+.aReply tbody {
+  background-color: #c8e9ff;
+}
+
+.aReply td {
+  background-color: #c8e9ff;
+}
+
+@media only screen and (max-width: 1199px) {
+  .map-graphic {
+    width: 375px;
+    height: 185px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .detail-festival-image {
+    width: 100%;
+    height: auto;
+  }
+  .map-graphic {
+    width: 1140px;
+    height: 570px;
+  }
+}

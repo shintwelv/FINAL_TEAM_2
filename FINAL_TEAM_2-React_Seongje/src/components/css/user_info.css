@@ -1,0 +1,51 @@
+.user-info-container {
+  max-width: 540px;
+}
+
+.user-info-title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  color: #0593f0;
+}
+
+.user-info-profile-image {
+  text-align: center;
+}
+
+.user-info-profile-image > img {
+  height: 160px;
+  width: 160px;
+  border-radius: 100%;
+}
+
+.user-info-label,
+.user-info-radio {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #0593f0;
+}
+
+.user-info-input {
+  background-color: #e0e2e7;
+}
+
+.user-info-btn {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  background: #0593f0;
+  width: 100%;
+}
+
+.user-info-input-image {
+  background: none;
+  border: none;
+}

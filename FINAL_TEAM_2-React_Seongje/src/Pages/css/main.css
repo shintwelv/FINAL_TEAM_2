@@ -1,0 +1,81 @@
+@media only screen and (min-width: 1200px) {
+  .festival-slide-image {
+    height: 782px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .festival-slide-image {
+    height: auto;
+  }
+}
+
+.table td,
+.table th {
+  padding: 0;
+  border: none;
+}
+
+.main-board-title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 45px;
+  color: #0593f0;
+}
+
+.main-board-more {
+  text-align: right;
+  font-size: 24px;
+}
+
+.main-board-content {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  color: #8c8d96;
+}
+
+.main-board-content > tr > td:last-child {
+  text-align: right;
+}
+
+.main-festival-local {
+  height: 240px;
+  width: 240px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 32px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.main-festival-local-title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  height: 20%;
+}
+
+.main-festival-local-image {
+  height: 80%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.main-festival-local-image > img {
+  width: 100%;
+  height: 100%;
+}
+
+.main-festival {
+  overflow-y: visible;
+  overflow-x: scroll;
+}
+
+.main-festival::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+
+* {
+  font-family: 'Noto Sans KR';
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+.festival-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 60px;
+  color: #0593f0;
+  margin-top: 15px;
+}
+
+.festival-content > div {
+  height: 346px;
+  width: 346px;
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.festival-content-picture {
+  height: 80%;
+  overflow: hidden;
+}
+
+.festival-content-picture > img {
+  height: 100%;
+  width: 100%;
+}
+
+.festival-content-text {
+  text-align: center;
+  height: 20%;
+  font-weight: 700;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.festival-content-text > span {
+  line-height: 69px;
+}
