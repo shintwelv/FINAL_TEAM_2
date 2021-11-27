@@ -28,19 +28,19 @@ import lombok.ToString;
 public class FreeReplyVO {
 	
 	@Id
-	@Column(name = "REPLY_ID")
+	@Column(name = "REPLY_NO")
 	@GeneratedValue(
             strategy=GenerationType.SEQUENCE, //사용할 전략을 시퀀스로  선택
             generator="FREE_REPLY_SEQ_GEN" //식별자 생성기를 설정해놓은  FREE_REPLY_SEQ_GEN으로 설정        
             )
 	private int replyId;
-	@Column(name = "FREE_ID")
+	@Column(name = "ARTICLE_NO")
 	private int articleId;
 	@Column(name = "REPLY_CONTENT")
 	private String replyContent;
-	@Column(name = "REPLY_WRITER_ID")
+	@Column(name = "WRITER_ID")
 	private String replyWriterId;
-	@Column(name = "REPLY_DATE")
+	@Column(name = "WRITE_DATE")
 	private Date replyDate;
 
 }

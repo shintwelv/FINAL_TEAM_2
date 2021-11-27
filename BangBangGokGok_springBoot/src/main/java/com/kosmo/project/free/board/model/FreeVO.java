@@ -32,34 +32,34 @@ import lombok.ToString;
 public class FreeVO {
 	
 	@Id
-	@Column(name="free_id")
+	@Column(name="ARTICLE_NO")
 	@GeneratedValue(
             strategy=GenerationType.SEQUENCE, //사용할 전략을 시퀀스로  선택
             generator="FREE_SEQ_GEN" //식별자 생성기를 설정해놓은  FREE_SEQ_GEN으로 설정        
             )
 	private int freeId;
 	
-	@Column(name="free_title")
+	@Column(name="ARTICLE_TITLE")
 	private String freeTitle;
 	
-	@Column(name="free_content")
+	@Column(name="ARTICLE_CONTENT")
 	private String freeContent;
 	
-	@Column(name="free_writer_id")
+	@Column(name="WRITER_ID")
 	private String freeWriterId;
 	
-	@Column(name="free_date")
+	@Column(name="WRITE_DATE")
 	private Date freeDate;
 	
-	@Column(name="free_view_count")
+	@Column(name="VIEW_COUNT")
 	private int freeViewCount;
 	
-	@Column(name="free_star")
+	@Column(name="ARTICLE_STAR")
 	private double freeStar;
 	
-	@Column(name="free_like")
+	@Column(name="ARTICLE_LIKE")
 	private int freeLike;
 	
-	@Column(name="free_image")
+	@Column(name="ARTICLE_IMAGE")
 	private String freeImage;
 }

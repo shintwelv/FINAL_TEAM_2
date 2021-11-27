@@ -29,28 +29,28 @@ public class FestivalVO {
             strategy=GenerationType.SEQUENCE, //사용할 전략을 시퀀스로  선택
             generator="FESTIVAL_SEQ_GEN" //식별자 생성기를 설정해놓은  FESTIVAL_SEQ_GEN으로 설정        
             )
-	@Column(name = "festival_id")
+	@Column(name = "ARTICLE_NO")
 	private int festivalId;
 	
-	@Column(name = "festival_location")
+	@Column(name = "FESTIVAL_LOCATION")
 	private String festivalLocation;
 	
-	@Column(name = "festival_name")
+	@Column(name = "FESTIVAL_NAME")
 	private String festivalName;
 	
-	@Column(name = "festival_content")
+	@Column(name = "FESTIVAL_CONTENT")
 	private String festivalContent;
 	
 	@Column(name = "FESTIVAL_DURATION")
 	private String festivalDuration;
 	
-	@Column(name = "festival_fee")
+	@Column(name = "FESTIVAL_FEE")
 	private int festivalFee;
 	
-	@Column(name = "festival_owner")
+	@Column(name = "FESTIVAL_OWNER")
 	private String festivalOwner;
 	
-	@Column(name = "festival_image")
+	@Column(name = "FESTIVAL_IMAGE")
 	private String festivalImage;
 }
 	

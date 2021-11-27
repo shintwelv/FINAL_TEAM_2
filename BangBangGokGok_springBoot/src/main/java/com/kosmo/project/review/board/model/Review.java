@@ -36,16 +36,16 @@ public class Review {
             strategy=GenerationType.SEQUENCE, //사용할 전략을 시퀀스로  선택
             generator="REVIEW_SEQ_GEN" //식별자 생성기를 설정해놓은  REVIEW_SEQ_GEN으로 설정        
             )
-    @Column(name = "review_id")
+    @Column(name = "ARTICLE_NO")
     private Integer reviewId; // 글 번호
 
-    @Column(name = "review_title")
+    @Column(name = "ARTICLE_TITLE")
     private String reviewTitle; // 제목
 
-    @Column(name = "review_content")
+    @Column(name = "ARTICLE_CONTENT")
     private String reviewContent; // 내용
 
-    @Column(name = "review_writer_id")
+    @Column(name = "WRITER_ID")
     private String reviewWriterId; // 작성자
 
     @Column(name = "review_created_date")
@@ -54,15 +54,15 @@ public class Review {
     @Column(name = "review_updated_date")
     private Date reviewUpdatedDate; // 수정 날짜
 
-    @Column(name = "review_view_count")
+    @Column(name = "VIEW_COUNT")
     private Integer reviewViewCount; // 조회수
 
-    @Column(name = "review_star")
+    @Column(name = "ARTICLE_STAR")
     private Double reviewStar; // 별점
 
-    @Column(name = "review_like")
+    @Column(name = "ARTICLE_LIKE")
     private Integer reviewLike; // 좋아요
 
-    @Column(name = "review_image")
+    @Column(name = "ARTICLE_IMAGE")
     private String reviewImage; // 이미지
 }
