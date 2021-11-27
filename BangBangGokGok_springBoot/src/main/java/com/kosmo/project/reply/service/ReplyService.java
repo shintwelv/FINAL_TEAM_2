@@ -1,0 +1,18 @@
+package com.kosmo.project.reply.service;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.kosmo.project.reply.model.ReplyVO;
+
+public interface ReplyService {
+
+	Page<ReplyVO> getRepliesByArticleNoOfPage(int articleNo, Pageable pageable);
+
+	boolean createReply(ReplyVO vo);
+
+	boolean modifyReply(ReplyVO vo);
+
+	boolean deleteReply(ReplyVO vo);
+
+}
