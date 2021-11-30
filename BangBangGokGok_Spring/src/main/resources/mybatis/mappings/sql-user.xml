@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="User">
+
+<!-- 
+ USER_ID                                   NOT NULL VARCHAR2(20)
+ ADMIN                                              CHAR(1)
+ USER_PW                                   NOT NULL VARCHAR2(20)
+ USER_NAME                                 NOT NULL VARCHAR2(20)
+ NICKNAME                                  NOT NULL VARCHAR2(30)
+ EMAIL                                              VARCHAR2(30)
+ PHONE_NUMBER                                       VARCHAR2(12)
+ USER_BASIC_ADDRESS                                 VARCHAR2(50)
+ USER_DETAIL_ADDRESS                                VARCHAR2(50)
+ PROFILE_IMAGE                                      VARCHAR2(100)
+ BIRTH                                              DATE
+ GENDER
+  -->
+  <insert id="insertUser">
+  	INSERT INTO USERS (user_id, ADMIN, USER_PW, USER_NAME, NICKNAME, EMAIL, PHONE_NUMBER, USER_BASIC_ADDRESS, USER_DETAIL_ADDRESS, PROFILE_IMAGE, BIRTH, GENDER) VALUES(#{user_id}, #{admin}, #{user_pw}, #{user_name}, #{nickname}, #{email}, #{phone_number}, #{user_basic_address}, #{user_detail_address}, #{profile_image}, #{birth}, #{gender})
+  </insert>
+  
+  <update id="udpateUser">
+  	UPDATE USERS SET ADMIN = #{admin}, USER_PW = #{user_pw}, USER_NAME = #{user_name}, NICKNAME = #{nickname}, EMAIL = #{email}, PHONE_NUMBER = #{phone_number}, USER_BASIC_ADDRESS = #{user_basic_address}, USER_DETAIL_ADDRESS = #{user_detail_address}, PROFILE_IMAGE = #{profile_image}, BIRTH = #{birth}, GENDER = #{gender} WHERE USER_ID = #{user_id}
+  </update>
+  
+  <delete id="deleteUser">
+  	DELETE USERS WHERE USER_ID = #{user_id}
+  </delete>
+  
+  <select id="selectUser" resultType="User">
+  	SELECT * FROM USERS WHERE USER_ID = #{user_id}
+  </select>
+  
+  <select id="chkUser" resultType="User">
+  	SELECT * FROM USERS WHERE USER_ID = #{user_id} and USER_PW = #{user_pw} 
+  </select>
+  
+  <select id="selectAllUsers" resultType="User">
+  	SELECT * FROM USERS
+  </select>
+</mapper>

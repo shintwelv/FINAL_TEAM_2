@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Notice">
+	<resultMap type="Notice" id="NoticeList">
+		<result property="article_no" column="ARTICLE_NO" />
+		<result property="article_title" column="ARTICLE_TITLE" />
+		<result property="article_content" column="ARTICLE_CONTENT" />
+		<result property="write_date" column="WRITE_DATE" />
+		<result property="user_id" column="USER_ID" />
+		<result property="article_image" column="ARTICLE_IMAGE" />
+		<result property="view_count" column="VIEW_COUNT"/>
+	</resultMap>
+
+	<!-- 셀렉트 단일 resultType 여러개 resultMap -->
+
+	<insert id="insertNotice">
+		INSERT INTO NOTICE VALUES (ARTICLE_SEQ.nextval, #{article_title}, #{article_content}, sysdate, #{user_id}, #{article_image} , 0)
+	</insert>
+
+	<select id="selectNotice" resultType="Notice" parameterType="int">
+		select * from NOTICE where ARTICLE_NO = #{article_no}
+	</select>
+
+	<delete id="deleteNotice">
+		delete NOTICE where ARTICLE_NO = #{article_no}
+	</delete>
+
+	<update id="updateNotice">
+		update NOTICE set article_title = #{article_title}, ARTICLE_CONTENT = #{article_content}, ARTICLE_DATE = sysdate,
+						  ARTICLE_WRITER_ID = #{user_id}, ARTICLE_IMAGE= #{article_image}, VIEW_COUNT = 0  where ARTICLE_NO = #{article_no}
+	</update>
+	
+	<update id="boardCountUp">
+		update NOTICE set VIEW_COUNT = (select VIEW_COUNT from
+		ARTICLE where ARTICLE_NO = #{article_no})+1 where ARTICLE_NO = #{article_no}
+	</update>
+	
+	<select id="getNoticeList" resultMap="NoticeList">
+		select * from NOTICE
+	</select>
+	
+	<select id="totalNoticeCount" resultType="int">
+		select count(*) from NOTICE
+	</select>
+	
+	<select id="pageNation" resultMap="NoticeList" parameterType="int">
+	<![CDATA[
+		select ARTICLE_NO, ARTICLE_TITLE, ARTICLE_CONTENT, WRITE_DATE, ARTICLE_IMAGE, VIEW_COUNT, USER_ID 
+		from
+			(
+				select ARTICLE_NO, seq, ARTICLE_TITLE, ARTICLE_CONTENT, WRITE_DATE, ARTICLE_IMAGE, VIEW_COUNT, USER_ID  
+				from
+					(
+					select rownum as seq, ARTICLE_NO, ARTICLE_TITLE, ARTICLE_CONTENT, WRITE_DATE, ARTICLE_IMAGE , VIEW_COUNT, USER_ID 
+					from 
+						(
+						select * from NOTICE order by ARTICLE_NO desc
+						)
+				)
+				where seq >= #{startPoint}
+			) 
+		where rownum <= 10
+	]]>
+	</select>
+</mapper>
