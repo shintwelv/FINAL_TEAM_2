@@ -35,7 +35,7 @@ const BoardItemWrapper = styled.div`
   }
 `
 
-export const BoardItem = ({ data }) => {
+const BoardItem = ({ data }) => {
   return (
     <BoardItemWrapper>
       <ul>

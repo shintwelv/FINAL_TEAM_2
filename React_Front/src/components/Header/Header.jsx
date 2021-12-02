@@ -3,7 +3,7 @@ import HeaderTop from './HeaderTop'
 import HeaderMid from './HeaderMid'
 import MobileHeader from './MobileHeader'
 
-const Header = ({ login, setLogin, nickName, setUserState }) => {
+const Header = ({ login, setLogin, nickName, setUserState, setBoard }) => {
   return (
     <>
       <HeaderTop
@@ -12,7 +12,7 @@ const Header = ({ login, setLogin, nickName, setUserState }) => {
         nickName={nickName}
         setUserState={setUserState}
       />
-      <HeaderMid />
+      <HeaderMid setBoard={setBoard} />
       <MobileHeader />
     </>
   )

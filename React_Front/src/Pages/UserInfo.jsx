@@ -56,9 +56,9 @@ function UserInfo({ userState }) {
     let requestURL = ''
 
     if (userState == 'signUp') {
-      requestURL = 'user/insertProcess.do'
+      requestURL = 'http://localhost:8999/user/insertProcess.do'
     } else if (userState == 'update') {
-      requestURL = 'user/updateProcess.do'
+      requestURL = 'http://localhost:8999/user/updateProcess.do'
     }
     axios
       .post(requestURL, formData, config)

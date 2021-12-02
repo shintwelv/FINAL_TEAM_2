@@ -31,7 +31,11 @@ const NavItem = styled.li`
   }
 `
 
-const HeaderMid = () => {
+const HeaderMid = ({ setBoard }) => {
+  const setBoardTypeBeforeMove = (boardType) => {
+    setBoard(boardType)
+  }
+
   return (
     <HeaderMidWrapper>
       <Container>
@@ -43,16 +47,44 @@ const HeaderMid = () => {
           </div>
           <ul>
             <NavItem>
-              <Link to="notice">공지사항</Link>
+              <Link
+                onClick={() => {
+                  setBoardTypeBeforeMove('notice')
+                }}
+                to="/notice"
+              >
+                공지사항
+              </Link>
             </NavItem>
             <NavItem>
-              <Link to="festival">지역축제</Link>
+              <Link
+                onClick={() => {
+                  setBoardTypeBeforeMove('festival')
+                }}
+                to="/festival"
+              >
+                지역축제
+              </Link>
             </NavItem>
             <NavItem>
-              <Link to="review">축제후기</Link>
+              <Link
+                onClick={() => {
+                  setBoardTypeBeforeMove('review')
+                }}
+                to="/review"
+              >
+                축제후기
+              </Link>
             </NavItem>
             <NavItem>
-              <Link to="free">자유게시판</Link>
+              <Link
+                onClick={() => {
+                  setBoardTypeBeforeMove('free')
+                }}
+                to="/free"
+              >
+                자유게시판
+              </Link>
             </NavItem>
           </ul>
         </NavMenu>
