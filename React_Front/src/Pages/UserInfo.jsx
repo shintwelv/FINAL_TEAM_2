@@ -56,9 +56,9 @@ function UserInfo({ userState }) {
     let requestURL = ''
 
     if (userState == 'signUp') {
-      requestURL = 'http://localhost:8999/user/insertProcess.do'
+      requestURL = 'user/insertProcess.do'
     } else if (userState == 'update') {
-      requestURL = 'http://localhost:8999/user/updateProcess.do'
+      requestURL = 'user/updateProcess.do'
     }
     axios
       .post(requestURL, formData, config)
@@ -228,7 +228,7 @@ function UserInfo({ userState }) {
             <Button
               className="user-info-btn d-block mb-2 mt-3"
               type="button"
-              onClick={userProcess}
+              onClick={() => userProcess(userState)}
             >
               {btn_modifyORSignUp(userState)}
             </Button>

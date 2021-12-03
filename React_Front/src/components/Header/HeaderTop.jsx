@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Modal, Button, Form } from 'react-bootstrap'
-
 import styled from 'styled-components'
 import { useState } from 'react'
 import axios from 'axios'
@@ -30,8 +29,14 @@ const UserInfoItem = styled.li`
     margin: 0;
   }
 `
-
-const HeaderTop = ({ login, setLogin, nickName, setUserState }) => {
+const HeaderTop = ({
+  login,
+  setLogin,
+  nickName,
+  setUserState,
+  setNickName,
+  setUserId,
+}) => {
   const [modalShow, setModalShow] = useState(false)
 
   const handleModalClose = () => setModalShow(false)
@@ -53,7 +58,8 @@ const HeaderTop = ({ login, setLogin, nickName, setUserState }) => {
 
   const config = {
     headers: {
-      'content-Type': 'multipart/form-data',
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
   }
 
@@ -62,19 +68,21 @@ const HeaderTop = ({ login, setLogin, nickName, setUserState }) => {
   }
 
   const logIn = () => {
-    let formData = new FormData()
-
-    for (var key in loginInfo) {
-      formData.append(key, loginInfo[key])
-    }
+    const dataToSend = JSON.stringify(loginInfo)
 
     axios
-      .post('http://localhost:8999/user/chkUser', formData, config)
+      .post('user/chkUser', dataToSend, config)
       .then((res) => {
-        console.log(res)
-        setLogin(true)
+        // console.log(res.data.nickname)
+        if (res.data) {
+          setUserId(res.data.user_id)
+          setNickName(res.data.nickname)
+          setLogin(true)
+        } else {
+          alert('로그인에 실패하였습니다')
+        }
       })
-      .catch((err) => alert('error: ' + err))
+      .catch((err) => alert(err))
     handleModalClose()
   }
 

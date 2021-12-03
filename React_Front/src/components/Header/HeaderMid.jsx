@@ -32,10 +32,6 @@ const NavItem = styled.li`
 `
 
 const HeaderMid = ({ setBoard }) => {
-  const setBoardTypeBeforeMove = (boardType) => {
-    setBoard(boardType)
-  }
-
   return (
     <HeaderMidWrapper>
       <Container>
@@ -49,7 +45,7 @@ const HeaderMid = ({ setBoard }) => {
             <NavItem>
               <Link
                 onClick={() => {
-                  setBoardTypeBeforeMove('notice')
+                  setBoard('notice')
                 }}
                 to="/notice"
               >
@@ -59,7 +55,7 @@ const HeaderMid = ({ setBoard }) => {
             <NavItem>
               <Link
                 onClick={() => {
-                  setBoardTypeBeforeMove('festival')
+                  setBoard('festival')
                 }}
                 to="/festival"
               >
@@ -69,7 +65,7 @@ const HeaderMid = ({ setBoard }) => {
             <NavItem>
               <Link
                 onClick={() => {
-                  setBoardTypeBeforeMove('review')
+                  setBoard('review')
                 }}
                 to="/review"
               >
@@ -79,7 +75,7 @@ const HeaderMid = ({ setBoard }) => {
             <NavItem>
               <Link
                 onClick={() => {
-                  setBoardTypeBeforeMove('free')
+                  setBoard('free')
                 }}
                 to="/free"
               >

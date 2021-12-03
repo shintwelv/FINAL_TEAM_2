@@ -42,14 +42,14 @@ const determineBoardTitle = (boardType) => {
   return result
 }
 
-const Board = ({ data, setBoard, board }) => {
+const Board = ({ data, setBoard, board, process, setProcess }) => {
   return (
     <Container>
       <BoardTitleWrapper>
         <Title>{determineBoardTitle(board)}</Title>
       </BoardTitleWrapper>
       <ButtonGroupWrapper>
-        <Button type="button">
+        <Button type="button" onClick={() => setProcess('write')}>
           <Link to="/write">글쓰기</Link>
         </Button>
       </ButtonGroupWrapper>
@@ -59,7 +59,7 @@ const Board = ({ data, setBoard, board }) => {
         ))} */}
       </BoardArticleWrapper>
       <ButtonGroupWrapper>
-        <Button type="button">
+        <Button type="button" onClick={() => setProcess('write')}>
           <Link to="/write">글쓰기</Link>
         </Button>
       </ButtonGroupWrapper>

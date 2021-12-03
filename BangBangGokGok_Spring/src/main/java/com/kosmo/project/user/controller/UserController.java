@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +19,6 @@ import com.kosmo.project.util.Constants;
 import com.oreilly.servlet.MultipartRequest;
 
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/user")
 public class UserController {
 	
@@ -122,11 +120,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/chkUser")
-	public boolean chkUser(@RequestBody UserVO vo) {
+	public UserVO chkUser(@RequestBody UserVO vo) {
+		System.out.println(vo);
 		UserVO user = service.chkUser(vo);
-		if (user == null) {
-			return false;
-		}
-		return true;
+		return user;
 	}
 }

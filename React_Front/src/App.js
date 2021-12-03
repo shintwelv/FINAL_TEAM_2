@@ -22,6 +22,8 @@ const App = () => {
   const [nickName, setNickName] = useState('')
   const [board, setBoard] = useState('')
   const [userState, setUserState] = useState('')
+  const [userId, setUserId] = useState('')
+  const [process, setProcess] = useState('')
 
   return (
     <div className="page-container">
@@ -32,6 +34,9 @@ const App = () => {
           nickName={nickName}
           setUserState={setUserState}
           setBoard={setBoard}
+          setNickName={setNickName}
+          userId={userId}
+          setUserId={setUserId}
         />
         <Switch>
           <Route path="/" component={Main} exact={true} />
@@ -42,7 +47,14 @@ const App = () => {
           <Route path="/festivaldetail" component={Festival_Detail} />
           <Route
             path={['/notice', '/review', '/free']}
-            render={() => <Board setBoard={setBoard} board={board} />}
+            render={() => (
+              <Board
+                setBoard={setBoard}
+                board={board}
+                process={process}
+                setProcess={setProcess}
+              />
+            )}
           />
           <Route path="/Read" render={() => <Read board={board} />} />
           <Route path="/noticeread" component={NoticeRead} />
@@ -54,7 +66,15 @@ const App = () => {
           />
           <Route
             path="/write"
-            render={() => <Write login={login} board={board} />}
+            render={() => (
+              <Write
+                login={login}
+                board={board}
+                userId={userId}
+                nickName={nickName}
+                process={process}
+              />
+            )}
           />
           <Route path="/update" component={Update} />
           <Route render={({ location }) => <NotFound />} />
