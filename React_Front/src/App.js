@@ -19,11 +19,10 @@ import Read from './Pages/Read'
 
 const App = () => {
   const [login, setLogin] = useState(false)
-  const [nickName, setNickName] = useState('')
   const [board, setBoard] = useState('')
   const [userState, setUserState] = useState('')
-  const [userId, setUserId] = useState('')
   const [process, setProcess] = useState('')
+  const [userInfo, setUserInfo] = useState(null)
 
   return (
     <div className="page-container">
@@ -31,12 +30,10 @@ const App = () => {
         <Header
           login={login}
           setLogin={setLogin}
-          nickName={nickName}
           setUserState={setUserState}
           setBoard={setBoard}
-          setNickName={setNickName}
-          userId={userId}
-          setUserId={setUserId}
+          userInfo={userInfo}
+          setUserInfo={setUserInfo}
         />
         <Switch>
           <Route path="/" component={Main} exact={true} />
@@ -53,6 +50,7 @@ const App = () => {
                 board={board}
                 process={process}
                 setProcess={setProcess}
+                login={login}
               />
             )}
           />
@@ -62,7 +60,9 @@ const App = () => {
           <Route path="/freeread" component={FreeRead} />
           <Route
             path={['/UserInfo', '/SignUp']}
-            render={() => <UserInfo userState={userState} />}
+            render={() => (
+              <UserInfo userState={userState} userInfo={userInfo} />
+            )}
           />
           <Route
             path="/write"
@@ -70,8 +70,7 @@ const App = () => {
               <Write
                 login={login}
                 board={board}
-                userId={userId}
-                nickName={nickName}
+                userInfo={userInfo}
                 process={process}
               />
             )}

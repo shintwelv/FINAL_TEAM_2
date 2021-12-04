@@ -13,13 +13,12 @@ const boardTypes = [
 
 const determineBoardTitle = (boardType) => {
   //notice, free, review
-  console.log(`boardType : ${boardType}`)
+  console.log(`board : ${boardType}`)
 
   let result = ''
 
   boardTypes.forEach((k) => {
     if (k[0] == boardType) {
-      console.log(`title: ${k[1]}`)
       result = k[1]
     }
   })

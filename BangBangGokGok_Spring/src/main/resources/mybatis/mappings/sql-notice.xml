@@ -3,64 +3,81 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Notice">
 	<resultMap type="Notice" id="NoticeList">
-		<result property="article_no" column="ARTICLE_NO" />
-		<result property="article_title" column="ARTICLE_TITLE" />
-		<result property="article_content" column="ARTICLE_CONTENT" />
-		<result property="write_date" column="WRITE_DATE" />
-		<result property="user_id" column="USER_ID" />
-		<result property="article_image" column="ARTICLE_IMAGE" />
-		<result property="view_count" column="VIEW_COUNT"/>
+		<result property="articleNo" column="ARTICLE_NO" />
+		<result property="articleCode" column="ARTICLE_CODE" />
+		<result property="articleTitle" column="ARTICLE_TITLE" />
+		<result property="articleContent" column="ARTICLE_CONTENT" />
+		<result property="userId" column="USER_ID" />
+		<result property="writeDate" column="WRITE_DATE" />
+		<result property="viewCount" column="VIEW_COUNT"/>
+		<result property="articleStar" column="ARTICLE_STAR"/>
+		<result property="articleLike" column="ARTICLE_LIKE"/>
+		<result property="articleImage" column="ARTICLE_IMAGE"/>
+		<result property="festivalLocation" column="FESTIVAL_LOCATION"/>
+		<result property="festivalName" column="FESTIVAL_NAME"/>
+		<result property="festivalFee" column="FESTIVAL_FEE"/>
+		<result property="festivalOwner" column="FESTIVAL_OWNER"/>
+		<result property="festivalDuration" column="FESTIVAL_DURATION"/>
 	</resultMap>
 
 	<!-- 셀렉트 단일 resultType 여러개 resultMap -->
 
 	<insert id="insertNotice">
-		INSERT INTO NOTICE VALUES (ARTICLE_SEQ.nextval, #{article_title}, #{article_content}, sysdate, #{user_id}, #{article_image} , 0)
+		INSERT INTO 
+			ARTICLE (ARTICLE_NO, ARTICLE_CODE, ARTICLE_TITLE, ARTICLE_CONTENT, USER_ID, WRITE_DATE, ARTICLE_IMAGE, VIEW_COUNT)
+			VALUES (ARTICLE_SEQ.nextval, #{articleCode}, #{articleTitle}, #{articleContent}, #{userId}, sysdate, #{articleImage} , 0)
 	</insert>
 
-	<select id="selectNotice" resultType="Notice" parameterType="int">
-		select * from NOTICE where ARTICLE_NO = #{article_no}
+	<select id="selectNotice" resultMap="NoticeList" parameterType="int">
+		select * from ARTICLE where ARTICLE_NO = #{articleNo}
 	</select>
 
 	<delete id="deleteNotice">
-		delete NOTICE where ARTICLE_NO = #{article_no}
+		delete NOTICE ARTICLE ARTICLE_NO = #{articleNo}
 	</delete>
 
 	<update id="updateNotice">
-		update NOTICE set article_title = #{article_title}, ARTICLE_CONTENT = #{article_content}, ARTICLE_DATE = sysdate,
-						  ARTICLE_WRITER_ID = #{user_id}, ARTICLE_IMAGE= #{article_image}, VIEW_COUNT = 0  where ARTICLE_NO = #{article_no}
+		update ARTICLE 
+			set 
+			ARTICLE_TITLE = #{articleTitle}, 
+			ARTICLE_CONTENT = #{articleContent}, 
+			WRITE_DATE = sysdate, 
+			ARTICLE_IMAGE= #{articleImage}  
+		where ARTICLE_NO = #{articleNo}
 	</update>
 	
 	<update id="boardCountUp">
-		update NOTICE set VIEW_COUNT = (select VIEW_COUNT from
-		ARTICLE where ARTICLE_NO = #{article_no})+1 where ARTICLE_NO = #{article_no}
+		update ARTICLE 
+			set 
+			VIEW_COUNT = (select VIEW_COUNT from ARTICLE where ARTICLE_NO = #{articleNo})+1 
+		where ARTICLE_NO = #{articleNo}
 	</update>
 	
 	<select id="getNoticeList" resultMap="NoticeList">
-		select * from NOTICE
+		select * from ARTICLE where ARTICLE_CODE = 'notice'
 	</select>
 	
 	<select id="totalNoticeCount" resultType="int">
-		select count(*) from NOTICE
+		select count(*) from ARTICLE
 	</select>
 	
 	<select id="pageNation" resultMap="NoticeList" parameterType="int">
 	<![CDATA[
-		select ARTICLE_NO, ARTICLE_TITLE, ARTICLE_CONTENT, WRITE_DATE, ARTICLE_IMAGE, VIEW_COUNT, USER_ID 
+		select ARTICLE_NO, ARTICLE_CODE, ARTICLE_TITLE, ARTICLE_CONTENT, WRITE_DATE, ARTICLE_IMAGE, VIEW_COUNT, USER_ID 
 		from
 			(
-				select ARTICLE_NO, seq, ARTICLE_TITLE, ARTICLE_CONTENT, WRITE_DATE, ARTICLE_IMAGE, VIEW_COUNT, USER_ID  
+				select ARTICLE_NO, ARTICLE_CODE,  seq, ARTICLE_TITLE, ARTICLE_CONTENT, WRITE_DATE, ARTICLE_IMAGE, VIEW_COUNT, USER_ID  
 				from
 					(
-					select rownum as seq, ARTICLE_NO, ARTICLE_TITLE, ARTICLE_CONTENT, WRITE_DATE, ARTICLE_IMAGE , VIEW_COUNT, USER_ID 
+					select rownum as seq, ARTICLE_NO, ARTICLE_CODE, ARTICLE_TITLE, ARTICLE_CONTENT, WRITE_DATE, ARTICLE_IMAGE , VIEW_COUNT, USER_ID 
 					from 
 						(
-						select * from NOTICE order by ARTICLE_NO desc
+						select * from ARTICLE where article_code = 'notice' order by ARTICLE_NO desc
 						)
 				)
-				where seq >= #{startPoint}
+				where seq >= #{page}
 			) 
-		where rownum <= 10
+		where rownum <= #{size}
 	]]>
 	</select>
 </mapper>

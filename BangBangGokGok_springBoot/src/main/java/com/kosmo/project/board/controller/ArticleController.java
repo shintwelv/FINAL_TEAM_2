@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,15 +48,15 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(value = "page.do")
-	public List<ArticleVO> getArticleByArticleCodeOfPage(String articleCode, int page, int size) {
+	public List<ArticleVO> getArticleByArticleCodeOfPage(@RequestParam("articleCode") String articleCode, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
 		Page<ArticleVO> articles = service.getArticleByArticleCodeOfPage(articleCode, PageRequest.of(page, size));
 		
 		return articles.getContent();
 	}
 	
 	@RequestMapping(value = "insert.do")
-	public boolean createArticle(ArticleVO vo, MultipartFile file) {
-		System.out.println(vo);
+	public boolean createArticle(ArticleVO vo, @RequestParam("Image") MultipartFile file) {
+		System.out.println(file);
 		try {
 			vo.setWriteDate(new Date());
 			service.createArticle(vo, file);
@@ -98,6 +98,14 @@ public class ArticleController {
 			// TODO: handle exception
 			return null;
 		}
+		
+	}
+	
+	@RequestMapping(value = "getArticleNum.do")
+	public Integer getArticleNum(@RequestParam("articleCode") String articleCode) {
+		List<ArticleVO> articles = service.getArticleByArticleCode(articleCode);
+		
+		return articles.size();
 		
 	}
 

@@ -114,7 +114,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/getUser")
-	public UserVO getUser(UserVO vo) {
+	public UserVO getUser(@RequestBody UserVO vo) {
+		System.out.println(vo);
 		vo = service.getUser(vo);
 		return vo;
 	}

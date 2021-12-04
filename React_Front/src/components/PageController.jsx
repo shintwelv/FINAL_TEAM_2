@@ -2,18 +2,24 @@ import React, { useState } from 'react'
 import Pagination from 'react-js-pagination'
 import './PageController.scss'
 
-export const PageController = () => {
-  const [page, setPage] = useState(1)
+export const PageController = ({
+  page,
+  setPage,
+  totalPage,
+  size,
+  articleNum,
+}) => {
   const handlePageChange = (page) => {
-    setPage(page)
     console.log(page)
+    setPage(page - 1)
   }
 
+  console.log('totalPage: ' + totalPage)
   return (
     <Pagination
       activePage={page}
-      itemsCountPerPage={10}
-      totalItemsCount={100}
+      itemsCountPerPage={size}
+      totalItemsCount={articleNum}
       pageRangeDisplayed={5}
       prevPageText={'‹'}
       nextPageText={'›'}

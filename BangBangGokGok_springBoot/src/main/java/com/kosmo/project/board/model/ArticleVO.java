@@ -5,7 +5,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -17,6 +19,11 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "ARTICLE")
+@SequenceGenerator(
+		name="ARTICLE_SEQ_GEN",
+		sequenceName = "ARTICLE_SEQ",
+		initialValue = 1,
+		allocationSize = 1)
 public class ArticleVO {
 	
 //	 ARTICLE_NO                                NOT NULL NUMBER(38)
@@ -36,7 +43,7 @@ public class ArticleVO {
 //	 FESTIVAL_DURATION                                  VARCHAR2(30)
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ARTICLE_SEQ_GEN")
 	@Column(name = "ARTICLE_NO")
 	private int articleNo;
 	

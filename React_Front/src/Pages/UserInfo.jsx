@@ -1,14 +1,36 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Col, Container, Form, Image, Row, Button } from 'react-bootstrap'
+import {
+  Col,
+  Container,
+  Form,
+  Image,
+  Row,
+  Button,
+  Modal,
+} from 'react-bootstrap'
 import { useHistory, useLocation } from 'react-router'
+import PopupPostCode from '../components/PopupPostCode'
 import './css/user_info.css'
 
-function UserInfo({ userState }) {
+const config = {
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+}
+
+function UserInfo({ userState, userInfo }) {
   const location = useLocation()
   const history = useHistory()
 
-  const [userInfo, setUserInfo] = useState({
+  const [address, setAddress] = useState('')
+  const [popup, setPopup] = useState(false)
+
+  const handleClose = () => setPopup(false)
+  const handleShow = () => setPopup(true)
+
+  const [newUser, setNewUser] = useState({
     profile_image: null,
     user_id: '',
     user_pw: '',
@@ -24,16 +46,16 @@ function UserInfo({ userState }) {
 
   const handleValueChange = (event) => {
     // API 요청에 날릴 Form state에 정보를 추가합니다.
-    console.log(userInfo)
-    setUserInfo({
-      ...userInfo,
+    console.log(newUser)
+    setNewUser({
+      ...newUser,
       [event.target.name]: event.target.value,
     })
   }
 
   const onFileChangeHandler = (e) => {
     e.preventDefault()
-    userInfo['profile_image'] = e.target.files[0]
+    newUser['profile_image'] = e.target.files[0]
   }
 
   const config = {
@@ -46,13 +68,10 @@ function UserInfo({ userState }) {
     let formData = new FormData()
 
     for (var key in userInfo) {
-      console.log(key + ': ' + userInfo[key])
-      formData.append(key, userInfo[key])
+      console.log(key + ': ' + newUser[key])
+      formData.append(key, newUser[key])
     }
 
-    // for (var values in formData.values()) {
-    //   console.log(values)
-    // }
     let requestURL = ''
 
     if (userState == 'signUp') {
@@ -99,6 +118,9 @@ function UserInfo({ userState }) {
                 type="text"
                 name="user_id"
                 onChange={handleValueChange}
+                value={
+                  userInfo && userState == 'update' ? userInfo.user_id : ''
+                }
               />
             </Form.Group>
             <Form.Group
@@ -111,6 +133,9 @@ function UserInfo({ userState }) {
                 type="password"
                 name="user_pw"
                 onChange={handleValueChange}
+                value={
+                  userInfo && userState == 'update' ? userInfo.user_pw : ''
+                }
               />
             </Form.Group>
             <Form.Group
@@ -123,6 +148,9 @@ function UserInfo({ userState }) {
                 type="text"
                 name="user_name"
                 onChange={handleValueChange}
+                value={
+                  userInfo && userState == 'update' ? userInfo.user_name : ''
+                }
               />
             </Form.Group>
             <Form.Group
@@ -135,6 +163,9 @@ function UserInfo({ userState }) {
                 type="text"
                 name="nickname"
                 onChange={handleValueChange}
+                value={
+                  userInfo && userState == 'update' ? userInfo.nickname : ''
+                }
               />
             </Form.Group>
             <Form.Group className="user-info-form-group mt-3" controlId="birth">
@@ -180,6 +211,7 @@ function UserInfo({ userState }) {
                 placeholder="example@example.com"
                 name="email"
                 onChange={handleValueChange}
+                value={userInfo && userState == 'update' ? userInfo.email : ''}
               />
             </Form.Group>
             <Form.Group className="user-info-form-group mt-3" controlId="phone">
@@ -191,6 +223,9 @@ function UserInfo({ userState }) {
                 placeholder="숫자만 입력하세요"
                 name="phone_number"
                 onChange={handleValueChange}
+                value={
+                  userInfo && userState == 'update' ? userInfo.phone_number : ''
+                }
               />
             </Form.Group>
             <Form.Group
@@ -198,11 +233,27 @@ function UserInfo({ userState }) {
               controlId="user_basic_address"
             >
               <Form.Label className="user-info-label">주소</Form.Label>
+              <Button
+                onClick={() => {
+                  handleShow()
+                }}
+              >
+                주소 검색
+              </Button>
+              <Modal show={popup} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>주소검색</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  {PopupPostCode({ setAddress, handleClose })}
+                </Modal.Body>
+              </Modal>
               <Form.Control
                 className="user-info-input"
                 type="text"
                 name="user_basic_address"
                 onChange={handleValueChange}
+                value={address}
               ></Form.Control>
             </Form.Group>
             <Form.Group

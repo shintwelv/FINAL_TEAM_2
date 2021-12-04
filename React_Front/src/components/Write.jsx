@@ -11,24 +11,24 @@ const TitleWriter = styled.input`
   type: text;
   border-bottom: 1px solid black;
 `
-// const config = {
-//   headers: {
-//     'content-Type': 'multipart/form-data',
-//   },
-// }
+const config = {
+  headers: {
+    'content-Type': 'multipart/form-data',
+  },
+}
 
-const Write = ({ login, board, userId, process, nickName }) => {
+const Write = ({ login, board, process, userInfo }) => {
   const [article, setArticle] = useState({
-    articleNo: null,
+    articleNo: 0,
     articleCode: board,
     articleTitle: '',
     articleContent: '',
-    userId: userId,
-    writeDate: null,
+    userId: userInfo.userId,
+    writeDate: Date(),
     viewCount: 0,
     articleStar: 0.0,
     articleLike: 0,
-    articleImage: null,
+    Image: null,
   })
   const history = useHistory()
 
@@ -37,9 +37,19 @@ const Write = ({ login, board, userId, process, nickName }) => {
   const showEditor = (login) => {
     if (login) {
       return (
-        <section className="text-editor">
-          <Editor setArticle={setArticle} article={article} />
-        </section>
+        <>
+          <section className="text-editor">
+            <Editor setArticle={setArticle} article={article} />
+          </section>
+          <Form.Group controlId="articleImage" className="mb-3">
+            <Form.Control
+              type="file"
+              onChange={onFileChangeHandler}
+              name="articleImage"
+              style={{ background: 'none', border: 'none' }}
+            />
+          </Form.Group>
+        </>
       )
     } else {
       return (
@@ -52,11 +62,19 @@ const Write = ({ login, board, userId, process, nickName }) => {
 
   const onFileChangeHandler = (e) => {
     e.preventDefault()
-    article['articleImage'] = e.target.files[0]
+    article['Image'] = e.target.files[0]
+    console.log(article)
   }
 
   const UpdateORWriteArticle = (process) => {
     // ['update', 'view', 'write']
+
+    let formData = new FormData()
+
+    for (var key in article) {
+      formData.append(key, article[key])
+    }
+
     let processURL = ''
 
     if (process == 'update') {
@@ -65,16 +83,31 @@ const Write = ({ login, board, userId, process, nickName }) => {
       processURL = 'insert.do'
     }
 
-    axios
-      .post(`http://localhost:9000/article/${processURL}`, article)
-      .then((res) => {
-        if (res.data === true) {
-          alert('요청이 성공적으로 처리되었습니다')
-        } else {
-          alert('요청이 실패하였습니다')
-        }
-      })
-      .catch((error) => console.log(error))
+    if (board == 'notice') {
+      processURL = `notice/${processURL}`
+      axios
+        .post(processURL, formData, config)
+        .then((res) => {
+          if (res.data === true) {
+            alert('요청이 성공적으로 처리되었습니다')
+          } else {
+            alert('요청이 실패하였습니다')
+          }
+        })
+        .catch((error) => console.log(error))
+    } else {
+      processURL = `http://localhost:9000/article/${processURL}`
+      axios
+        .post(processURL, formData)
+        .then((res) => {
+          if (res.data === true) {
+            alert('요청이 성공적으로 처리되었습니다')
+          } else {
+            alert('요청이 실패하였습니다')
+          }
+        })
+        .catch((error) => console.log(error))
+    }
   }
 
   const showProcessButton = (process) => {
@@ -114,19 +147,12 @@ const Write = ({ login, board, userId, process, nickName }) => {
             <label htmlFor="">
               작성자
               <br />
-              <TitleWriter value={nickName} readOnly />
+              <TitleWriter value={userInfo.nickname} readOnly />
             </label>
           </div>
         </section>
         {showEditor(login)}
-        <Form.Group controlId="articleImage" className="mb-3">
-          <Form.Control
-            type="file"
-            onChange={onFileChangeHandler}
-            name="articleImage"
-            style={{ background: 'none', border: 'none' }}
-          />
-        </Form.Group>
+
         <ButtonGroupWrapper>
           <Button onClick={history.goBack}>목록</Button>
           <div>

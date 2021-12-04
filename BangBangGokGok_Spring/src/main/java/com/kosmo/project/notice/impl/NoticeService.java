@@ -16,10 +16,10 @@ public interface NoticeService {
 
 	List<NoticeVO> selectArticleList();
 
-	List<NoticeVO> pageNationNotice(int page);
-
 	void countUp(NoticeVO vo);
 
 	int totalPage();
+
+	List<NoticeVO> pageNationNotice(int page, int size);
 
 }

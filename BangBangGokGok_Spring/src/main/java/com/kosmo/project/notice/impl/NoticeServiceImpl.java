@@ -42,9 +42,9 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 	
 	@Override
-	public List<NoticeVO> pageNationNotice(int page) {
+	public List<NoticeVO> pageNationNotice(int page, int size) {
 		List<NoticeVO> articleList = null;
-		articleList = dao.pageNationNotice(page);
+		articleList = dao.pageNationNotice(page, size);
 		return articleList;
 	}
 	@Override

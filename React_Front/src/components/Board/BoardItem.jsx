@@ -40,14 +40,16 @@ const BoardItem = ({ data }) => {
     <BoardItemWrapper>
       <ul>
         <li>
-          <span className="label">{data.label}</span>
           <div className="article-title">
-            <span>{data.title}</span>
+            <span>{data.articleTitle}</span>
           </div>
           <div className="article-info">
-            <span>{data.userid}</span> <span>ㅣ</span>
-            <span>조회수 : {data.view}</span>
-            <span>ㅣ</span> <span>{data.date}</span>
+            <span>{data.userId}</span> <span>ㅣ</span>
+            <span>조회수 : {data.viewCount}</span>
+            <span>ㅣ</span>{' '}
+            <span>{`${new Date(data.writeDate).getFullYear()}-${new Date(
+              data.writeDate
+            ).getMonth()}-${new Date(data.writeDate).getDate()}`}</span>
           </div>
         </li>
       </ul>

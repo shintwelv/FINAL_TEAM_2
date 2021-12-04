@@ -4,11 +4,13 @@
 (이후 insert 등은 프론트 작업물과 연동 예정)
 
 ■ **article_code 데이터**
-insert into articlecode ('free');
-insert into articlecode ('notice');
-insert into articlecode ('festival');
-insert into articlecode ('review');
-insert into articlecode ('transfer');
+insert into article_code values ('free');
+insert into article_code values ('notice');
+insert into article_code values ('festival');
+insert into article_code values ('review');
+insert into article_code values ('transfer');
+commit;
+
 
 
 ■ 프로필 사진 업로드를 위해 cos-20.08 사용 (http://servlets.com/cos/)

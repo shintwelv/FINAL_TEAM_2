@@ -14,18 +14,35 @@ import lombok.ToString;
 public class NoticeVO {
 	
 //	 ARTICLE_NO                                NOT NULL NUMBER(38)
+//	 ARTICLE_CODE                              NOT NULL VARCHAR2(10)
 //	 ARTICLE_TITLE                             NOT NULL VARCHAR2(100)
 //	 ARTICLE_CONTENT                                    VARCHAR2(4000)
+//	 USER_ID                                   NOT NULL VARCHAR2(20)
 //	 WRITE_DATE                                NOT NULL DATE
+//	 VIEW_COUNT                                         NUMBER(38)
+//	 ARTICLE_STAR                                       FLOAT(126)
+//	 ARTICLE_LIKE                                       NUMBER(38)
 //	 ARTICLE_IMAGE                                      VARCHAR2(1000)
-//	 VIEW_COUNT                                NOT NULL NUMBER(38)
-//	 USER_ID                                            VARCHAR2(20)
+//	 FESTIVAL_LOCATION                                  VARCHAR2(10)
+//	 FESTIVAL_NAME                                      VARCHAR2(1000)
+//	 FESTIVAL_FEE                                       NUMBER(38)
+//	 FESTIVAL_OWNER                                     VARCHAR2(60)
+//	 FESTIVAL_DURATION                                  VARCHAR2(30)
+
+	private int articleNo;
+	private String articleCode;
+	private String articleTitle;
+	private String articleContent;
+	private String userId;
+	private Date writeDate;
+	private int viewCount;
+	private double articleStar;
+	private int articleLike;
+	private String articleImage;
+	private String festivalLocation;
+	private String festivalName;
+	private int festivalFee;
+	private String festivalOwner;
+	private String festivalDuration;
 	
-	private int article_no;
-	private String article_title;
-	private String article_content;
-	private Date write_date;
-	private String article_image;
-	private int view_count;
-	private String user_id;
 }

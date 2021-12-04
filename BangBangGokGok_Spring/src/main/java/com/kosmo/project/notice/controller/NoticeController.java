@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kosmo.project.notice.impl.NoticeService;
@@ -20,10 +20,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 @RestController
 @RequestMapping(value = "/notice")
-@CrossOrigin
 public class NoticeController {
-	private int startPoint = 1;
-	private int endPoint = 5;
 	
 	@Autowired NoticeService service;
 	
@@ -42,20 +39,22 @@ public class NoticeController {
 //	@requestbody 필요
 	
 	
-	@RequestMapping(value = "insertProcess.do")
+	@RequestMapping(value = "insert.do")
 	public boolean insert(NoticeVO vo , HttpServletRequest request) {
 		try {
 			NoticeVO voToInsert = setNoticeByMultiRequest(vo, request);
+			System.out.println(voToInsert);
 			service.insert(voToInsert);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return false;
 		}
 		
 	}
 	
-	@RequestMapping(value = "updateProcess.do")
+	@RequestMapping(value = "update.do")
 	public boolean update(NoticeVO vo, HttpServletRequest request) {
 		try {
 			NoticeVO voToUpdate = setNoticeByMultiRequest(vo, request);
@@ -79,7 +78,7 @@ public class NoticeController {
 	}
 	
 	
-	@RequestMapping(value = "deleteProcess.do")
+	@RequestMapping(value = "delete.do")
 	public boolean delete(NoticeVO vo, HttpServletRequest request) {
 		try {
 			NoticeVO voToUpdate = setNoticeByMultiRequest(vo, request);
@@ -91,65 +90,38 @@ public class NoticeController {
 		}
 	}
 	
-	@RequestMapping(value = "pageNationJobArticleAction.do")
-	public String pageNationArticleList(Model model, HttpServletRequest request) throws Exception {
-		throw new Exception("페이지네이션을 서버에서 처리할지, 프론트에서 처리할지 정하지 못했음");
-		
-//		int totalPage = service.totalPage();
-//		String arrowDirection = request.getParameter("arrowDirection");
-//		if (arrowDirection != null) {
-//			if (arrowDirection.trim().equals("left")) {
-//				calculateLeftArrow();
-//			} else if (arrowDirection.trim().equals("right")) {
-//				calculateRightArrow(totalPage);
-//			}
-//		}
-//		String pageNum = request.getParameter("pageNum");
-//		int pageNumVal = startPoint;
-//		if (pageNum != null && !pageNum.trim().equals("")) {
-//			pageNumVal = Integer.parseInt(pageNum);
-//		}
-//		model.addAttribute("totalPage", totalPage);
-//		model.addAttribute("startPoint", startPoint);
-//		model.addAttribute("endPoint", endPoint);
-//		
-//		List<NoticeVO> articleList = null;
-//		articleList = service.pageNationNotice(pageNumVal);
-//		model.addAttribute("ArticleList", articleList);
-//		return "list";
+	@RequestMapping(value = "pageNation.do")
+	public List<NoticeVO> pageNationArticleList(@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+		try {
+			List<NoticeVO> articleList = service.pageNationNotice(page, size);
+			return articleList;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	private void calculateLeftArrow() {
-		if (startPoint - 5 >= 1) {
-			endPoint = startPoint - 1;
-			startPoint = startPoint - 5;
-		}
-	}
-	
-	private void calculateRightArrow(int totalPage) {
-		if (startPoint + 5 <= totalPage) {
-			startPoint = startPoint + 5;
-		}
-		if (endPoint + 5 < totalPage) {
-			endPoint = endPoint + 5;
-		} else {
-			endPoint = totalPage;
-		}
+	@RequestMapping(value = "getArticleNum.do")
+	public Integer getArticleNum() {
+		List<NoticeVO> articles = service.selectArticleList();
+		return articles.size();
 	}
 	
 	private NoticeVO setNoticeByMultiRequest(NoticeVO vo, HttpServletRequest request) {
 		MultipartRequest multiRequest;
 		
 		try {
-			multiRequest = new MultipartRequest(request, System.getProperty("user.dir")+NOTICE_IMAGE_FOLDER, 1024*1024*100, "utf-8");
+			multiRequest = new MultipartRequest(request, NOTICE_IMAGE_FOLDER, 1024*1024*100, "utf-8");
 			try {
-				vo.setArticle_no(Integer.parseInt(multiRequest.getParameter("article_no")));
+				vo.setArticleNo(Integer.parseInt(multiRequest.getParameter("articleNo")));
 			} catch (Exception e) {
 			}
-			vo.setArticle_title(multiRequest.getParameter("article_title"));
-			vo.setArticle_content(multiRequest.getParameter("article_content"));
-			vo.setUser_id(multiRequest.getParameter("user_id"));
-			vo.setArticle_image("./resources/images/" + multiRequest.getOriginalFileName("article_image"));
+			vo.setArticleCode(multiRequest.getParameter("articleCode"));
+			vo.setArticleTitle(multiRequest.getParameter("articleTitle"));
+			vo.setArticleContent(multiRequest.getParameter("articleContent"));
+			vo.setUserId(multiRequest.getParameter("userId"));
+			vo.setArticleImage("./resources/images/" + multiRequest.getOriginalFileName("articleImage"));
 			return vo;
 			
 		} catch (Exception e) {

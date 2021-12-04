@@ -5,7 +5,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -17,6 +19,11 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "REPLY")
+@SequenceGenerator(
+		name="REPLY_SEQ_GEN",
+		sequenceName = "REPLY_SEQ",
+		initialValue = 1,
+		allocationSize = 1)
 public class ReplyVO {
 	
 //	 REPLY_NO                                  NOT NULL NUMBER(38)
@@ -28,7 +35,7 @@ public class ReplyVO {
 //	 REPLY_RATING                                       FLOAT(126)
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REPLY_SEQ_GEN")
 	@Column(name = "REPLY_NO")
 	private int replyNo;
 	

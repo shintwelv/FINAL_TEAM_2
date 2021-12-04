@@ -2,7 +2,9 @@ package com.kosmo.project.notice.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -83,10 +85,13 @@ public class NoticeDAO {
 		session.commit();
 	}
 	
-	public List<NoticeVO> pageNationNotice(int page) {
+	public List<NoticeVO> pageNationNotice(int page, int size) {
+		Map<String, Integer> parameter = new HashMap<String, Integer>();
+		parameter.put("page", page*10);
+		parameter.put("size", size);
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
-		List<NoticeVO> articleList = session.selectList("Notice.pageNation", (page-1)*10);
+		List<NoticeVO> articleList = session.selectList("Notice.pageNation", parameter);
 		return articleList;
 	}
 }

@@ -6,22 +6,19 @@ import MobileHeader from './MobileHeader'
 const Header = ({
   login,
   setLogin,
-  nickName,
   setUserState,
   setBoard,
-  setNickName,
-  userId,
-  setUserId,
+  userInfo,
+  setUserInfo,
 }) => {
   return (
     <>
       <HeaderTop
         login={login}
         setLogin={setLogin}
-        nickName={nickName}
         setUserState={setUserState}
-        setNickName={setNickName}
-        setUserId={setUserId}
+        userInfo={userInfo}
+        setUserInfo={setUserInfo}
       />
       <HeaderMid setBoard={setBoard} />
       <MobileHeader />

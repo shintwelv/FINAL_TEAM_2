@@ -32,10 +32,9 @@ const UserInfoItem = styled.li`
 const HeaderTop = ({
   login,
   setLogin,
-  nickName,
   setUserState,
-  setNickName,
-  setUserId,
+  userInfo,
+  setUserInfo,
 }) => {
   const [modalShow, setModalShow] = useState(false)
 
@@ -73,10 +72,8 @@ const HeaderTop = ({
     axios
       .post('user/chkUser', dataToSend, config)
       .then((res) => {
-        // console.log(res.data.nickname)
         if (res.data) {
-          setUserId(res.data.user_id)
-          setNickName(res.data.nickname)
+          setUserInfo(res.data)
           setLogin(true)
         } else {
           alert('로그인에 실패하였습니다')
@@ -94,7 +91,7 @@ const HeaderTop = ({
     if (login) {
       return (
         <>
-          <UserInfoItem>{nickName}님 환영합니다</UserInfoItem>
+          <UserInfoItem>{userInfo.nickname}님 환영합니다</UserInfoItem>
           <UserInfoItem onClick={() => changeUserState('update')}>
             <Link to="/UserInfo">마이페이지</Link>
           </UserInfoItem>
