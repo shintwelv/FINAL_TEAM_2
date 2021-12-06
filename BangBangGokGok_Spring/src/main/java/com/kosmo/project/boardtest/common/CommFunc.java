@@ -45,7 +45,7 @@ public class CommFunc {
 	private SimpleDateFormat fileTime = new SimpleDateFormat("yyyyMMdd-HHmm");
 	private SimpleDateFormat objectTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
-	private final File ORIGIN_FILE = new File("C:\\tmp\\Resource\\OriginFile.xlsx");
+	private final File ORIGIN_FILE = new File("C:\\tmp\\OriginFile.xlsx");
 	private String newFileName;
 	private String saveTime;
 	
