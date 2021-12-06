@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- <bean id="PasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> -->  <!-- BCrypt -->          
+	 
+	<bean id="PasswordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>       <!-- sha256 -->
+
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider>
+			<sec:jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="SELECT user_id, user_pw, enabled FROM (SELECT * FROM users WHERE enabled != 0) WHERE user_id = ?"			
+			authorities-by-username-query="SELECT admin_id, admin_level FROM manager WHERE admin_id = ? "
+			/>
+			<sec:password-encoder ref="PasswordEncoder"/>
+			<!--
+			<sec:authentication-provider user-service-ref="authService">
+			<sec:authentication-provider ref="authProvider">
+			 -->
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+	<!-- Spring Security FilterChain -->
+	<sec:http use-expressions="true">           <!-- user-expressions="true" : intercept-url 태그의 access 속성에서 SqEL을 사용하기 위한 설정 -->
+		<sec:intercept-url pattern="/admin/adminSa/**" access="hasAuthority('SA')"/>		           <!-- intercept-url : 접근 권한 설정(FilterSecurityInterceptor 필터 생성 ) -->
+		<sec:intercept-url pattern="/admin/adminAa/**" access="hasAnyAuthority('AA, SA')"/>		           <!-- intercept-url : 접근 권한 설정(FilterSecurityInterceptor 필터 생성 ) -->
+		<sec:intercept-url pattern="/admin/**" access="hasAnyAuthority('A, AA, SA')" />
+		<sec:intercept-url pattern="/**" access="permitAll"/>
+		<sec:access-denied-handler error-page="/error/accessDenied"/>
+		<sec:form-login
+			username-parameter="username"
+			password-parameter="password"
+			login-page="/login"
+			authentication-failure-url="/loginFaile"
+			default-target-url="/board"
+		/>             															<!-- form-login : 사용자 로그인 설정(UsernamePasswordAuthenticationFilter 필터 생성) -->
+		<sec:logout
+			logout-url="/logout"
+			logout-success-url="/index"
+			invalidate-session="true"
+			delete-cookies="JSESSIONID"
+		/>																		<!-- form-logout : 사용자 로그아웃 설정(LogoutFilter 필터 생성) -->
+		<sec:csrf disabled="false"/>	
+	</sec:http>
+</beans>
+<!-- 
+		
+		success-handler-ref="customLogoutSuccessHandler"
+
+ -->
