@@ -65,15 +65,15 @@ commit;
 ■ 스프링 시큐리티
  - /admin 하위 경로는 manager 테이블의 "ADMIN_LEVEL" 칼럼의 값을 통해 접근 권한을 제어중입니다. (webapp/WEB-INF/security/spring-security.xml 파일의 22번째 줄 이후 설정에서 확인)
  - Spring 쪽 프로젝트 추가 병합 시 스프링 시큐리티의 csrf 토큰 설정으로 인해 form, ajax 등 프론트와 통신에서 에러 발생할 수 있습니다. 
-  # Ajax 통신 시 하기 구문 추가 ( /webapp/WEB-INF/views/admin/adminSa/accountEnableSet.jsp 파일 참고 )
+  . Ajax 통신 시 하기 구문 추가 ( /webapp/WEB-INF/views/admin/adminSa/accountEnableSet.jsp 파일 참고 )
             beforeSend : function(xhr)
             {   
                 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
             },
-  # form으로 데이터 넘길 시 하기 구문 추가 ( /webapp/WEB-INF/views/userJoin.jsp 파일 참고 )
+  . form으로 데이터 넘길 시 하기 구문 추가 ( /webapp/WEB-INF/views/userJoin.jsp 파일 참고 )
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             
-  # form으로 데이터 넘길 때 enctype이 multipart/form-data일 경우 (  /webapp/WEB-INF/views/admin/insertBoard.jsp 파일 참고 )
+  . form으로 데이터 넘길 때 enctype이 multipart/form-data일 경우 (  /webapp/WEB-INF/views/admin/insertBoard.jsp 파일 참고 )
             <form action="insertBoard.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
   
 
