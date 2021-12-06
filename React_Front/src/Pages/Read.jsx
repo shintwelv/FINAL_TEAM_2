@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { ButtonGroupWrapper, Button } from '../components/ButtonGroup'
 import { Container, Image } from 'react-bootstrap'
 import { HandThumbsUp } from 'react-bootstrap-icons'
 import StarRating from '../components/StarRating'
+import { useParams } from 'react-router'
+import axios from 'axios'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.bubble.css'
 
 const boardTypes = [
   ['notice', '공지사항'],
@@ -26,7 +30,75 @@ const determineBoardTitle = (boardType) => {
   return result
 }
 
-const Read = ({ board }) => {
+const showRating = (board) => {
+  if (board != 'notice') {
+    return (
+      <div className="rating">
+        <h4>평점</h4>
+        <StarRating />
+      </div>
+    )
+  }
+}
+
+const Read = ({ board, userInfo, login, setProcess }) => {
+  const { articleNo } = useParams()
+  const article_no = articleNo
+
+  const [article, setArticle] = useState({
+    articleCode: '',
+    articleContent: '',
+    articleImage: '',
+    articleLike: 0,
+    articleNo: 0,
+    articleStar: 0,
+    articleTitle: '',
+    festivalDuration: null,
+    festivalFee: 0,
+    festivalLocation: null,
+    festivalName: null,
+    festivalOwner: null,
+    userId: '',
+    viewCount: 0,
+    writeDate: 0,
+  })
+
+  const [writerInfo, setWriterInfo] = useState({
+    admin: '',
+    birth: 0,
+    email: '',
+    gender: '',
+    nickname: '',
+    phone_number: '',
+    profile_image: '',
+    user_basic_address: '',
+    user_detail_address: '',
+    user_id: '',
+    user_name: '',
+    user_pw: '',
+  })
+
+  const [replies, setReplies] = useState([
+    {
+      replyNo: 0,
+      articleCode: '',
+      articleNo: 0,
+      replyContent: '',
+      userId: '',
+      writeDate: 0,
+      replyRating: 0.0,
+    },
+  ])
+
+  const [newReply, setNewReply] = useState({
+    replyNo: 0,
+    articleCode: '',
+    articleNo: 0,
+    replyContent: '',
+    userId: '',
+    writeDate: new Date(),
+    replyRating: 0.0,
+  })
   const history = useHistory()
 
   const [number, setNumber] = useState(0)
@@ -34,52 +106,181 @@ const Read = ({ board }) => {
     setNumber(number + 1)
   }
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:9000/article/view.do?articleNo=${article_no}`)
+      .then((res) => {
+        setArticle(res.data)
+        setNewReply({
+          ...newReply,
+          ['articleCode']: res.data.articleCode,
+          ['articleNo']: res.data.articleNo,
+        })
+        if (userInfo) {
+          setNewReply({
+            ...newReply,
+            ['userId']: userInfo.user_id,
+          })
+        }
+      })
+      .catch((error) => console.log(error))
+
+    axios
+      .get(
+        `http://localhost:9000/reply/page.do?articleNo=${article_no}&size=100&page=0`
+      )
+      .then((res) => setReplies(res.data))
+      .catch((error) => console.log(error))
+  }, [setArticle])
+
+  // const getArticleInfo = (article_no) => {
+  //   axios
+  //     .get(`http://localhost:9000/article/view.do?articleNo=${article_no}`)
+  //     .then((res) => {
+  //       setArticle(res.data)
+  //     })
+  //     .catch((error) => console.log(error))
+  // }
+
+  const getWriterInfo = (user_id) => {
+    axios
+      .get(`../user/findUser?user_id=${user_id}`)
+      .then((res) => setWriterInfo(res.data))
+      .catch((error) => console.log(error))
+  }
+
+  const showModifyDelete = () => {
+    if (login && article.userId == userInfo.user_id) {
+      return (
+        <div>
+          <Button type="button" onClick={() => setProcess('update')}>
+            <Link to={`/update/${articleNo}`}>수정</Link>
+          </Button>
+          <Button type="button" onClick={() => deleteArticle(board, article)}>
+            삭제
+          </Button>
+        </div>
+      )
+    }
+  }
+
+  const deleteArticle = (board, article) => {
+    alert('삭제하시겠습니까?')
+
+    let formData = new FormData()
+    let processURL = ''
+
+    for (var key in article) {
+      formData.append(key, article[key])
+    }
+
+    if (board == 'notice') {
+      processURL = '../notice/delete.do'
+    } else {
+      processURL = 'http://localhost:9000/article/delete.do'
+    }
+
+    axios
+      .post(processURL, formData)
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error))
+  }
+
+  const makeReply = () => {
+    const formData = new FormData()
+
+    for (var key in newReply) {
+      formData.append(key, newReply[key])
+    }
+
+    axios
+      .post('http://localhost:9000/reply/insert.do', formData)
+      .then((res) => {
+        alert('요청이 처리되었습니다')
+        console.log(res)
+      })
+      .catch((error) => console.log(error))
+  }
+
+  const showReplyEditor = (login) => {
+    if (login) {
+      return (
+        <section className="comment-wrapper">
+          <div className="comment-input">
+            <textarea
+              name="comment-input"
+              id="comment-input"
+              placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다."
+              className=""
+              onChange={(e) =>
+                setNewReply({ ...newReply, ['replyContent']: e.target.value })
+              }
+            ></textarea>
+          </div>
+          <div className="comment-submit" onClick={makeReply}>
+            <form action="">
+              <button type="button">
+                <p>댓글쓰기</p>
+              </button>
+            </form>
+          </div>
+        </section>
+      )
+    }
+  }
+
+  const showReplyDiv = (board) => {
+    if (board != 'notice') {
+      return (
+        <section className="comment-list">
+          {replies.map((reply) => (
+            <div className="comment-item">
+              <div className="comment">{reply.replyContent}</div>
+              <div className="comment-info">
+                <span>{reply.userId}</span> <span>ㅣ</span>{' '}
+                <span>{`${new Date(reply.writeDate).getFullYear()}-${new Date(
+                  reply.writeDate
+                ).getMonth()}-${new Date(reply.writeDate).getDate()}`}</span>
+              </div>
+            </div>
+          ))}
+        </section>
+      )
+    }
+  }
+
   return (
     <div className="article-read">
       <Container>
-        <section className="board-title-wrapper">
-          <div className="board-title">
-            <h4>{determineBoardTitle(board)}</h4>
-          </div>
-        </section>
         <ButtonGroupWrapper>
           <Button onClick={history.goBack}>목록</Button>
-          <div>
-            <Button type="button">
-              <Link to="update">수정</Link>
-            </Button>
-            <Button topye="submit">삭제</Button>
-          </div>
+          {showModifyDelete()}
         </ButtonGroupWrapper>
         <section className="view-wrapper">
           <div className="view-head">
             <span className="label">{determineBoardTitle(board)}</span>
-            <p className="view-title">
-              2021 집콕! 어린이 소리축제 체험키트 사전 신처어 안내 [신청마감]
-            </p>
+            <p className="view-title">{article.articleTitle}</p>
             <div className="view-head-info">
-              <span className="writer">관리자</span> <span>ㅣ</span>
-              <span className="article-date">2021-11-12</span>
-              <span>ㅣ</span> <span className="view-count">12</span>
+              <span className="writer">{article.userId}</span> <span>ㅣ</span>
+              <span className="article-date">{`${new Date(
+                article.writeDate
+              ).getFullYear()}-${new Date(
+                article.writeDate
+              ).getMonth()}-${new Date(article.writeDate).getDate()}`}</span>
+              <span>ㅣ</span>{' '}
+              <span className="view-count">{article.viewCount}</span>
             </div>
             <hr />
           </div>
-          <div className="rating">
-            <h4>평점</h4>
-            <StarRating />
-          </div>
+          {/* {showRating(board)} */}
           <div className="view-body">
             <div className="view-contents">
-              <p>
-                집콕 ! 어린이 소리 축제 체험키트는 어린이 소리 축제를 각
-                가정에서 즐길 수 있게 구성한 프로그램으로 어린이들이 부모님과
-                함께 집에서 직접 악기를 만들고 즐길 수 있는 체험 키트 입니다.
-                그동안 장구, 북 가야금 등 전통악기로 느겼던 우리 소리를
-                서양악기인 ‘칼림바’를 만들고 연주하여 재미와 감동을 느껴보세요
-              </p>
-              <br />
-              <p>■신청기간 : 2021.11.10 (수) ~ 2021.12.08(수) </p>
-              <p>■신청수량 : 200개 사전예약 한정 (1인당 1개) </p>
+              <ReactQuill
+                onChange={() => {}}
+                value={article.articleContent}
+                theme="bubble"
+                readOnly
+              />
               <br />
               <Image
                 src={require('../img/집콕어린이소리축제.jpeg').default}
@@ -99,63 +300,11 @@ const Read = ({ board }) => {
             </div>
           </div>
         </section>
-        <section className="comment-wrapper">
-          <div className="comment-input">
-            <textarea
-              name="comment-input"
-              id="comment-input"
-              placeholder="인터넷은 우리가 함께 만들어가는 소중한 공간입니다."
-              className=""
-            ></textarea>
-          </div>
-          <div className="comment-submit">
-            <form action="">
-              <button type="submit">
-                <p>댓글쓰기</p>
-              </button>
-            </form>
-          </div>
-        </section>
-        <section className="comment-list">
-          <div className="comment-item">
-            <div className="comment">정말요 너무 콧바람 쐬고 싶어요~~~~</div>
-            <div className="comment-info">
-              <span>신몬익화</span> <span>ㅣ</span> <span>2021-11-12</span>
-            </div>
-          </div>
-          <div className="comment-item">
-            <div className="comment">정말요 너무 콧바람 쐬고 싶어요~~~~</div>
-            <div className="comment-info">
-              <span>신몬익화</span> <span>ㅣ</span> <span>2021-11-12</span>
-            </div>
-          </div>
-          <div className="comment-item">
-            <div className="comment">정말요 너무 콧바람 쐬고 싶어요~~~~</div>
-            <div className="comment-info">
-              <span>신몬익화</span> <span>ㅣ</span> <span>2021-11-12</span>
-            </div>
-          </div>
-          <div className="comment-item">
-            <div className="comment">정말요 너무 콧바람 쐬고 싶어요~~~~</div>
-            <div className="comment-info">
-              <span>신몬익화</span> <span>ㅣ</span> <span>2021-11-12</span>
-            </div>
-          </div>
-          <div className="comment-item">
-            <div className="comment">정말요 너무 콧바람 쐬고 싶어요~~~~</div>
-            <div className="comment-info">
-              <span>신몬익화</span> <span>ㅣ</span> <span>2021-11-12</span>
-            </div>
-          </div>
-        </section>
+        {showReplyEditor(login)}
+        {showReplyDiv(board)}
         <ButtonGroupWrapper>
           <Button onClick={history.goBack}>목록</Button>
-          <div>
-            <Button type="button">
-              <Link to="update">수정</Link>
-            </Button>
-            <Button topye="submit">삭제</Button>
-          </div>
+          {showModifyDelete()}
         </ButtonGroupWrapper>
       </Container>
     </div>

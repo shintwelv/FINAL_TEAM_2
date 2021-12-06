@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './css/main.css'
 import { Link } from 'react-router-dom'
 import {
@@ -12,8 +12,100 @@ import {
 } from 'react-bootstrap'
 import { Plus } from 'react-bootstrap-icons'
 import EllipsisText from 'react-ellipsis-text'
+import axios from 'axios'
 
-function Main(props) {
+function Main({ setBoard }) {
+  const [noticeList, setNoticeList] = useState([
+    {
+      articleCode: '',
+      articleContent: '',
+      articleImage: '',
+      articleLike: 0,
+      articleNo: 0,
+      articleStar: 0,
+      articleTitle: '',
+      festivalDuration: null,
+      festivalFee: 0,
+      festivalLocation: null,
+      festivalName: null,
+      festivalOwner: null,
+      userId: '',
+      viewCount: 0,
+      writeDate: 0,
+    },
+  ])
+
+  const [freeList, setFreeList] = useState([
+    {
+      articleCode: '',
+      articleContent: '',
+      articleImage: '',
+      articleLike: 0,
+      articleNo: 0,
+      articleStar: 0,
+      articleTitle: '',
+      festivalDuration: null,
+      festivalFee: 0,
+      festivalLocation: null,
+      festivalName: null,
+      festivalOwner: null,
+      userId: '',
+      viewCount: 0,
+      writeDate: 0,
+    },
+  ])
+
+  const [festivalList, setFestivalList] = useState([
+    {
+      articleCode: '',
+      articleContent: '',
+      articleImage: '',
+      articleLike: 0,
+      articleNo: 0,
+      articleStar: 0,
+      articleTitle: '',
+      festivalDuration: null,
+      festivalFee: 0,
+      festivalLocation: null,
+      festivalName: null,
+      festivalOwner: null,
+      userId: '',
+      viewCount: 0,
+      writeDate: 0,
+    },
+  ])
+
+  useEffect(() => {
+    axios
+      .get(
+        'http://localhost:9000/article/page.do?articleCode=notice&page=0&size=5'
+      )
+      .then((res) => {
+        setNoticeList(res.data)
+      })
+      .then(
+        axios
+          .get(
+            'http://localhost:9000/article/page.do?articleCode=free&page=0&size=5'
+          )
+          .then((res) => {
+            setFreeList(res.data)
+          })
+          .then(
+            axios
+              .get(
+                'http://localhost:9000/article/page.do?articleCode=festival&page=0&size=3'
+              )
+              .then((res) => {
+                setFestivalList(res.data)
+              })
+              .catch((error) => console.log(error))
+          )
+          .catch((error) => console.log(error))
+      )
+      .catch((error) => console.log(error))
+  }, [])
+
   return (
     <Container>
       <Row className="mt-3">
@@ -26,7 +118,17 @@ function Main(props) {
             nextLabel=""
           >
             {/* 사진의 사이즈가 모두 같아야 함 */}
-            <Carousel.Item>
+            {festivalList.map((festival) => (
+              <Carousel.Item>
+                <Image
+                  className="d-block w-100 festival-slide-image"
+                  src={require('../img/2.jpg').default}
+                  alt="축제사진"
+                  fluid
+                />
+              </Carousel.Item>
+            ))}
+            {/* <Carousel.Item>
               <Image
                 className="d-block w-100 festival-slide-image"
                 src={require('../img/festival7.jpeg').default}
@@ -47,7 +149,7 @@ function Main(props) {
                 src={require('../img/festival5.jpg').default}
                 alt="축제사진"
               ></Image>
-            </Carousel.Item>
+            </Carousel.Item> */}
           </Carousel>
         </Col>
       </Row>
@@ -58,46 +160,30 @@ function Main(props) {
               <tr>
                 <td>공지사항</td>
                 <td className="main-board-more">
-                  <Plus />
+                  <Link to={'/notice'} onClick={() => setBoard('notice')}>
+                    <Plus />
+                  </Link>
                 </td>
               </tr>
             </thead>
             <tbody className="main-board-content">
-              <tr>
-                <td>
-                  <EllipsisText text={'10월의 FAQ입니다.'} length={'20'} />
-                </td>
-                <td>2021-11-22</td>
-              </tr>
-              <tr>
-                <td>
-                  <EllipsisText
-                    text={
-                      '11월을 맞이하여 전국에서 열리는 축제를 소개해드립니다'
-                    }
-                    length={'20'}
-                  />
-                </td>
-                <td>2021-11-02</td>
-              </tr>
-              <tr>
-                <td>
-                  <EllipsisText
-                    text={'가을 단풍이 예쁘게 물들었습니다'}
-                    length={'20'}
-                  />
-                </td>
-                <td>2021-11-02</td>
-              </tr>
-              <tr>
-                <td>
-                  <EllipsisText
-                    text={'10월 이벤트 당첨자입니다'}
-                    length={'20'}
-                  />
-                </td>
-                <td>2021-11-02</td>
-              </tr>
+              {noticeList.map((article) => (
+                <tr>
+                  <td>
+                    <Link
+                      to={`/Read/${article.articleNo}`}
+                      onClick={() => setBoard('notice')}
+                    >
+                      <EllipsisText text={article.articleTitle} length={'20'} />
+                    </Link>
+                  </td>
+                  <td>
+                    {`${new Date(article.writeDate).getFullYear()}-${new Date(
+                      article.writeDate
+                    ).getMonth()}-${new Date(article.writeDate).getDate()}`}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </Col>
@@ -197,55 +283,30 @@ function Main(props) {
               <tr>
                 <td>자유게시판</td>
                 <td className="main-board-more">
-                  <Plus />
+                  <Link to={'/free'} onClick={() => setBoard('free')}>
+                    <Plus />
+                  </Link>
                 </td>
               </tr>
             </thead>
             <tbody className="main-board-content">
-              <tr>
-                <td>
-                  <EllipsisText
-                    text={
-                      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum excepturi'
-                    }
-                    length={'20'}
-                  />
-                </td>
-                <td>2021-11-22</td>
-              </tr>
-              <tr>
-                <td>
-                  <EllipsisText
-                    text={
-                      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum excepturi'
-                    }
-                    length={'20'}
-                  />
-                </td>
-                <td>2021-11-02</td>
-              </tr>
-              <tr>
-                <td>
-                  <EllipsisText
-                    text={
-                      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum excepturi'
-                    }
-                    length={'20'}
-                  />
-                </td>
-                <td>2021-11-02</td>
-              </tr>
-              <tr>
-                <td>
-                  <EllipsisText
-                    text={
-                      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum excepturi'
-                    }
-                    length={'20'}
-                  />
-                </td>
-                <td>2021-11-02</td>
-              </tr>
+              {freeList.map((article) => (
+                <tr>
+                  <td>
+                    <Link
+                      to={`/Read/${article.articleNo}`}
+                      onClick={() => setBoard('free')}
+                    >
+                      <EllipsisText text={article.articleTitle} length={'20'} />
+                    </Link>
+                  </td>
+                  <td>
+                    {`${new Date(article.writeDate).getFullYear()}-${new Date(
+                      article.writeDate
+                    ).getMonth()}-${new Date(article.writeDate).getDate()}`}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </Col>

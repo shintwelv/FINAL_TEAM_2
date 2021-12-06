@@ -29,19 +29,19 @@ public class NoticeVO {
 //	 FESTIVAL_OWNER                                     VARCHAR2(60)
 //	 FESTIVAL_DURATION                                  VARCHAR2(30)
 
-	private int articleNo;
+	private Integer articleNo;
 	private String articleCode;
 	private String articleTitle;
 	private String articleContent;
 	private String userId;
 	private Date writeDate;
-	private int viewCount;
-	private double articleStar;
-	private int articleLike;
+	private Integer viewCount;
+	private Double articleStar;
+	private Integer articleLike;
 	private String articleImage;
 	private String festivalLocation;
 	private String festivalName;
-	private int festivalFee;
+	private Integer festivalFee;
 	private String festivalOwner;
 	private String festivalDuration;
 	

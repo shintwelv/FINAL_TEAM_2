@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kosmo.project.reply.model.ReplyVO;
@@ -21,7 +22,7 @@ public class ReplyController {
 	private ReplyService service;
 
 	@RequestMapping(value = "page.do")
-	public List<ReplyVO> getRepliesByArticleNoOfPage(int articleNo, int size, int page) {
+	public List<ReplyVO> getRepliesByArticleNoOfPage(@RequestParam("articleNo") int articleNo, @RequestParam("size") int size, @RequestParam("page") int page) {
 		try {
 			Page<ReplyVO> replies = service.getRepliesByArticleNoOfPage(articleNo, PageRequest.of(page, size));
 			return replies.getContent();

@@ -49,6 +49,7 @@ public class ArticleController {
 	
 	@RequestMapping(value = "page.do")
 	public List<ArticleVO> getArticleByArticleCodeOfPage(@RequestParam("articleCode") String articleCode, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+		System.out.println("articleCode: " + articleCode + "\n" + "page: " + page + "\n" + "size: " + size);
 		Page<ArticleVO> articles = service.getArticleByArticleCodeOfPage(articleCode, PageRequest.of(page, size));
 		
 		return articles.getContent();
@@ -81,6 +82,7 @@ public class ArticleController {
 	
 	@RequestMapping(value = "delete.do")
 	public boolean deleteArticle(ArticleVO vo) {
+		System.out.println(vo);
 		try {
 			service.deleteArticle(vo);
 			return true;
@@ -91,8 +93,9 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(value = "view.do")
-	public ArticleVO getArticle(int articleNo) {
+	public ArticleVO getArticle(@RequestParam("articleNo") int articleNo) {
 		try {
+			countUp(articleNo);
 			return service.getArticleByArticleNo(articleNo);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -107,6 +110,12 @@ public class ArticleController {
 		
 		return articles.size();
 		
+	}
+	
+	private void countUp(int articleNo) {
+		ArticleVO article = service.getArticleByArticleNo(articleNo);
+		article.setViewCount(article.getViewCount()+1);
+		service.updateArticle(article, null);
 	}
 
 }

@@ -43,7 +43,7 @@ const Footer = () => {
             <Link to="/">축제후기</Link>
           </FooterMenuItem>
           <FooterMenuItem>
-            <span>Copyright 2011. KOSMO Team 2. All rights reserved</span>
+            <span>Copyright 2021. KOSMO Team 2. All rights reserved</span>
           </FooterMenuItem>
         </FooterMenu>
       </Container>

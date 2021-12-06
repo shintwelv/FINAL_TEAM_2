@@ -66,8 +66,10 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "select.do")
-	public NoticeVO select(NoticeVO vo, HttpServletRequest request) {
+	public NoticeVO select(@RequestParam("articleNo") int articleNo) {
 		try {
+			NoticeVO vo = new NoticeVO();
+			vo.setArticleNo(articleNo);
 			service.countUp(vo);
 			NoticeVO notice = service.select(vo);
 			return notice;
@@ -81,11 +83,12 @@ public class NoticeController {
 	@RequestMapping(value = "delete.do")
 	public boolean delete(NoticeVO vo, HttpServletRequest request) {
 		try {
-			NoticeVO voToUpdate = setNoticeByMultiRequest(vo, request);
-			service.delete(voToUpdate);
+			NoticeVO voToDelete = setNoticeByMultiRequest(vo, request);
+			service.delete(voToDelete);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -121,7 +124,9 @@ public class NoticeController {
 			vo.setArticleTitle(multiRequest.getParameter("articleTitle"));
 			vo.setArticleContent(multiRequest.getParameter("articleContent"));
 			vo.setUserId(multiRequest.getParameter("userId"));
-			vo.setArticleImage("./resources/images/" + multiRequest.getOriginalFileName("articleImage"));
+			if (multiRequest.getOriginalFileName("Image") != null) {
+				vo.setArticleImage("./resources/images/" + multiRequest.getOriginalFileName("Image"));
+			}
 			return vo;
 			
 		} catch (Exception e) {

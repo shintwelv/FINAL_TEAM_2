@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import {} from 'react-router'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const BoardItemWrapper = styled.div`
   display: flex;
@@ -41,10 +44,14 @@ const BoardItem = ({ data }) => {
       <ul>
         <li>
           <div className="article-title">
-            <span>{data.articleTitle}</span>
+            <Link to={`/Read/${data.articleNo}`}>
+              <span>{data.articleTitle}</span>
+            </Link>
           </div>
           <div className="article-info">
-            <span>{data.userId}</span> <span>ㅣ</span>
+            <span></span>
+            {data.userId}
+            <span>ㅣ</span>
             <span>조회수 : {data.viewCount}</span>
             <span>ㅣ</span>{' '}
             <span>{`${new Date(data.writeDate).getFullYear()}-${new Date(

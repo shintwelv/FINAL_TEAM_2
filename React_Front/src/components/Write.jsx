@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Form } from 'react-bootstrap'
 import 'react-quill/dist/quill.snow.css'
 import Editor from './Editor'
 import { ButtonGroupWrapper, Button } from '../components/ButtonGroup'
-import { useHistory } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
 import axios from 'axios'
 
@@ -23,7 +23,7 @@ const Write = ({ login, board, process, userInfo }) => {
     articleCode: board,
     articleTitle: '',
     articleContent: '',
-    userId: userInfo.userId,
+    userId: userInfo.user_id,
     writeDate: Date(),
     viewCount: 0,
     articleStar: 0.0,
@@ -32,7 +32,26 @@ const Write = ({ login, board, process, userInfo }) => {
   })
   const history = useHistory()
 
+  const { articleNo } = useParams()
+  const [article_no, setArticle_no] = useState(articleNo)
+
+  console.log('########### WRITE / UPDATE ############')
+  console.log(`articleNo: ${article_no}`)
   console.log(`process: ${process}`)
+  console.log(`board: ${board}`)
+
+  useEffect(() => {
+    if (article_no) {
+      console.log('useEffect() if문 호출')
+      axios
+        .get(`http://localhost:9000/article/view.do?articleNo=${article_no}`)
+        .then((res) => {
+          console.log(res.data)
+          setArticle(res.data)
+        })
+        .catch((error) => console.log(error))
+    }
+  }, [setArticle_no])
 
   const showEditor = (login) => {
     if (login) {
@@ -85,6 +104,9 @@ const Write = ({ login, board, process, userInfo }) => {
 
     if (board == 'notice') {
       processURL = `notice/${processURL}`
+      if (process == 'update') {
+        processURL = `../${processURL}`
+      }
       axios
         .post(processURL, formData, config)
         .then((res) => {
@@ -112,7 +134,6 @@ const Write = ({ login, board, process, userInfo }) => {
 
   const showProcessButton = (process) => {
     // ['update', 'view', 'write']
-
     if (process == 'update') {
       return (
         <Button type="button" onClick={() => UpdateORWriteArticle('update')}>
@@ -142,6 +163,7 @@ const Write = ({ login, board, process, userInfo }) => {
                 onChange={(e) =>
                   setArticle({ ...article, ['articleTitle']: e.target.value })
                 }
+                value={article.articleTitle}
               />
             </label>
             <label htmlFor="">

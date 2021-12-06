@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill'
 import EditorToolbar, { modules, formats } from './EditorToolbar'
 import 'react-quill/dist/quill.snow.css'
@@ -18,6 +18,7 @@ const Editor = ({ article, setArticle }) => {
         modules={modules}
         formats={formats}
         style={{ height: 375 }}
+        // value={articleContent}
       />
     </div>
   )

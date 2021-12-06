@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Col,
   Container,
@@ -20,7 +20,7 @@ const config = {
   },
 }
 
-function UserInfo({ userState, userInfo }) {
+function UserInfo({ userState, userInfo, setLogin }) {
   const location = useLocation()
   const history = useHistory()
 
@@ -29,6 +29,12 @@ function UserInfo({ userState, userInfo }) {
 
   const handleClose = () => setPopup(false)
   const handleShow = () => setPopup(true)
+
+  useEffect(() => {
+    if (userInfo) {
+      setNewUser(userInfo)
+    }
+  }, [])
 
   const [newUser, setNewUser] = useState({
     profile_image: null,
@@ -67,7 +73,7 @@ function UserInfo({ userState, userInfo }) {
   const userProcess = (userState) => {
     let formData = new FormData()
 
-    for (var key in userInfo) {
+    for (var key in newUser) {
       console.log(key + ': ' + newUser[key])
       formData.append(key, newUser[key])
     }
@@ -81,7 +87,11 @@ function UserInfo({ userState, userInfo }) {
     }
     axios
       .post(requestURL, formData, config)
-      .then((res) => console.log(res))
+      .then((res) => {
+        alert('요청이 처리되었습니다')
+        setLogin(false)
+        history.push('/')
+      })
       .catch((err) => alert('error: ' + err))
   }
 
@@ -118,9 +128,7 @@ function UserInfo({ userState, userInfo }) {
                 type="text"
                 name="user_id"
                 onChange={handleValueChange}
-                value={
-                  userInfo && userState == 'update' ? userInfo.user_id : ''
-                }
+                value={newUser.user_id}
               />
             </Form.Group>
             <Form.Group
@@ -133,9 +141,7 @@ function UserInfo({ userState, userInfo }) {
                 type="password"
                 name="user_pw"
                 onChange={handleValueChange}
-                value={
-                  userInfo && userState == 'update' ? userInfo.user_pw : ''
-                }
+                value={newUser.user_pw}
               />
             </Form.Group>
             <Form.Group
@@ -148,9 +154,7 @@ function UserInfo({ userState, userInfo }) {
                 type="text"
                 name="user_name"
                 onChange={handleValueChange}
-                value={
-                  userInfo && userState == 'update' ? userInfo.user_name : ''
-                }
+                value={newUser.user_name}
               />
             </Form.Group>
             <Form.Group
@@ -163,9 +167,7 @@ function UserInfo({ userState, userInfo }) {
                 type="text"
                 name="nickname"
                 onChange={handleValueChange}
-                value={
-                  userInfo && userState == 'update' ? userInfo.nickname : ''
-                }
+                value={newUser.nickname}
               />
             </Form.Group>
             <Form.Group className="user-info-form-group mt-3" controlId="birth">
@@ -211,7 +213,7 @@ function UserInfo({ userState, userInfo }) {
                 placeholder="example@example.com"
                 name="email"
                 onChange={handleValueChange}
-                value={userInfo && userState == 'update' ? userInfo.email : ''}
+                value={newUser.email}
               />
             </Form.Group>
             <Form.Group className="user-info-form-group mt-3" controlId="phone">
@@ -223,16 +225,14 @@ function UserInfo({ userState, userInfo }) {
                 placeholder="숫자만 입력하세요"
                 name="phone_number"
                 onChange={handleValueChange}
-                value={
-                  userInfo && userState == 'update' ? userInfo.phone_number : ''
-                }
+                value={newUser.phone_number}
               />
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
               controlId="user_basic_address"
             >
-              <Form.Label className="user-info-label">주소</Form.Label>
+              <Form.Label className="user-info-label"></Form.Label>
               <Button
                 onClick={() => {
                   handleShow()
@@ -245,7 +245,7 @@ function UserInfo({ userState, userInfo }) {
                   <Modal.Title>주소검색</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  {PopupPostCode({ setAddress, handleClose })}
+                  {PopupPostCode({ setNewUser, handleClose, newUser })}
                 </Modal.Body>
               </Modal>
               <Form.Control
@@ -253,7 +253,7 @@ function UserInfo({ userState, userInfo }) {
                 type="text"
                 name="user_basic_address"
                 onChange={handleValueChange}
-                value={address}
+                value={newUser.user_basic_address}
               ></Form.Control>
             </Form.Group>
             <Form.Group

@@ -33,7 +33,7 @@
 	</select>
 
 	<delete id="deleteNotice">
-		delete NOTICE ARTICLE ARTICLE_NO = #{articleNo}
+		delete ARTICLE where ARTICLE_NO = #{articleNo}
 	</delete>
 
 	<update id="updateNotice">

@@ -35,6 +35,7 @@ public class NoticeDAO {
 	}
 	
 	public void insert(NoticeVO vo) {
+		System.out.println(vo);
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
 		session.insert("Notice.insertNotice",vo);

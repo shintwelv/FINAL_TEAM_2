@@ -36,7 +36,11 @@ const App = () => {
           setUserInfo={setUserInfo}
         />
         <Switch>
-          <Route path="/" component={Main} exact={true} />
+          <Route
+            path="/"
+            exact={true}
+            render={() => <Main setBoard={setBoard} />}
+          />
           <Route
             path="/festival"
             render={() => <Festival setBoard={setBoard} />}
@@ -54,18 +58,29 @@ const App = () => {
               />
             )}
           />
-          <Route path="/Read" render={() => <Read board={board} />} />
-          <Route path="/noticeread" component={NoticeRead} />
-          <Route path="/reviewread" component={ReviewRead} />
-          <Route path="/freeread" component={FreeRead} />
           <Route
-            path={['/UserInfo', '/SignUp']}
+            path="/Read/:articleNo"
             render={() => (
-              <UserInfo userState={userState} userInfo={userInfo} />
+              <Read
+                board={board}
+                userInfo={userInfo}
+                login={login}
+                setProcess={setProcess}
+              />
             )}
           />
           <Route
-            path="/write"
+            path={['/UserInfo', '/SignUp']}
+            render={() => (
+              <UserInfo
+                userState={userState}
+                userInfo={userInfo}
+                setLogin={setLogin}
+              />
+            )}
+          />
+          <Route
+            path={['/write', '/update/:articleNo']}
             render={() => (
               <Write
                 login={login}
@@ -75,7 +90,6 @@ const App = () => {
               />
             )}
           />
-          <Route path="/update" component={Update} />
           <Route render={({ location }) => <NotFound />} />
         </Switch>
       </div>

@@ -45,7 +45,7 @@ public class ArticleVO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ARTICLE_SEQ_GEN")
 	@Column(name = "ARTICLE_NO")
-	private int articleNo;
+	private Integer articleNo;
 	
 	@Column(name = "ARTICLE_CODE")
 	private String articleCode;
@@ -63,13 +63,13 @@ public class ArticleVO {
 	private Date writeDate;
 	
 	@Column(name = "VIEW_COUNT")
-	private int viewCount;
+	private Integer viewCount;
 	
 	@Column(name = "ARTICLE_STAR")
-	private double articleStar;
+	private Double articleStar;
 	
 	@Column(name = "ARTICLE_LIKE")
-	private int articleLike;
+	private Integer articleLike;
 	
 	@Column(name = "ARTICLE_IMAGE")
 	private String articleImage;
@@ -81,7 +81,7 @@ public class ArticleVO {
 	private String festivalName;
 	
 	@Column(name = "FESTIVAL_FEE")
-	private int festivalFee;
+	private Integer festivalFee;
 	
 	@Column(name = "FESTIVAL_OWNER")
 	private String festivalOwner;

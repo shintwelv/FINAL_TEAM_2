@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import DaumPostcode from 'react-daum-postcode'
 
-const PopupPostCode = ({ setAddress, handleClose }) => {
+const PopupPostCode = ({ setNewUser, newUser, handleClose }) => {
   const onCompletePost = (data) => {
-    setAddress(data.address)
+    setNewUser({ ...newUser, ['user_basic_address']: data.address })
     handleClose()
   }
 
