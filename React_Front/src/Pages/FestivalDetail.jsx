@@ -1,30 +1,69 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Container, Image, Row, Button } from 'react-bootstrap'
 import RequestPay from '../components/RequestPay'
 import KakaoMap from '../components/KakaoMap'
 import './css/festival_detail.css'
+import { useParams } from 'react-router'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
-function FestivalDetail(props) {
-  const [lng, setLng] = useState(35.188831479630174)
-  const [lat, setLat] = useState(128.07836577856978)
+function FestivalDetail() {
+  const { articleNo } = useParams()
+  const article_no = articleNo
+
+  const lngLatList = [
+    { lng: 33.39416752289471, lat: 126.2384834247646 },
+    { lng: 33.389345311752514, lat: 126.23455027818953 },
+    { lng: 33.23199056856631, lat: 126.31468391338403 },
+    { lng: 33.542659658817506, lat: 126.66593433249494 },
+    { lng: 33.49777735533278, lat: 126.45315016972924 },
+  ]
+
+  const [lng, setLng] = useState(lngLatList[article_no % 5].lng)
+  const [lat, setLat] = useState(lngLatList[article_no % 5].lat)
+
+  const [festival, setFestival] = useState({
+    articleCode: '',
+    articleContent: '',
+    articleImage: '',
+    articleLike: 0,
+    articleNo: 0,
+    articleStar: 0,
+    articleTitle: '',
+    festivalDuration: '',
+    festivalFee: 0,
+    festivalLocation: '',
+    festivalName: '',
+    festivalOwner: '',
+    userId: '',
+    viewCount: 0,
+    writeDate: 0,
+  })
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:9000/article/view.do?articleNo=${article_no}`)
+      .then((res) => setFestival(res.data))
+      .catch((error) => console.log(error))
+  }, [])
 
   return (
     <>
       <Container className="detail-festival-container">
         <Row>
           <Col className="detail-festival-title" xs={12}>
-            진주 남강 유등 축제
+            {festival.festivalName}
           </Col>
         </Row>
         <Row>
           <Col className="detail-festival-subtitle" xs={12}>
-            경상남도 전주시
+            {festival.festivalLocation}
           </Col>
         </Row>
         <Row>
           <Col xs={12} className="d-flex justify-content-center">
             <Image
-              src={require('../img/festival5.jpg').default}
+              src={`../img/${festival.articleImage}`}
               alt="축제사진"
               className="detail-festival-image"
             ></Image>
@@ -36,27 +75,32 @@ function FestivalDetail(props) {
               <tbody>
                 <tr>
                   <td>&#183; 시작일</td>
-                  <td>2021.12.14 (토)</td>
+                  <td>
+                    {festival.festivalDuration.substring(
+                      0,
+                      festival.festivalDuration.indexOf('~') - 1
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <td>&#183; 종료일</td>
-                  <td>2021.12.31. (금)</td>
+                  <td>
+                    {festival.festivalDuration.substring(
+                      festival.festivalDuration.indexOf('~') + 2
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <td>&#183; 장소</td>
-                  <td>진주성 및 남강 일원</td>
+                  <td>{festival.festivalLocation}</td>
                 </tr>
                 <tr>
                   <td>&#183; 주최</td>
-                  <td>(재단법인) 진주문화예술재단</td>
+                  <td>{festival.festivalOwner}</td>
                 </tr>
                 <tr>
                   <td>&#183; 요금</td>
-                  <td>입장무료 (시설이용 유료)</td>
-                </tr>
-                <tr>
-                  <td>&#183; 홈페이지</td>
-                  <td>https://yudeung.com/home</td>
+                  <td>{festival.festivalFee}원</td>
                 </tr>
               </tbody>
             </table>
@@ -73,13 +117,7 @@ function FestivalDetail(props) {
                 </tr>
                 <tr>
                   <td className="detail-festival-description">
-                    계사년(1593) 6월, 제2차 진주성전투에서는 오로지 구국(救國)의
-                    일념으로 왜군과 항전한 7만명의 민∙관∙군이 순국하면서
-                    진주성(晋州城)은 임진왜란 국난극복의 현장이 된다.후일,
-                    진주사람들은 임진∙계사년(壬辰癸巳年) 국난극복에 몸을 바친
-                    순국선열들의 넋을 위로하기 위해 남강에 유등(流燈)을 띄웠고,
-                    이 전통이 면면히 이어져 대한민국 글로벌축제인
-                    진주남강유등축제(晋州南江流 燈祝祭)로 자리잡았다.
+                    {festival.articleContent}
                   </td>
                 </tr>
                 <tr>
@@ -98,7 +136,7 @@ function FestivalDetail(props) {
         </Row>
       </Container>
       <Container className="detail-festival-reply-container">
-        <Row>
+        {/* <Row>
           <Col className="aReply" xs={12}>
             <table>
               <tbody>
@@ -213,13 +251,15 @@ function FestivalDetail(props) {
               </tbody>
             </table>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col
             xs={12}
             className="detail-festival-listBtn detail-festival-button"
           >
-            <Button>목록</Button>
+            <Link to="../festival">
+              <Button>목록</Button>
+            </Link>
           </Col>
         </Row>
       </Container>

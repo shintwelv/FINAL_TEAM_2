@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Modal, Button, Form } from 'react-bootstrap'
 import styled from 'styled-components'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
+import cookie from 'react-cookie'
 
 const HeaderTopWrapper = styled.div`
   height: 24px;
@@ -41,36 +42,31 @@ const HeaderTop = ({
   const handleModalClose = () => setModalShow(false)
   const handleModalShow = () => setModalShow(true)
 
-  const [loginInfo, setloginInfo] = useState({
-    user_id: '',
-    user_pw: '',
-  })
-
-  const handleValueChange = (event) => {
-    // API 요청에 날릴 Form state에 정보를 추가합니다.
-    console.log(loginInfo)
-    setloginInfo({
-      ...loginInfo,
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  const config = {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  }
+  const [userId, setUserId] = useState('')
+  const [userPw, setUserPw] = useState('')
 
   const logOut = () => {
+    setUserInfo({
+      Image: null,
+      userId: '',
+      userPw: '',
+      userName: '',
+      nickName: '',
+      birth: null,
+      gender: '',
+      email: '',
+      phoneNumber: '',
+      userBasicAddress: '',
+      userDetailAddress: '',
+      enabled: 0,
+      admin: 'N',
+    })
     setLogin(false)
   }
 
   const logIn = () => {
-    const dataToSend = JSON.stringify(loginInfo)
-
     axios
-      .post('user/chkUser', dataToSend, config)
+      .get(`http://localhost:9000/user/login?userId=${userId}&userPw=${userPw}`)
       .then((res) => {
         if (res.data) {
           setUserInfo(res.data)
@@ -87,11 +83,21 @@ const HeaderTop = ({
     setUserState(state)
   }
 
+  const showAdminConsole = (login, admin) => {
+    if (login && admin == 'Y') {
+      return (
+        <UserInfoItem>
+          <Link to="/Admin">관리자</Link>
+        </UserInfoItem>
+      )
+    }
+  }
+
   const showLogInOut = (login) => {
     if (login) {
       return (
         <>
-          <UserInfoItem>{userInfo.nickname}님 환영합니다</UserInfoItem>
+          <UserInfoItem>{userInfo.nickName}님 환영합니다</UserInfoItem>
           <UserInfoItem onClick={() => changeUserState('update')}>
             <Link to="/UserInfo">마이페이지</Link>
           </UserInfoItem>
@@ -105,6 +111,7 @@ const HeaderTop = ({
           <UserInfoItem onClick={() => changeUserState('signUp')}>
             <Link to="/SignUp">회원가입</Link>
           </UserInfoItem>
+          {/* {showAdminConsole(login, userInfo.admin)} */}
         </>
       )
     }
@@ -118,20 +125,24 @@ const HeaderTop = ({
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group controlId="user_id">
+            <Form.Group controlId="userId">
               <Form.Label>아이디</Form.Label>
               <Form.Control
                 type="text"
-                name="user_id"
-                onChange={handleValueChange}
+                name="userId"
+                onChange={(e) => {
+                  setUserId(e.target.value)
+                }}
               />
             </Form.Group>
-            <Form.Group controlId="user_pw">
+            <Form.Group controlId="userPw">
               <Form.Label>비밀번호</Form.Label>
               <Form.Control
                 type="password"
-                name="user_pw"
-                onChange={handleValueChange}
+                name="userPw"
+                onChange={(e) => {
+                  setUserPw(e.target.value)
+                }}
               />
             </Form.Group>
           </Form>

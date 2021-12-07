@@ -11,11 +11,6 @@ const TitleWriter = styled.input`
   type: text;
   border-bottom: 1px solid black;
 `
-const config = {
-  headers: {
-    'content-Type': 'multipart/form-data',
-  },
-}
 
 const Write = ({ login, board, process, userInfo }) => {
   const [article, setArticle] = useState({
@@ -23,25 +18,29 @@ const Write = ({ login, board, process, userInfo }) => {
     articleCode: board,
     articleTitle: '',
     articleContent: '',
-    userId: userInfo.user_id,
+    userId: userInfo.userId,
     writeDate: Date(),
     viewCount: 0,
     articleStar: 0.0,
     articleLike: 0,
     Image: null,
+    festivalDuration: null,
+    festivalFee: 0,
+    festivalLocation: null,
+    festivalName: null,
+    festivalOwner: null,
   })
   const history = useHistory()
 
   const { articleNo } = useParams()
   const [article_no, setArticle_no] = useState(articleNo)
 
-  console.log('########### WRITE / UPDATE ############')
-  console.log(`articleNo: ${article_no}`)
-  console.log(`process: ${process}`)
-  console.log(`board: ${board}`)
-
   useEffect(() => {
     if (article_no) {
+      console.log('########### WRITE / UPDATE ############')
+      console.log(`articleNo: ${article_no}`)
+      console.log(`process: ${process}`)
+      console.log(`board: ${board}`)
       console.log('useEffect() if문 호출')
       axios
         .get(`http://localhost:9000/article/view.do?articleNo=${article_no}`)
@@ -51,7 +50,7 @@ const Write = ({ login, board, process, userInfo }) => {
         })
         .catch((error) => console.log(error))
     }
-  }, [setArticle_no])
+  }, [article_no])
 
   const showEditor = (login) => {
     if (login) {
@@ -87,12 +86,20 @@ const Write = ({ login, board, process, userInfo }) => {
 
   const UpdateORWriteArticle = (process) => {
     // ['update', 'view', 'write']
+    const parseDate = new Date(article.writeDate)
+
+    setArticle({
+      ...article,
+      writeDate: parseDate,
+    })
 
     let formData = new FormData()
 
     for (var key in article) {
       formData.append(key, article[key])
     }
+
+    formData.set('writeDate', parseDate)
 
     let processURL = ''
 
@@ -102,34 +109,18 @@ const Write = ({ login, board, process, userInfo }) => {
       processURL = 'insert.do'
     }
 
-    if (board == 'notice') {
-      processURL = `notice/${processURL}`
-      if (process == 'update') {
-        processURL = `../${processURL}`
-      }
-      axios
-        .post(processURL, formData, config)
-        .then((res) => {
-          if (res.data === true) {
-            alert('요청이 성공적으로 처리되었습니다')
-          } else {
-            alert('요청이 실패하였습니다')
-          }
-        })
-        .catch((error) => console.log(error))
-    } else {
-      processURL = `http://localhost:9000/article/${processURL}`
-      axios
-        .post(processURL, formData)
-        .then((res) => {
-          if (res.data === true) {
-            alert('요청이 성공적으로 처리되었습니다')
-          } else {
-            alert('요청이 실패하였습니다')
-          }
-        })
-        .catch((error) => console.log(error))
-    }
+    processURL = `http://localhost:9000/article/${processURL}`
+    axios
+      .post(processURL, formData)
+      .then((res) => {
+        if (res.data === true) {
+          alert('요청이 성공적으로 처리되었습니다')
+        } else {
+          alert('요청이 실패하였습니다')
+        }
+        history.push(`/${board}`)
+      })
+      .catch((error) => console.log(error))
   }
 
   const showProcessButton = (process) => {
@@ -169,7 +160,7 @@ const Write = ({ login, board, process, userInfo }) => {
             <label htmlFor="">
               작성자
               <br />
-              <TitleWriter value={userInfo.nickname} readOnly />
+              <TitleWriter value={userInfo.nickName} readOnly />
             </label>
           </div>
         </section>

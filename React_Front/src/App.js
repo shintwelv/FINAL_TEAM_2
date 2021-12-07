@@ -2,27 +2,39 @@ import { Route, Switch } from 'react-router-dom'
 import './normalize.scss'
 import './app.scss'
 import Main from './Pages/Main'
-import NoticeRead from './Pages/NoticeRead'
 import Festival from './Pages/Festival'
 import Festival_Detail from './Pages/FestivalDetail'
-import ReviewRead from './Pages/ReviewRead'
-import FreeRead from './Pages/FreeRead'
 import UserInfo from './Pages/UserInfo'
 import Header from './components/Header/Header'
 import Footer from './components/Footer'
 import NotFound from './Pages/NotFound'
 import Write from './components/Write'
-import Update from './components/Update'
 import { useState } from 'react'
 import Board from './Pages/Board'
 import Read from './Pages/Read'
+import Admin from './Pages/Admin'
+import FestivalDetail from './Pages/FestivalDetail'
 
 const App = () => {
   const [login, setLogin] = useState(false)
   const [board, setBoard] = useState('')
   const [userState, setUserState] = useState('')
   const [process, setProcess] = useState('')
-  const [userInfo, setUserInfo] = useState(null)
+  const [userInfo, setUserInfo] = useState({
+    Image: null,
+    userId: '',
+    userPw: '',
+    userName: '',
+    nickName: '',
+    birth: null,
+    gender: '',
+    email: '',
+    phoneNumber: '',
+    userBasicAddress: '',
+    userDetailAddress: '',
+    enabled: 0,
+    admin: 'N',
+  })
 
   return (
     <div className="page-container">
@@ -45,7 +57,6 @@ const App = () => {
             path="/festival"
             render={() => <Festival setBoard={setBoard} />}
           />
-          <Route path="/festivaldetail" component={Festival_Detail} />
           <Route
             path={['/notice', '/review', '/free']}
             render={() => (
@@ -89,6 +100,11 @@ const App = () => {
                 process={process}
               />
             )}
+          />
+          <Route path={'/Admin'} render={() => <Admin />} exact />
+          <Route
+            path="/festivalDetail/:articleNo"
+            render={() => <FestivalDetail />}
           />
           <Route render={({ location }) => <NotFound />} />
         </Switch>

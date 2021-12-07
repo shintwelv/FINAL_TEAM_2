@@ -3,7 +3,7 @@ import DaumPostcode from 'react-daum-postcode'
 
 const PopupPostCode = ({ setNewUser, newUser, handleClose }) => {
   const onCompletePost = (data) => {
-    setNewUser({ ...newUser, ['user_basic_address']: data.address })
+    setNewUser({ ...newUser, ['userBasicAddress']: data.address })
     handleClose()
   }
 

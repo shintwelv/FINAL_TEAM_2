@@ -6,9 +6,11 @@ import * as serviceWorker from './serviceWorker'
 import { BrowserRouter } from 'react-router-dom' // 페이지 이동 처리
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </>,
   document.getElementById('root')
 )
 

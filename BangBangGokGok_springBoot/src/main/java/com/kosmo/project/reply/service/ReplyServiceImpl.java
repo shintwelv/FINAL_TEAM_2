@@ -24,24 +24,22 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 	
 	@Override
-	public boolean createReply(ReplyVO vo) {
+	public ReplyVO createReply(ReplyVO vo) {
 		try {
-			repo.save(vo);
-			return true;
+			return repo.save(vo);
 		} catch (Exception e) {
 			// TODO: handle exception
-			return false;
+			return null;
 		}
 	}
 	
 	@Override
-	public boolean modifyReply(ReplyVO vo) {
+	public ReplyVO modifyReply(ReplyVO vo) {
 		try {
-			repo.save(vo);
-			return true;
+			return repo.save(vo);
 		} catch (Exception e) {
 			// TODO: handle exception
-			return false;
+			return null;
 		}
 	}
 	

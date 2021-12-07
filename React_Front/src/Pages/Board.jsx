@@ -67,7 +67,7 @@ const Board = ({ board, process, setProcess, login }) => {
   ])
 
   const showWriteButton = (login) => {
-    if (login) {
+    if (login && board != 'notice') {
       return (
         <ButtonGroupWrapper>
           <Button type="button" onClick={() => setProcess('write')}>

@@ -33,34 +33,31 @@ public class ReplyController {
 	}
 	
 	@RequestMapping(value = "insert.do")
-	public boolean createReply(ReplyVO vo) {
+	public ReplyVO createReply(ReplyVO vo) {
 		try {
 			vo.setWriteDate(new Date());
-			service.createReply(vo);
-			return true;
+			return service.createReply(vo);
 		} catch (Exception e) {
 			// TODO: handle exception
-			return false;
+			return null;
 		}
 	}
 	
 	@RequestMapping(value = "modify.do")
-	public boolean modifyReply(ReplyVO vo) {
+	public ReplyVO modifyReply(ReplyVO vo) {
 		try {
 			vo.setWriteDate(new Date());
-			service.modifyReply(vo);
-			return true;
+			return service.modifyReply(vo);
 		} catch (Exception e) {
 			// TODO: handle exception
-			return false;
+			return null;
 		}
 	}
 	
 	@RequestMapping(value = "delete.do")
 	public boolean deleteReply(ReplyVO vo) {
 		try {
-			service.deleteReply(vo);
-			return true;
+			return service.deleteReply(vo);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return false;

@@ -41,7 +41,7 @@ class RequestPay extends React.Component {
           type="text/javascript"
           src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
         />
-        <Button onClick={this.requestPay}>예약</Button>
+        <Button onClick={this.requestPay}>결제</Button>
       </>
     )
   }

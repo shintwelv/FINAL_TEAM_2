@@ -24,7 +24,6 @@ public class CommController {
 		System.out.println("## [loginPOST]");
 		System.out.println(ur.save(new Users(user.getUserId(), passwordEncoder.encode(user.getUserPw()), user.isEnabled())));
 		System.out.println(mr.save(new Manager(user.getUserId(), manager.getAdminLevel())));
-		
 		return "redirect:/index.jsp";
 	}
 	

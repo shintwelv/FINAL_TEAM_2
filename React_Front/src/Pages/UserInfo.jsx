@@ -13,13 +13,6 @@ import { useHistory, useLocation } from 'react-router'
 import PopupPostCode from '../components/PopupPostCode'
 import './css/user_info.css'
 
-const config = {
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-}
-
 function UserInfo({ userState, userInfo, setLogin }) {
   const location = useLocation()
   const history = useHistory()
@@ -37,17 +30,19 @@ function UserInfo({ userState, userInfo, setLogin }) {
   }, [])
 
   const [newUser, setNewUser] = useState({
-    profile_image: null,
-    user_id: '',
-    user_pw: '',
-    user_name: '',
-    nickname: '',
+    Image: null,
+    userId: '',
+    userPw: '',
+    userName: '',
+    nickName: '',
     birth: null,
     gender: '',
     email: '',
-    phone_number: '',
-    user_basic_address: '',
-    user_detail_address: '',
+    phoneNumber: '',
+    userBasicAddress: '',
+    userDetailAddress: '',
+    enabled: 0,
+    admin: 'N',
   })
 
   const handleValueChange = (event) => {
@@ -61,13 +56,7 @@ function UserInfo({ userState, userInfo, setLogin }) {
 
   const onFileChangeHandler = (e) => {
     e.preventDefault()
-    newUser['profile_image'] = e.target.files[0]
-  }
-
-  const config = {
-    headers: {
-      'content-Type': 'multipart/form-data',
-    },
+    newUser['Image'] = e.target.files[0]
   }
 
   const userProcess = (userState) => {
@@ -81,12 +70,12 @@ function UserInfo({ userState, userInfo, setLogin }) {
     let requestURL = ''
 
     if (userState == 'signUp') {
-      requestURL = 'user/insertProcess.do'
+      requestURL = 'insert'
     } else if (userState == 'update') {
-      requestURL = 'user/updateProcess.do'
+      requestURL = 'update'
     }
     axios
-      .post(requestURL, formData, config)
+      .post(`http://localhost:9000/user/${requestURL}`, formData)
       .then((res) => {
         alert('요청이 처리되었습니다')
         setLogin(false)
@@ -112,7 +101,7 @@ function UserInfo({ userState, userInfo, setLogin }) {
       </Row>
       <Row>
         <Col xs={12} className="user-info-profile-image mb-3 mt-3">
-          <Image src={require('../img/profile2.jpg').default} />
+          <Image src="./img/default_Profile.jpg" />
         </Col>
       </Row>
       <Row>
@@ -120,54 +109,53 @@ function UserInfo({ userState, userInfo, setLogin }) {
           <Form>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="user_id"
+              controlId="userId"
             >
               <Form.Label className="user-info-label">아이디</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="user_id"
+                name="userId"
                 onChange={handleValueChange}
-                value={newUser.user_id}
+                value={newUser.userId}
               />
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="user_pw"
+              controlId="userPw"
             >
               <Form.Label className="user-info-label">비밀번호</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="password"
-                name="user_pw"
+                name="userPw"
                 onChange={handleValueChange}
-                value={newUser.user_pw}
               />
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="user_name"
+              controlId="userName"
             >
               <Form.Label className="user-info-label">이름</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="user_name"
+                name="userName"
                 onChange={handleValueChange}
-                value={newUser.user_name}
+                value={newUser.userName}
               />
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="nickname"
+              controlId="nickName"
             >
               <Form.Label className="user-info-label">닉네임</Form.Label>
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="nickname"
+                name="nickName"
                 onChange={handleValueChange}
-                value={newUser.nickname}
+                value={newUser.nickName}
               />
             </Form.Group>
             <Form.Group className="user-info-form-group mt-3" controlId="birth">
@@ -176,7 +164,12 @@ function UserInfo({ userState, userInfo, setLogin }) {
                 className="user-info-input"
                 type="date"
                 name="birth"
-                onChange={handleValueChange}
+                onChange={(e) => {
+                  setNewUser({
+                    ...newUser,
+                    ['birth']: new Date(e.target.value),
+                  })
+                }}
               />
             </Form.Group>
             <Form.Group
@@ -223,14 +216,14 @@ function UserInfo({ userState, userInfo, setLogin }) {
                 type="tel"
                 pattern="010[0-9]{4}[0-9]{4}"
                 placeholder="숫자만 입력하세요"
-                name="phone_number"
+                name="phoneNumber"
                 onChange={handleValueChange}
-                value={newUser.phone_number}
+                value={newUser.phoneNumber}
               />
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="user_basic_address"
+              controlId="userBasicAddress"
             >
               <Form.Label className="user-info-label"></Form.Label>
               <Button
@@ -251,19 +244,19 @@ function UserInfo({ userState, userInfo, setLogin }) {
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="user_basic_address"
+                name="userBasicAddress"
                 onChange={handleValueChange}
-                value={newUser.user_basic_address}
+                value={newUser.userBasicAddress}
               ></Form.Control>
             </Form.Group>
             <Form.Group
               className="user-info-form-group mt-3"
-              controlId="user_detail_address"
+              controlId="userDetailAddress"
             >
               <Form.Control
                 className="user-info-input"
                 type="text"
-                name="user_detail_address"
+                name="userDetailAddress"
                 onChange={handleValueChange}
               ></Form.Control>
             </Form.Group>
@@ -272,7 +265,7 @@ function UserInfo({ userState, userInfo, setLogin }) {
               <Form.Control
                 className="user-info-input-image user-info-input"
                 type="file"
-                name="profile_image"
+                name="Image"
                 onChange={onFileChangeHandler}
               ></Form.Control>
             </Form.Group>

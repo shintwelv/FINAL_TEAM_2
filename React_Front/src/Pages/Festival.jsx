@@ -1,9 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './css/festival.css'
-import { Col, Container, Image, Row } from 'react-bootstrap'
+import { Card, Col, Container, Image, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import EllipsisText from 'react-ellipsis-text'
+import axios from 'axios'
 
-function Festival(props) {
+function Festival() {
+  const [festivalList, setFestivalList] = useState([
+    {
+      articleCode: '',
+      articleContent: '',
+      articleImage: '',
+      articleLike: 0,
+      articleNo: 0,
+      articleStar: 0,
+      articleTitle: '',
+      festivalDuration: null,
+      festivalFee: 0,
+      festivalLocation: null,
+      festivalName: null,
+      festivalOwner: null,
+      userId: '',
+      viewCount: 0,
+      writeDate: 0,
+    },
+  ])
+
+  useEffect(() => {
+    axios
+      .get(
+        'http://localhost:9000/article/page.do?articleCode=festival&page=0&size=100'
+      )
+      .then((res) => {
+        setFestivalList(res.data)
+      })
+      .catch((error) => console.log(error))
+  }, [])
+
   return (
     <>
       <Container>
@@ -13,77 +46,28 @@ function Festival(props) {
           </Col>
         </Row>
         <Row className="festival-content-list">
-          <Col
-            xs={12}
-            xl={4}
-            className="festival-content mt-1 mb-2 d-flex justify-content-center"
-          >
-            <div>
-              <Link to="/festivaldetail">
-                <div className="festival-content-picture">
-                  <Image
-                    src={require('../img/festival1.jpg').default}
-                    alt="축제사진"
-                    fluid
-                  />
+          {festivalList.map((festival) => (
+            <Col
+              xs={12}
+              xl={4}
+              className="festival-content mt-1 mb-2 d-flex justify-content-center"
+            >
+              <div>
+                <Link to={`/festivalDetail/${festival.articleNo}`}>
+                  <div className="festival-content-picture">
+                    <Image
+                      src={'./img/' + festival.articleImage}
+                      alt="축제사진"
+                      fluid
+                    />
+                  </div>
+                </Link>
+                <div className="festival-content-text">
+                  <span>{festival.festivalName}</span>
                 </div>
-              </Link>
-              <div className="festival-content-text">
-                <span>2021 토마토축제</span>
               </div>
-            </div>
-          </Col>
-          <Col
-            xs={12}
-            xl={4}
-            className="festival-content mt-1 mb-2 d-flex justify-content-center"
-          >
-            <div>
-              <div className="festival-content-picture">
-                <Image
-                  src={require('../img/festival2.jpg').default}
-                  alt="축제사진"
-                />
-              </div>
-              <div className="festival-content-text">
-                <span>2021 바나나 축제</span>
-              </div>
-            </div>
-          </Col>
-          <Col
-            xs={12}
-            xl={4}
-            className="festival-content mt-1 mb-2 d-flex justify-content-center"
-          >
-            <div>
-              <div className="festival-content-picture">
-                <Image
-                  src={require('../img/festival3.jpg').default}
-                  alt="축제사진"
-                />
-              </div>
-              <div className="festival-content-text">
-                <span>2021 바나나 축제</span>
-              </div>
-            </div>
-          </Col>
-          <Col
-            xs={12}
-            xl={4}
-            className="festival-content mt-1 mb-2 d-flex justify-content-center"
-          >
-            <div>
-              <div className="festival-content-picture">
-                <Image
-                  src={require('../img/festival5.jpg').default}
-                  alt="축제사진"
-                />
-              </div>
-              <div className="festival-content-text">
-                <span>2021 바나나 축제</span>
-              </div>
-            </div>
-          </Col>
+            </Col>
+          ))}
         </Row>
       </Container>
     </>

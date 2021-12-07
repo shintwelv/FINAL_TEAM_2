@@ -16,7 +16,7 @@
 	var wsocket;
 	
 	function sendMessage() {
-		wsocket = new WebSocket("ws://localhost:9008/echo-ws.do");
+		wsocket = new WebSocket("ws://localhost:8999/echo-ws.do");
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;
 		console.log("dot12");

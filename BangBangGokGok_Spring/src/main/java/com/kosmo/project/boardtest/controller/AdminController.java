@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -33,12 +34,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kosmo.project.boardtest.manager.Manager;
 import com.kosmo.project.boardtest.manager.ManagerRepository;
 import com.kosmo.project.boardtest.modulefunc.ModuleFunc;
 import com.kosmo.project.boardtest.serverinfo.ServerInfo;
 import com.kosmo.project.boardtest.serverinfo.ServerInfoRepository;
 import com.kosmo.project.boardtest.tmpboard.TmpBoard;
 import com.kosmo.project.boardtest.tmpboard.TmpBoardRepository;
+import com.kosmo.project.boardtest.users.Users;
 import com.kosmo.project.boardtest.users.UsersRepository;
 
 @Controller
@@ -235,11 +238,12 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/adminSa/accountEnableSet.do", method=RequestMethod.GET)
-	public String accountEnableSet(Model model) {
+	public List[] accountEnableSet(Model model) {
 		System.out.println("###### [accountEnableSet] ");
 		
 		model.addAttribute("UsersList", ur.findByAdmin("Y")).addAttribute("ManagerList", mr.findAll());
-		return "/admin/adminSa/accountEnableSet";
+		List[] toSend = {ur.findByAdmin("Y"), mr.findAll()};
+		return toSend;
 	}
 }
 

@@ -8,7 +8,7 @@ const KakaoMap = (props) => {
 
     let options = {
       center: new kakao.maps.LatLng(props.lng, props.lat),
-      level: 3,
+      level: 5,
     }
 
     let map = new kakao.maps.Map(container, options)

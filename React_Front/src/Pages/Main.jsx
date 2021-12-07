@@ -94,7 +94,7 @@ function Main({ setBoard }) {
           .then(
             axios
               .get(
-                'http://localhost:9000/article/page.do?articleCode=festival&page=0&size=3'
+                'http://localhost:9000/article/page.do?articleCode=festival&page=0&size=10'
               )
               .then((res) => {
                 setFestivalList(res.data)
@@ -122,34 +122,12 @@ function Main({ setBoard }) {
               <Carousel.Item>
                 <Image
                   className="d-block w-100 festival-slide-image"
-                  src={require('../img/2.jpg').default}
+                  src={'./img/' + festival.articleImage}
                   alt="축제사진"
                   fluid
                 />
               </Carousel.Item>
             ))}
-            {/* <Carousel.Item>
-              <Image
-                className="d-block w-100 festival-slide-image"
-                src={require('../img/festival7.jpeg').default}
-                alt="축제사진"
-                fluid
-              ></Image>
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image
-                className="d-block w-100 festival-slide-image"
-                src={require('../img/festival3.jpg').default}
-                alt="축제사진"
-              ></Image>
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image
-                className="d-block w-100 festival-slide-image"
-                src={require('../img/festival5.jpg').default}
-                alt="축제사진"
-              ></Image>
-            </Carousel.Item> */}
           </Carousel>
         </Col>
       </Row>
@@ -200,75 +178,22 @@ function Main({ setBoard }) {
               <tr>
                 <td>
                   <ListGroup horizontal>
-                    <Link to="./festival/dtail">
-                      <div className="main-festival-local ml-2">
-                        <div className="main-festival-local-image">
-                          <Image
-                            src={require('../img/festival1.jpg').default}
-                            alt="축제 이미지"
-                            fluid
-                          />
+                    {festivalList.map((festival) => (
+                      <Link to={`/festivalDetail/${festival.articleNo}`}>
+                        <div className="main-festival-local ml-2">
+                          <div className="main-festival-local-image">
+                            <Image
+                              src={'./img/' + festival.articleImage}
+                              alt="축제 이미지"
+                              fluid
+                            />
+                          </div>
+                          <div className="main-festival-local-title">
+                            <span>{festival.festivalName}</span>
+                          </div>
                         </div>
-                        <div className="main-festival-local-title">
-                          <span>심슨 축제</span>
-                        </div>
-                      </div>
-                    </Link>
-                    <div className="main-festival-local ml-2">
-                      <div className="main-festival-local-image">
-                        <Image
-                          src={require('../img/festival2.jpg').default}
-                          alt="축제 이미지"
-                        />
-                      </div>
-                      <div className="main-festival-local-title">
-                        <span>심슨 축제</span>
-                      </div>
-                    </div>
-                    <div className="main-festival-local ml-2">
-                      <div className="main-festival-local-image">
-                        <Image
-                          src={require('../img/festival3.jpg').default}
-                          alt="축제 이미지"
-                        />
-                      </div>
-                      <div className="main-festival-local-title">
-                        <span>심슨 축제</span>
-                      </div>
-                    </div>
-                    <div className="main-festival-local ml-2">
-                      <div className="main-festival-local-image">
-                        <Image
-                          src={require('../img/festival4.jpg').default}
-                          alt="축제 이미지"
-                        />
-                      </div>
-                      <div className="main-festival-local-title">
-                        <span>심슨 축제</span>
-                      </div>
-                    </div>
-                    <div className="main-festival-local ml-2">
-                      <div className="main-festival-local-image">
-                        <Image
-                          src={require('../img/festival5.jpg').default}
-                          alt="축제 이미지"
-                        />
-                      </div>
-                      <div className="main-festival-local-title">
-                        <span>심슨 축제</span>
-                      </div>
-                    </div>
-                    <div className="main-festival-local ml-2">
-                      <div className="main-festival-local-image">
-                        <Image
-                          src={require('../img/festival6.jpeg').default}
-                          alt="축제 이미지"
-                        />
-                      </div>
-                      <div className="main-festival-local-title">
-                        <span>심슨 축제</span>
-                      </div>
-                    </div>
+                      </Link>
+                    ))}
                   </ListGroup>
                 </td>
               </tr>

@@ -8,7 +8,7 @@ insert into article_code values ('review');
 insert into article_code values ('transfer');
 commit;
 
-■ 초기 관리자 계정 생성
+■ 초기 관리자 계정 생성 (이 계정으로 로그인은 할 수 없음, 단지 RPA로 축제 정보를 삽입하기 위한 계정)
 INSERT INTO USERS (USER_ID, ADMIN, USER_PW, USER_NAME, NICKNAME, ENABLED) VALUES ('admin', 'Y', 'admin', '관리자', '관리자', 1);
 
 commit;
@@ -25,9 +25,6 @@ Spring의 WEB-INF/lib에 추가 바람
 
 ■ 사진 저장 위치
 C:\Final_team2\React_Front\src\img
-
-■ DB에 저장되는 파일 위치 (React에서 src로 불러오기 위함)
-../img/
 
 ■ Spring 설정
 실행시 tomcat server -> modules 에서 path를 /로 설정

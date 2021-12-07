@@ -92,10 +92,10 @@ const Read = ({ board, userInfo, login, setProcess }) => {
 
   const [newReply, setNewReply] = useState({
     replyNo: 0,
-    articleCode: '',
+    articleCode: board,
     articleNo: 0,
     replyContent: '',
-    userId: '',
+    userId: userInfo.userId,
     writeDate: new Date(),
     replyRating: 0.0,
   })
@@ -113,15 +113,8 @@ const Read = ({ board, userInfo, login, setProcess }) => {
         setArticle(res.data)
         setNewReply({
           ...newReply,
-          ['articleCode']: res.data.articleCode,
-          ['articleNo']: res.data.articleNo,
+          articleNo: res.data.articleNo,
         })
-        if (userInfo) {
-          setNewReply({
-            ...newReply,
-            ['userId']: userInfo.user_id,
-          })
-        }
       })
       .catch((error) => console.log(error))
 
@@ -131,7 +124,7 @@ const Read = ({ board, userInfo, login, setProcess }) => {
       )
       .then((res) => setReplies(res.data))
       .catch((error) => console.log(error))
-  }, [setArticle])
+  }, [])
 
   // const getArticleInfo = (article_no) => {
   //   axios
@@ -150,7 +143,7 @@ const Read = ({ board, userInfo, login, setProcess }) => {
   }
 
   const showModifyDelete = () => {
-    if (login && article.userId == userInfo.user_id) {
+    if (login && article.userId == userInfo.userId) {
       return (
         <div>
           <Button type="button" onClick={() => setProcess('update')}>
@@ -174,11 +167,11 @@ const Read = ({ board, userInfo, login, setProcess }) => {
       formData.append(key, article[key])
     }
 
-    if (board == 'notice') {
-      processURL = '../notice/delete.do'
-    } else {
-      processURL = 'http://localhost:9000/article/delete.do'
-    }
+    // if (board == 'notice') {
+    //   processURL = '../notice/delete.do'
+    // } else {
+    // }
+    processURL = 'http://localhost:9000/article/delete.do'
 
     axios
       .post(processURL, formData)
@@ -187,6 +180,7 @@ const Read = ({ board, userInfo, login, setProcess }) => {
   }
 
   const makeReply = () => {
+    console.log(newReply)
     const formData = new FormData()
 
     for (var key in newReply) {
@@ -198,6 +192,7 @@ const Read = ({ board, userInfo, login, setProcess }) => {
       .then((res) => {
         alert('요청이 처리되었습니다')
         console.log(res)
+        history.push(`/${board}`)
       })
       .catch((error) => console.log(error))
   }
@@ -283,7 +278,7 @@ const Read = ({ board, userInfo, login, setProcess }) => {
               />
               <br />
               <Image
-                src={require('../img/집콕어린이소리축제.jpeg').default}
+                src={'../img/' + article.articleImage}
                 alt="poster"
                 fluid
               />

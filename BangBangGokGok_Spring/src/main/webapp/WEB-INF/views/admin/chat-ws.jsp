@@ -10,7 +10,7 @@
 	var wsocket;
 	
 	function connect() {
-		wsocket = new WebSocket("ws://localhost:9008/chat-ws.do");
+		wsocket = new WebSocket("ws://localhost:8999/chat-ws.do");
 		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;

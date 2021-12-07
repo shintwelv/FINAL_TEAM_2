@@ -19,7 +19,6 @@ public class ArticleServiceImpl implements ArticleService {
 	private ArticleRepository repo;
 	
 	private String ImgLocation = Constants.DEFAULT_DIR;
-	private String ImgLocation_for_DB = "./";
 	
 	@Override
 	public List<ArticleVO> getArticleByArticleCode(String articleCode) {
@@ -51,7 +50,7 @@ public class ArticleServiceImpl implements ArticleService {
 
 				file.transferTo(saveFile);
 
-				vo.setArticleImage(ImgLocation_for_DB + fileName);
+				vo.setArticleImage(fileName);
 			}
 			repo.save(vo);
 			return true;
@@ -82,7 +81,7 @@ public class ArticleServiceImpl implements ArticleService {
 
 				file.transferTo(saveFile);
 
-				vo.setArticleImage(ImgLocation_for_DB + fileName);
+				vo.setArticleImage(fileName);
 			}
 			repo.save(vo);
 			return true;

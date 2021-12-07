@@ -9,9 +9,9 @@ public interface ReplyService {
 
 	Page<ReplyVO> getRepliesByArticleNoOfPage(int articleNo, Pageable pageable);
 
-	boolean createReply(ReplyVO vo);
+	ReplyVO createReply(ReplyVO vo);
 
-	boolean modifyReply(ReplyVO vo);
+	ReplyVO modifyReply(ReplyVO vo);
 
 	boolean deleteReply(ReplyVO vo);
 
