@@ -11,16 +11,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface UsersRepository extends JpaRepository<Users, String>{
-	public Users findOne(String username);
+	public Users findOne(String user_id);
 	
-	public Users findByUsername(String username);
+	public Users findByUserId(String user_id);
 	
 	public Users save(Users user);
 	
 	public List<Users> findAll();
 	
+	public List<Users> findByAdmin(String admin);
+	
 	@Transactional
 	@Modifying
 	@Query("UPDATE Users SET enabled = ?2 WHERE user_id = ?1")
-	public int updateEnabled(String username, Boolean enabled);
+	public int updateEnabled(String user_id, Boolean enabled);
 }

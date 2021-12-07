@@ -25,12 +25,12 @@
 <body>
 	<h1>임시 게시글 수정</h1><br><hr><br>
 	<form action="updateBoard.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="transferId" value="${ index }"/>
-		작성자 <input type="text" name="transferWriterId" value="${ TmpBoard.transferWriterId }">
-		게시글 작성 시간 <input type="text" id="date" name="transferDate"><br><br>
-		제목 <input type="text" name="transferName" value="${ TmpBoard.transferName }"/>
+		<input type="hidden" name="articleNo" value="${ index }"/>
+		작성자 <input type="text" name="userId" value="${ TmpBoard.userId }">
+		게시글 작성 시간 <input type="text" id="date" name="writeDate"><br><br>
+		제목 <input type="text" name="articleTitle" value="${ TmpBoard.articleTitle }"/>
 		파일 <input type="file" name="uploadFile" value="업로드"/><br><br>  
-		내용 <textarea id="board_content" name="transferContent" cols="70" rows="10">${ TmpBoard.transferContent }</textarea><br>
+		내용 <textarea id="board_content" name="articleContent" cols="70" rows="10">${ TmpBoard.articleContent }</textarea><br>
 		<input type="submit" value="적용">
 		<a href="getBoard.do?index=${ index }"><input type="button" value="취소"></a>
 	</form>

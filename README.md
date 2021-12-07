@@ -9,7 +9,10 @@ insert into article_code values ('transfer');
 commit;
 
 ■ 초기 관리자 계정 생성
-INSERT INTO USERS (USER_ID, ADMIN, USER_PW, USER_NAME, NICKNAME) VALUES ('admin', 'Y', 'admin', '관리자', 'ADMIN');
+INSERT INTO USERS (USER_ID, ADMIN, USER_PW, USER_NAME, NICKNAME, ENABLED) VALUES ('admin', 'Y', 'admin', '관리자', '관리자', 1);
+
+commit;
+
 
 ■ 프로필 사진 업로드를 위해 cos-20.08 사용 (http://servlets.com/cos/)
 

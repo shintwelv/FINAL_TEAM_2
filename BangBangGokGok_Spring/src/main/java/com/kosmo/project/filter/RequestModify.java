@@ -1,4 +1,4 @@
-package com.kosmo.project.boardtest.filter;
+package com.kosmo.project.filter;
 
 import java.util.Collections;
 import java.util.Enumeration;

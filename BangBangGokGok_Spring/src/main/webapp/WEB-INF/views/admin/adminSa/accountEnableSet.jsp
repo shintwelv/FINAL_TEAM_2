@@ -80,8 +80,8 @@
 	    
 	    	<c:forEach var="index" begin="1" end="${ UsersList.size() }">
 	    		<tr id="Record_${ index }">
-    				<td><input type="text" name="username" value="${UsersList[index-1].username}" disabled/></td>
-    				<td>${UsersList[index-1].password}</td>
+    				<td><input type="text" name="userId" value="${UsersList[index-1].userId}" disabled/></td>
+    				<td>${UsersList[index-1].userPw}</td>
     				<td>${ManagerList[index-1].adminLevel}</td>
 					<c:if test="${UsersList[index-1].enabled == 'true'}">
 						<td><input type="checkbox" checked data-toggle="toggle" data-onstyle="success"></td>

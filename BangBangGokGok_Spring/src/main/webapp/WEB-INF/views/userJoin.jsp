@@ -9,8 +9,8 @@
 	<h1>임시 회원가입 페이지</h1>
 	<hr>
 	<form action="userJoin.do" method="post">
-		아이디 : <input type="text" name="username">
-		비밀번호 : <input type="text" name="password">
+		아이디 : <input type="text" name="userId">
+		비밀번호 : <input type="text" name="userPw">
 		<input type="hidden" name="enabled" value="true"><br>
 		<label for="sel1">권한 리스트 :</label>
 		<select id="sel1" name="adminLevel">

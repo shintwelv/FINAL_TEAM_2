@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
+	@Autowired
+	private PasswordEncoder pwEncoder;
 	
 //	이 위치에 회원의 프로필 사진이 저장됨
 	private static final String PROFILE_IMAGE_FOLDER = Constants.DEFAULT_DIR;
@@ -48,6 +51,7 @@ public class UserController {
 	public boolean insertProcess(UserVO vo, HttpServletRequest request) {
 		try {
 			UserVO voToInsert = setUserByMultiRequest(vo, request);
+			voToInsert.setUser_pw(pwEncoder.encode(voToInsert.getUser_pw()));
 			System.out.println(voToInsert);
 			service.insertUser(voToInsert);
 			return true;
@@ -62,6 +66,7 @@ public class UserController {
 	public boolean updateProcess(UserVO vo, HttpServletRequest request) {
 		try {
 			UserVO voToUpdate = setUserByMultiRequest(vo, request);
+			voToUpdate.setUser_pw(pwEncoder.encode(voToUpdate.getUser_pw()));
 			service.updateUser(voToUpdate);
 			return true;
 		} catch (Exception e) {
@@ -74,6 +79,7 @@ public class UserController {
 	public boolean deleteProcess(UserVO vo, HttpServletRequest request) {
 		try {
 			UserVO voToDelete = setUserByMultiRequest(vo, request);
+			voToDelete.setUser_pw(pwEncoder.encode(voToDelete.getUser_pw()));
 			service.deletUser(voToDelete);
 			return true;
 		} catch (Exception e) {
@@ -129,6 +135,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/chkUser")
 	public UserVO chkUser(@RequestBody UserVO vo) {
+		vo.setUser_pw(pwEncoder.encode(vo.getUser_pw()));
 		System.out.println(vo);
 		UserVO user = service.chkUser(vo);
 		return user;

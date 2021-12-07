@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 @SequenceGenerator(name = "authority_seq", sequenceName = "authority_seq", initialValue = 1, allocationSize = 1)
+@Table(name = "ACCESS_LEVEL")
 public class Manager {
 	@Id
 	@GeneratedValue(generator = "authority_seq", strategy = GenerationType.SEQUENCE)

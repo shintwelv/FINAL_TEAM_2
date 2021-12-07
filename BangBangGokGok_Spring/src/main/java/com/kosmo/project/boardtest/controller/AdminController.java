@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -49,7 +52,26 @@ public class AdminController {
 	
 	private int serverInfoCount = 0; // ServerInfo count
 	
-	private final String FILE_UPLOAD_PATH = "C:\\tmp\\upload\\";  
+	private final String FILE_UPLOAD_PATH = "C:\\tmp\\upload\\";
+	
+	//해당 폴더 없을시 폴더 자동 생성
+	public AdminController() {
+		// TODO Auto-generated constructor stub
+		Path path1 = Paths.get(FILE_UPLOAD_PATH);
+		try {
+			Files.createDirectories(path1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		Path path2 = Paths.get("C:\\tmp\\Resource\\");
+		try {
+			Files.createDirectories(path2);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	@RequestMapping(value="/*.do",method=RequestMethod.GET)
 	public String GetRequest(HttpServletRequest request, Model model, @RequestParam(value = "page", defaultValue = "1") int pageNum, Principal principal) {
@@ -61,10 +83,10 @@ public class AdminController {
 			mf.paging(model, pageNum, "board");
 			return "/admin/board";
 		} else if(requestPath.equals("/admin/getBoard.do")) {
-			model.addAttribute("TmpBoard", tbr.findByTransferId(Integer.parseInt(request.getParameter("index")))).addAttribute("index", request.getParameter("index"));
+			model.addAttribute("TmpBoard", tbr.findByArticleNo(Integer.parseInt(request.getParameter("index")))).addAttribute("index", request.getParameter("index"));
 			return "/admin/getBoard";
 		} else if(requestPath.equals("/admin/updateBoard.do")) {
-			model.addAttribute("TmpBoard", tbr.findByTransferId(Integer.parseInt(request.getParameter("index")))).addAttribute("index", request.getParameter("index"));
+			model.addAttribute("TmpBoard", tbr.findByArticleNo(Integer.parseInt(request.getParameter("index")))).addAttribute("index", request.getParameter("index"));
 			return "/admin/updateBoard";
 		} else if(requestPath.equals("/admin/deleteBoard.do")) {
 			tbr.delete(Integer.parseInt(request.getParameter("index")));
@@ -99,7 +121,7 @@ public class AdminController {
 		if(mf.getSize() != 0) {
 			System.out.println("file name : "+mf.getOriginalFilename());
 			File file = new File(FILE_UPLOAD_PATH+mf.getOriginalFilename());
-			tmpBoard.setTransferImage(mf.getOriginalFilename());
+			tmpBoard.setArticleImage(mf.getOriginalFilename());
 			mf.transferTo(file);
 		}
 		
@@ -216,7 +238,7 @@ public class AdminController {
 	public String accountEnableSet(Model model) {
 		System.out.println("###### [accountEnableSet] ");
 		
-		model.addAttribute("UsersList", ur.findAll()).addAttribute("ManagerList", mr.findAll());
+		model.addAttribute("UsersList", ur.findByAdmin("Y")).addAttribute("ManagerList", mr.findAll());
 		return "/admin/adminSa/accountEnableSet";
 	}
 }

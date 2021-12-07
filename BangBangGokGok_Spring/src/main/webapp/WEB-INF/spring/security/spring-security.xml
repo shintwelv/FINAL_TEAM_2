@@ -13,7 +13,7 @@
 		<sec:authentication-provider>
 			<sec:jdbc-user-service data-source-ref="dataSource"
 			users-by-username-query="SELECT user_id, user_pw, enabled FROM (SELECT * FROM users WHERE enabled != 0) WHERE user_id = ?"			
-			authorities-by-username-query="SELECT admin_id, admin_level FROM manager WHERE admin_id = ? "
+			authorities-by-username-query="SELECT admin_id, admin_level FROM access_level WHERE admin_id = ? "
 			/>
 			<sec:password-encoder ref="PasswordEncoder"/>
 			<!--
@@ -30,8 +30,8 @@
 		<sec:intercept-url pattern="/**" access="permitAll"/>
 		<sec:access-denied-handler error-page="/error/accessDenied"/>
 		<sec:form-login
-			username-parameter="username"
-			password-parameter="password"
+			username-parameter="userId"
+			password-parameter="userPw"
 			login-page="/login"
 			authentication-failure-url="/loginFaile"
 			default-target-url="/board"

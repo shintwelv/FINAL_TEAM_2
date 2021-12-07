@@ -12,17 +12,17 @@ import org.springframework.stereotype.Repository;
 public interface TmpBoardRepository extends JpaRepository<TmpBoard, Integer>{
 	public TmpBoard save(TmpBoard tb);
 	
-	public TmpBoard findByTransferId(int transferId);
+	public TmpBoard findByArticleNo(int articleNo);
 	
 	public List<TmpBoard> findAll(Sort sort);
 	
 	public Page<TmpBoard> findAll(Pageable pageable);
 	
-	public void delete(Integer transferId);
+	public void delete(Integer articleNo);
 	
-	public List<TmpBoard> findByTransferName(String transferName);       // 게시글 제목 검색
+	public List<TmpBoard> findByArticleTitle(String articleTitle);       // 게시글 제목 검색
 	
-	public List<TmpBoard> findByTransferContent(String transferContent);       // 게시글 내용 검색
+	public List<TmpBoard> findByArticleContent(String articleContent);       // 게시글 내용 검색
 	
-	public List<TmpBoard> findByTransferWriterId(String transferWriterId);          // 게시글 작성자 검색
+	public List<TmpBoard> findByUserId(String userId);          // 게시글 작성자 검색
 }

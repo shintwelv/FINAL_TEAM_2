@@ -28,8 +28,8 @@ public class TmpBoardServiceImpl implements TmpBoardService{
 	}
 
 	@Override
-	public TmpBoard findByTransferId(int transferId) {
-		return tbr.findByTransferId(transferId);
+	public TmpBoard findByTransferId(int articleNo) {
+		return tbr.findByArticleNo(articleNo);
 	}
 
 	@Override

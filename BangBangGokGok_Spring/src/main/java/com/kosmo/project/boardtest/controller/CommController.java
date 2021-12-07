@@ -22,17 +22,17 @@ public class CommController {
 	@RequestMapping(value="userJoin.do", method=RequestMethod.POST)
 	public String userJoin(Users user, Manager manager) {
 		System.out.println("## [loginPOST]");
-		System.out.println(ur.save(new Users(user.getUsername(), passwordEncoder.encode(user.getPassword()), user.isEnabled())));
-		System.out.println(mr.save(new Manager(user.getUsername(), manager.getAdminLevel())));
+		System.out.println(ur.save(new Users(user.getUserId(), passwordEncoder.encode(user.getUserPw()), user.isEnabled())));
+		System.out.println(mr.save(new Manager(user.getUserId(), manager.getAdminLevel())));
 		
 		return "redirect:/index.jsp";
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String loginGet() {
-		System.out.println("## [loginGET]");
-		return "login";
-	}
+//	@RequestMapping(value="/login", method=RequestMethod.GET)
+//	public String loginGet() {
+//		System.out.println("## [loginGET]");
+//		return "login";
+//	}
 	
 	@RequestMapping(value="/loginFaile", method=RequestMethod.GET)
 	public String loginFaile(Model model) {

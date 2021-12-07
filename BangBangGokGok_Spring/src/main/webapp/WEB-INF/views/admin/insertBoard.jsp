@@ -26,11 +26,11 @@
 <body>
 	<h1>임시 게시글 쓰기</h1><br><hr><br>
 	<form action="insertBoard.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
-		작성자 <input type="text" name="transferWriterId" value="${ username }">
-		게시글 작성 시간 <input type="text" id="date" name="transferDate"><br><br>
-		제목 <input type="text" name="transferName" value="제목"/>
+		작성자 <input type="text" name="userId" value="${ username }">
+		게시글 작성 시간 <input type="text" id="date" name="writeDate"><br><br>
+		제목 <input type="text" name="articleTitle" value="제목"/>
 		파일 <input type="file" name="uploadFile" value="업로드"/> <br><br>
-		내용 <textarea id="board_content" name="transferContent" cols="70" rows="10">내용</textarea><br>
+		내용 <textarea id="board_content" name="articleContent" cols="70" rows="10">내용</textarea><br>
 		<input type="submit" value="게시글 쓰기">
 		<a href="board.do"><input type="button" value="취소"></a>
 	</form>

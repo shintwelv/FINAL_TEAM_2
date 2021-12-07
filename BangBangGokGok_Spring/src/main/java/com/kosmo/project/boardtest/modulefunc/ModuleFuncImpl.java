@@ -25,7 +25,7 @@ public class ModuleFuncImpl implements ModuleFunc{
 	@Override
 	public void paging(Model model, int pageNum, String url) {
 		int requestPage = pageNum;
-		Pageable pageable = new PageRequest(pageNum-1, 10, new Sort(Direction.DESC, "transferId"));
+		Pageable pageable = new PageRequest(pageNum-1, 10, new Sort(Direction.DESC, "articleNo"));
 		
 		Page<TmpBoard> page = null;
 		if(url.equals("board")) {

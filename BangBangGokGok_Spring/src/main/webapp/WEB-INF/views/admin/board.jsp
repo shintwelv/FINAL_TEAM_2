@@ -46,11 +46,11 @@
 	    </thead>
 	    <tbody>
 	    	<c:forEach items="${ tbsList }" var="Object" begin="0" end="${ tbsList.size() }" varStatus="status">
-	    		<tr style = "cursor:pointer;" onClick = "location.href='getBoard.do?index='+${Object.transferId}">
-    				<td>${Object.transferId}</td>
-    				<td>${Object.transferName}</td>
-    				<td>${Object.transferWriterId}</td>
-    				<td>${Object.transferDate}</td>
+	    		<tr style = "cursor:pointer;" onClick = "location.href='getBoard.do?index='+${Object.articleNo}">
+    				<td>${Object.articleNo}</td>
+    				<td>${Object.articleTitle}</td>
+    				<td>${Object.userId}</td>
+    				<td>${Object.writeDate}</td>
 	    		</tr>
 	    	</c:forEach>
 	    </tbody>
