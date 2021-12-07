@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script>
 	$(document).ready(function(){
 		dataRead();
@@ -259,7 +261,7 @@
 		memoryUsageObj = new Chart(document.getElementById("memoryUsagePercentChart").getContext("2d"), {
 		    type: 'pie',
 		    data: {
-		    	labels: ["Memory Usage Percent", "Memory Idel Percent" ],
+		    	labels: ["Memory Usage Percent", "Memory Idle Percent" ],
 		      	datasets: [
 		        {
 		        	label: 'Memory Using Percent',
@@ -355,28 +357,27 @@
 </style>
 </head>
 <body>
-	<h3>CPU, Session INFO</h3>
-	<hr>
-	<a href="/admin/board.do"><button>게시판으로 돌아가기</button></a><br><br>
-	<div id="Canvas">
-		<canvas id="cpuChart" width="600" height="300"></canvas>&nbsp&nbsp
-		<canvas id="sessionChart" width="600" height="300"></canvas>
+	<div class="container">
+		<br>
+		<a href="/admin/board.do"><button class="btn btn-primary">돌아가기</button></a><br><br>
+		<h3>CPU, Session INFO</h3>
+		<div id="Canvas">
+			<canvas id="cpuChart" width="600" height="300"></canvas>
+			<canvas id="sessionChart" width="600" height="300"></canvas>
+		</div>
+		<br>
+		<h3>Memory INFO</h3>
+		<div id="Canvas">
+			<canvas id="physicalMemoryChart" width="1000" height="300"></canvas>
+			<canvas id="memoryUsagePercentChart" width="600" height="300"></canvas>
+		</div>
+		<br>
+		<h3>HDD INFO</h3>
+		<div id="Canvas">
+			<canvas id="hddChart" width="1000" height="300"></canvas>
+			<canvas id="hddUsagePercentChart" width="600" height="300"></canvas>
+		</div>
 	</div>
-	
-	<h3>Memory INFO</h3>
-	<hr>		
-	<div id="Canvas">
-		<canvas id="physicalMemoryChart" width="1000" height="300"></canvas>&nbsp&nbsp
-		<canvas id="memoryUsagePercentChart" width="600" height="300"></canvas>
-	</div>
-
-	<h3>HDD INFO</h3>
-	<hr>		
-	<div id="Canvas">
-		<canvas id="hddChart" width="1000" height="300"></canvas>&nbsp&nbsp
-		<canvas id="hddUsagePercentChart" width="600" height="300"></canvas>
-	</div>
-	
 </body>
 </html>
 

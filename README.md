@@ -8,8 +8,8 @@ insert into article_code values ('review');
 insert into article_code values ('transfer');
 commit;
 
-■ 초기 관리자 계정 생성 (이 계정으로 로그인은 할 수 없음, 단지 RPA로 축제 정보를 삽입하기 위한 계정)
-INSERT INTO USERS (USER_ID, ADMIN, USER_PW, USER_NAME, NICKNAME, ENABLED) VALUES ('admin', 'Y', 'admin', '관리자', '관리자', 1);
+■ 초기 계정 생성 (이 계정으로 로그인은 할 수 없음, 단지 RPA로 축제 정보를 삽입하기 위한 계정)
+INSERT INTO USERS (USER_ID, ADMIN, USER_PW, USER_NAME, NICKNAME, ENABLED) VALUES ('admin', 'N', 'admin', '관리자', '관리자', 1);
 
 commit;
 

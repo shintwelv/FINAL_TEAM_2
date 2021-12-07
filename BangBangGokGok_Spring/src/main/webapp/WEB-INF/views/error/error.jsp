@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>TEMP ERROR PAGE</title>
+<meta charset="UTF-8">
+<title>κ΄€λ¦¬μ νμ΄μ§€</title>
 </head>
 <body>
-	<h1>ΐΣ½Γ °ψΕλ Ώ΅·― ΖδΐΜΑφ</h1>
+	<h1>μ„μ‹ κ³µν†µ μ—λ¬ νμ΄μ§€</h1>
 </body>
 </html>

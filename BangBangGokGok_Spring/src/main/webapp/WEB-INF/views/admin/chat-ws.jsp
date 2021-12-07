@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>임시 ECHO 페이지</title>
+<title>관리자 페이지</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script>
 	var wsocket;
 	
@@ -73,8 +75,6 @@
 	#chatArea {
 	width : 400px;
 	height : 100px;
-	overflow-y: auto;
-	border : 1px solid black;
 	}
 	
 	#myStr {
@@ -83,20 +83,33 @@
 </style>
 </head>
 <body>
-	<h1>임시 채팅 페이지</h1><hr><br><br>
-	<a href="/admin/board.do"><button>돌아가기</button></a><br><br>
-	<input type="hidden" id="nickname" value="<sec:authentication property="name"/>">
-	<input type="button" id="enterBtn" value="입장">
-	<input type="button" id="exitBtn" value="나가기">
-	
-	<h1>채팅</h1>
-	<input type="text" id="message">
-	<input type="button" id="sendBtn" value="전송"><br><br>
-	
-	<div id="chatArea">
-		<div id="chatMessageArea">
-		</div>
-	</div>
+	<div class="container">
+        <br>
+        <div class="row">
+            <h1>관리자 단체 채팅</h1>
+        </div>
+        <hr>
+        <div class="row">
+            <a href="/admin/board.do"><button class="btn btn-primary">대시보드</button></a><br><br>
+            <input type="hidden" id="nickname" value="<sec:authentication property="name"/>">
+        </div>
 
+        <h1>채팅</h1>
+        <input type="text" id="message">
+        <input type="button" id="sendBtn" value="전송" class="btn btn-primary"><br><br>
+
+        <div id="chatArea" style="overflow-y: auto; border: 1px solid black;">
+            <div id="chatMessageArea">
+            </div>
+        </div>
+        <div class="row mt-3">
+        	<div class="col-1">
+		        <input type="button" id="enterBtn" value="입장" class="btn btn-primary">
+        	</div>
+        	<div class="col-1">
+		        <input type="button" id="exitBtn" value="나가기" class="btn btn-danger">
+        	</div>
+        </div>
+    </div>
 </body>
 </html>
