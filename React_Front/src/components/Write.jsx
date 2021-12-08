@@ -70,11 +70,12 @@ const Write = ({ login, board, process, userInfo }) => {
         </>
       )
     } else {
-      return (
-        <div>
-          <span>권한이 없습니다</span>
-        </div>
-      )
+      history.push('/')
+      // return (
+      //   <div>
+      //     <span>권한이 없습니다</span>
+      //   </div>
+      // )
     }
   }
 
@@ -115,7 +116,7 @@ const Write = ({ login, board, process, userInfo }) => {
       .then((res) => {
         if (res.data === true) {
           alert('요청이 성공적으로 처리되었습니다')
-          history.push(`/${board}`)
+          history.push(`/`)
         } else {
           alert('요청이 실패하였습니다')
         }
@@ -168,10 +169,7 @@ const Write = ({ login, board, process, userInfo }) => {
 
         <ButtonGroupWrapper>
           <Button onClick={history.goBack}>목록</Button>
-          <div>
-            {showProcessButton(process)}
-            <Button onClick={history.goBack}>목록</Button>
-          </div>
+          <div>{showProcessButton(process)}</div>
         </ButtonGroupWrapper>
       </Container>
     </div>

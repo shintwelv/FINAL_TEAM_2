@@ -302,16 +302,6 @@ const Read = ({ board, userInfo, login, setProcess }) => {
                 fluid
               />
             </div>
-            <div className="middle-magic ">
-              <div className="like-button-wrapper">
-                <div className="like-button">
-                  <div className="like-count">{number}</div>
-                  <button onClick={increaseLike}>
-                    <HandThumbsUp className="like-logo" />
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
         {showReplyEditor(login)}
