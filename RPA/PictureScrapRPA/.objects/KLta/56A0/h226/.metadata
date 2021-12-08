@@ -1,0 +1,13 @@
+﻿{
+  "Id": "h226iApWNkSZP8minMBPfw",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/h226iApWNkSZP8minMBPfw",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/56A0-1wUh0u-wP-vZQ_p7Q",
+  "Name": "Chrome: K-일러스트레이션페어 서울 2022_rtTour 축제/행사 소개",
+  "Type": "Screen",
+  "Created": "2021-11-12T08:14:01.2566278Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T08:14:01.2566278Z"
+}

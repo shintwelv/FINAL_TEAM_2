@@ -1,0 +1,13 @@
+﻿{
+  "Id": "TKx6GQ9GvUu-CqXcsxCZ3A",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/TKx6GQ9GvUu-CqXcsxCZ3A",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/8ObzHbG24UScWtj5xq_PBw",
+  "Name": "Chrome: 2021년 11월서울 축제/행사 안내",
+  "Type": "Screen",
+  "Created": "2021-11-12T06:53:19.8618349Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T06:53:19.8618349Z"
+}

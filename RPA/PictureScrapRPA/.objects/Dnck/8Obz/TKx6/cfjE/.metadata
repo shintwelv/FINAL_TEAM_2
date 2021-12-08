@@ -1,0 +1,14 @@
+﻿{
+  "Id": "cfjEtfmX002fMuUU0mUarw",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/cfjEtfmX002fMuUU0mUarw",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/TKx6GQ9GvUu-CqXcsxCZ3A",
+  "Name": "제9회 서울커피앤티페어",
+  "Type": "Element",
+  "TaxonomyType": "None",
+  "Created": "2021-11-12T06:54:09.5365826Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T06:54:09.5365826Z"
+}

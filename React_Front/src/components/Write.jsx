@@ -115,10 +115,10 @@ const Write = ({ login, board, process, userInfo }) => {
       .then((res) => {
         if (res.data === true) {
           alert('요청이 성공적으로 처리되었습니다')
+          history.push(`/${board}`)
         } else {
           alert('요청이 실패하였습니다')
         }
-        history.push(`/${board}`)
       })
       .catch((error) => console.log(error))
   }

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable ContentHash="dIJ6vPLXC0yMPH2B0dP5Bg" DesignTimeRectangle="8, 46, 36, 28" ElementType="Button" FriendlyName="'뒤로'" FullSelectorArgument="&lt;ctrl name='K-일러스트레이션페어 서울 2022_rtTour 축제/행사 소개 - Chrome - 정재 (Jaehak)' role='pane' /&gt;&lt;ctrl name='Chrome' role='pane' /&gt;&lt;ctrl name='뒤로' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='K-일러스트레이션페어 서울 2022_rtTour 축제/행사 소개 - Chrome - 정재 (Jaehak)' role='pane' /&gt;&lt;ctrl name='Chrome' role='pane' /&gt;&lt;ctrl name='뒤로' role='push button' automationid='' check:text='뒤로' /&gt;" Guid="e4c52684-6c86-455c-b268-132f35cdf590" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='K-일러스트레이션페어 서울 2022_rtTour 축제/행사 소개 - Chrome' /&gt;" SearchSteps="Selector, FuzzySelector, Image" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="ImageBase64" xmlns="">0HhfU90dLLkGGRpLBNIUbvg</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="19f8e4a191917d6a7b76889b2b2d34b3.png" xmlns="">0W1oSgZCYV0SXemcGVlOlig</imageRef>
+</TargetAnchorable>

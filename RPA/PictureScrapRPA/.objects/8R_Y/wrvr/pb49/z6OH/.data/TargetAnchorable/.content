@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable ContentHash="MFmOSrDsI0ea4nfSHE48TA" DesignTimeRectangle="1, 28, 237, 24" FriendlyName="'이미지를 다른 이름으로 저장(V)…'" FullSelectorArgument="&lt;ctrl name='이미지를 다른 이름으로 저장(V)…' role='menu item' /&gt;" FuzzySelectorArgument="&lt;ctrl name='이미지를 다른 이름으로 저장(V)…' role='menu item' automationid='' check:text='이미지를 다른 이름으로 저장(V)…' /&gt;" Guid="e99a9034-4ce0-45a0-9702-c42fcc961a41" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_2' idx='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="ImageBase64" xmlns="">0DZ_ISeydvU-I8e9yfIJMew</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="b1bcb302c052e937e72937b0aa287476.png" xmlns="">0TCOE-yyG2EKn3ho-W6VX7Q</imageRef>
+</TargetAnchorable>

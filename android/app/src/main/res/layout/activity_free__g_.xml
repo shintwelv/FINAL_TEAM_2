@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/뒷배경색"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/noticeboard1"
+        layout="@layout/toolbar" />
+
+    <TextView
+        android:id="@+id/maintop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:layout_weight="1"
+        android:layout_below="@id/noticeboard1"
+        android:gravity="center"
+        android:text="자유게시판"
+        android:textColor="@color/파란글자색"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button11"
+        android:layout_below="@id/maintop"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/이미지"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="8dp"
+                android:gravity="center"
+                android:src="@drawable/g1_1" />
+
+
+            <TextView
+                android:id="@+id/지역간략화"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/이미지"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:height="16dp"
+                android:text="코로나 언제 끝날것같아요?"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/보조텍스트"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/지역간략화"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:height="16dp"
+                android:text="순이쵝오 | 2021-12-04"
+                android:textSize="12dp" />
+
+            <View
+                android:id="@+id/구분선1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/보조텍스트"
+                android:layout_margin="8dp"
+                android:background="@color/구분선"
+                />
+
+            <TextView
+                android:id="@+id/시작일"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/구분선1"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="8dp"
+                android:gravity="center|left"
+                android:text="사람 많아도 좋으니까 맘편히 놀러갈 수 있으면 좋겠는데.. 횐님덜.. 콧바람 쐬고 싶어요... ㅠㅠㅠ!"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/이미지1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="8dp"
+                android:gravity="center"
+                android:src="@drawable/g6" />
+
+            <View
+                android:id="@+id/구분선2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/이미지1"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@color/구분선"
+                />
+            <TextView
+                android:id="@+id/댓글1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center|left"
+                android:layout_below="@+id/구분선2"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:height="16dp"
+                android:text="끝날것같음?"
+                android:textColor="@color/black"
+                android:background="@color/댓글"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/보조텍스트1"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/댓글1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:height="16dp"
+                android:background="@color/댓글"
+                android:text="멋진123 | 2021-12-04"
+                android:textSize="14dp" />
+            <View
+                android:id="@+id/구분선3"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/보조텍스트1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/구분선"
+                />
+            <TextView
+                android:id="@+id/댓글2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center|left"
+                android:layout_below="@+id/구분선3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:height="16dp"
+                android:text="저도 ㅜㅠ"
+                android:textColor="@color/black"
+                android:background="@color/댓글"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/보조텍스트2"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/댓글2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:height="16dp"
+                android:background="@color/댓글"
+                android:text="리정리 | 2021-12-04"
+                android:textSize="14dp" />
+            <View
+                android:id="@+id/구분선4"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/보조텍스트2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/구분선"
+                />
+            <TextView
+                android:id="@+id/댓글3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center|left"
+                android:layout_below="@+id/구분선4"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:height="16dp"
+                android:text="꺄르륵~~~ 증말~~"
+                android:textColor="@color/black"
+                android:background="@color/댓글"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/보조텍스트3"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/댓글3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:height="16dp"
+                android:background="@color/댓글"
+                android:text="가비가비 | 2021-12-04"
+                android:textSize="14dp" />
+            <View
+                android:id="@+id/구분선5"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/보조텍스트3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/구분선"
+                />
+            <TextView
+                android:id="@+id/댓글4"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center|left"
+                android:layout_below="@+id/구분선5"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:height="16dp"
+                android:text="찬바람 Hey~"
+                android:textColor="@color/black"
+                android:background="@color/댓글"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/보조텍스트4"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/댓글4"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:height="16dp"
+                android:background="@color/댓글"
+                android:text="립순이 | 2021-12-04"
+                android:textSize="14dp" />
+            <View
+                android:id="@+id/구분선6"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/보조텍스트4"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/구분선"
+                />
+            <TextView
+                android:id="@+id/댓글5"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center|left"
+                android:layout_below="@+id/구분선6"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:height="16dp"
+                android:text="그땐 몰랐죠.. 이렇게 밖에 편히 못다닐 줄은..."
+                android:textColor="@color/black"
+                android:background="@color/댓글"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/보조텍스트5"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/댓글5"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="8dp"
+                android:height="16dp"
+                android:background="@color/댓글"
+                android:text="꺄르륵 | 2021-12-04"
+                android:textSize="14dp" />
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="296dp"
+        android:layout_marginBottom="24dp"
+        android:height="28dp"
+        android:background="@color/파란글자색"
+        android:text="목록"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

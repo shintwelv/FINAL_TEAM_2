@@ -1,0 +1,14 @@
+﻿{
+  "Id": "w_YJRNQwIU-qXBXyOlR7eg",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/w_YJRNQwIU-qXBXyOlR7eg",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/pb49D-cU50e6_qce5_FyDw",
+  "Name": "2763594_image2_1.jpg",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Created": "2021-11-12T08:02:35.1209909Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T08:02:35.1209909Z"
+}

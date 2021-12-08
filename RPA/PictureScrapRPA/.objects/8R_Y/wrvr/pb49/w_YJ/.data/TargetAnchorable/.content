@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable ContentHash="qv8OWVZ8zU6mXhj_kEv_mA" DesignTimeRectangle="136, 429, 791, 17" ElementType="InputBox" FriendlyName="'2763594_image2_1.jpg'" FullSelectorArgument="&lt;wnd aaname='탐색 창' cls='DirectUIHWND' /&gt;&lt;wnd aaname='파일 이름:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='탐색 창' cls='DirectUIHWND' /&gt;&lt;wnd aaname='파일 이름:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" Guid="47e03033-150d-43d7-b437-5c70362a7d7d" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='다른 이름으로 저장' /&gt;" SearchSteps="Selector, FuzzySelector, Image" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="ImageBase64" xmlns="">0ZalIvT1Hc0uJh7kUWUPj6w</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="c4d8a8559bda7d854e329126bf42f7d6.png" xmlns="">0Rx6X-BFWk0q60Zt2mItfKg</imageRef>
+</TargetAnchorable>

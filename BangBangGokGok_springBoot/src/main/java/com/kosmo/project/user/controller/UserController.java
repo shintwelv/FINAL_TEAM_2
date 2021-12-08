@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -92,5 +93,34 @@ public class UserController {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	@RequestMapping(value = "/membership")
+	public boolean signUpAndroid(@RequestBody UserVO vo) {
+		System.out.println(vo);
+		try {
+			service.createUser(vo, null);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	@RequestMapping(value = "/chkUserAndroid")
+	public boolean chkUserAndroid(@RequestBody UserVO vo) {
+		try {
+			UserVO user = service.getUserById(vo.getUserId());
+			if (pwEncoder.matches(vo.getUserPw(), user.getUserPw())) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 }

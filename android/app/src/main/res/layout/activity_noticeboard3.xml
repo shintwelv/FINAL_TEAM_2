@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/뒷배경색"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/noticeboard3"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button13"
+        android:layout_below="@id/noticeboard3"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/축제이름"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:height="34dp"
+                android:gravity="center"
+                android:text="마노르블랑 핑크뮬리축제"
+                android:textStyle="bold"
+                android:textColor="@color/파란글자색"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/지역간략화"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/축제이름"
+                android:layout_marginTop="8dp"
+                android:height="16dp"
+                android:gravity="center"
+                android:text="서귀포시 안덕"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/메인이미지"
+                android:layout_width="match_parent"
+                android:layout_height="228dp"
+                android:layout_below="@+id/지역간략화"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:src="@drawable/p4" />
+
+            <TextView
+                android:id="@+id/시작일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:gravity="center|left"
+                android:text=" · 시작일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/종료일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 종료일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/장소"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 장소"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/주최"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 주최"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/요금"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 요금"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/홈페이지"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 홈페이지"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2021.09.10 (금)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2022.11.30 (화)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="260dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:gravity="center|left"
+                android:text="마노르블랑(제주특별자치도 서귀포시 일주서로2100번길 46)"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="휴애리 자연생활공원"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="무료"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:text="https://manorblanc.modoo.at"
+                android:textColor="@color/black"
+                android:textColorLink="@color/파란글자색"
+                android:textSize="16dp" />
+
+            <FrameLayout
+                android:id="@+id/프레임"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/홈페이지">
+
+                <VideoView
+                    android:id="@+id/video3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="228dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="50px" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/축제소개"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/프레임"
+                android:layout_marginTop="16dp"
+                android:width="64dp"
+                android:height="24dp"
+                android:gravity="center"
+                android:text="축제소개"
+                android:textColor="@color/파란글자색"
+                android:textSize="16dp" />
+
+            <View
+                android:id="@+id/구분선"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/축제소개"
+                android:layout_margin="8dp"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/축제소개문"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/구분선"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:width="329dp"
+                android:text="대한민국 핑크뮬리 성지! 마노르블랑에서 핑크뮬리축제의 향연이 시작된다.\n
+
+마노르블랑은 서귀포시에 위치한 가든 카페이다. 이곳은 작년에 이어 올해에도 핑크뮬리축제를 맞이하고 있다. 축제기간은 9월부터 11월까지이다. 우리나라 최남단에 위치하고 있으며 핑크뮬리가 우리나라에서 가장 빨리 개화중이다.
+
+9월에는 사랑과 정성으로 가꾸어진 핑크뮬리를 마노르블랑에서 볼 수 있다. 또한 산방산과 송악산 사이로 형제섬과 사계앞바다가 보이는 환상적인 조망은 마노르블랑에서만 볼 수 있다.
+
+환상적인 조망과 함께 핑크뮬리 인생샷을 남길 수 있는 다양한 산책로와 포토존이 준비되어 있고 야외 잔디정원에서는 피아노 연주 버스킹을 즐길 수 있다. 이 곳 마노르블랑은 지금 핑크뮬리축제의 향연이 펼쳐지고 있다."
+                android:textColor="@color/black" />
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="191dp"
+                android:id="@+id/구글지도"
+                tools:context="MapsActivity"
+                android:layout_below="@+id/축제소개문"
+                android:name="com.google.android.gms.maps.MapFragment"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="296dp"
+        android:layout_marginBottom="24dp"
+        android:height="28dp"
+        android:background="@color/파란글자색"
+        android:text="목록"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

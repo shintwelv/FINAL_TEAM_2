@@ -1,0 +1,13 @@
+﻿{
+  "Id": "pb49D-cU50e6_qce5_FyDw",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/pb49D-cU50e6_qce5_FyDw",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/wrvrRkG3FE6b-MCI86qduQ",
+  "Name": "Chrome: 2021년 9월 서울 축제/행사 안내",
+  "Type": "Screen",
+  "Created": "2021-11-12T08:01:46.5614123Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T08:01:46.5614123Z"
+}

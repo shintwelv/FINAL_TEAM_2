@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Android</string>
+    <string name="kakao_app_key">a1eb371a5ab53f2a3d53b9bd01cb5604</string>
+    <string name="naver_client_id">bH27wnMitmaSMRK6PNex</string>
+    <string name="naver_client_secret">gAzmznUdjy</string>
+    <string name="naver_client_name">방방곡곡</string>
+</resources>

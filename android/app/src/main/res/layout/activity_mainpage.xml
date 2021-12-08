@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mainpage">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/tt1" />
+
+            <TextView
+                android:id="@+id/Noticetitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView"
+                android:layout_margin="10dp"
+                android:text="   공지사항"
+                android:textColor="@color/파란글자색"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/Notice6"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Noticetitle"
+                android:gravity="left"
+                android:text="휴애리 자연생활공원" />
+
+            <TextView
+                android:id="@+id/date6"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/Notice6"
+                android:layout_below="@+id/Noticetitle"
+                android:text="2021.12.04" />
+
+            <TextView
+                android:id="@+id/Notice7"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Notice6"
+                android:layout_marginTop="1dp"
+                android:text="산지에 색을 입히다, 컬러풀 산지" />
+
+            <TextView
+                android:id="@+id/date7"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date6"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/Notice7"
+                android:text="2021.12.03" />
+
+            <TextView
+                android:id="@+id/Notice8"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Notice7"
+                android:layout_marginTop="1dp"
+                android:text="마노르블랑 핑크뮬리축제" />
+
+            <TextView
+                android:id="@+id/date8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date7"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/Notice8"
+                android:text="2021.12.03" />
+
+            <TextView
+                android:id="@+id/Notice9"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Notice8"
+                android:layout_marginTop="1dp"
+                android:text="제주허브동산 핑크뮬리축제" />
+
+            <TextView
+                android:id="@+id/date9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date8"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/Notice9"
+                android:text="2021.12.02" />
+
+            <TextView
+                android:id="@+id/Notice10"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Notice9"
+                android:layout_marginTop="1dp"
+                android:text="이건희 컬렉션 이중섭 특별전" />
+
+            <TextView
+                android:id="@+id/date10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date9"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/Notice10"
+                android:text="2021.12.01" />
+
+            <TextView
+                android:id="@+id/localfestival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/Notice10"
+                android:text="   지역축제"
+                android:textColor="@color/파란글자색"
+                android:textSize="24dp" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/localfestival"
+                android:spacing="5dp"
+                android:scaleType="fitXY"/>
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_marginTop="550dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom"/>
+
+
+            <TextView
+                android:id="@+id/FreeBoard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="   자유게시판"
+                android:layout_below="@+id/viewpager"
+                android:textColor="#0593F0"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/Notice1"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/FreeBoard"
+                android:gravity="left"
+                android:text="코로나 언제 끝날것같아요?" />
+
+            <TextView
+                android:id="@+id/date1"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_below="@+id/FreeBoard"
+                android:layout_toRightOf="@+id/Notice1"
+                android:text="2021.12.05" />
+
+            <TextView
+                android:id="@+id/Notice2"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Notice1"
+                android:layout_marginTop="1dp"
+                android:text="여행지 음식추천 받음 " />
+
+            <TextView
+                android:id="@+id/date2"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date1"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/Notice2"
+                android:text="2021.12.084" />
+
+            <TextView
+                android:id="@+id/Notice3"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Notice2"
+                android:layout_marginTop="1dp"
+                android:text="여행지 가면 다들 어떤 옷 입나요?" />
+
+            <TextView
+                android:id="@+id/date3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date2"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/Notice3"
+                android:text="2021.12.04" />
+
+            <TextView
+                android:id="@+id/Notice4"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Notice3"
+                android:layout_marginTop="1dp"
+                android:text="제주도 낚시하기 좋은곳 어딘가요" />
+
+            <TextView
+                android:id="@+id/date4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date3"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/Notice4"
+                android:text="2021.12.03" />
+
+            <TextView
+                android:id="@+id/Notice5"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Notice4"
+                android:layout_marginTop="1dp"
+                android:text="흰님들~ 제주도 찍사 올려요~ " />
+
+            <TextView
+                android:id="@+id/date5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date4"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/Notice5"
+                android:text="2021.12.02" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_below="@+id/Notice5"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="#0593F0">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="52dp"
+                    android:gravity="center"
+                    android:text="방방곡곡"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView1"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Copyright 2021. Dev Team 2. all rights reserved."
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
+
+    <!--        android:scrollbars="none">-->
+
+
+

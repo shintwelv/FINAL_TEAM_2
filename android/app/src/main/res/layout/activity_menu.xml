@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/파란글자색"
+    tools:context=".menu">
+
+    <ImageView
+        android:id="@+id/menuclose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="33dp"
+        android:src="@drawable/ic_launcher_3_foreground" />
+
+    <TextView
+        android:id="@+id/Noticebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="252dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="공지사항"/>
+    <TextView
+        android:id="@+id/LocalFestivalbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Noticebutton"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="지역축제"/>
+    <TextView
+        android:id="@+id/FestivalReviewbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LocalFestivalbutton"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="축제후기"/>
+    <TextView
+        android:id="@+id/FreeBoardbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/FestivalReviewbutton"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="자유게시판"/>
+    <TextView
+        android:id="@+id/qa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/FreeBoardbutton"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="Q &amp; A"/>
+
+</RelativeLayout>

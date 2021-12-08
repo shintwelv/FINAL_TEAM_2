@@ -1,0 +1,12 @@
+﻿{
+  "Id": "HudgRUTpjU6QMCkrK3cZVA",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/HudgRUTpjU6QMCkrK3cZVA",
+  "Name": "Chrome: 2021년 9월서울 축제/행사 안내",
+  "Type": "App",
+  "Created": "2021-11-12T08:25:16.2717843Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T08:25:16.2717843Z"
+}

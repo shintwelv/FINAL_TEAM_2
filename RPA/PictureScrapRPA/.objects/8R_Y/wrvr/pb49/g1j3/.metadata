@@ -1,0 +1,14 @@
+﻿{
+  "Id": "g1j3Dw5aaEmyGAO_aqRtcA",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/g1j3Dw5aaEmyGAO_aqRtcA",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/pb49D-cU50e6_qce5_FyDw",
+  "Name": "뒤로",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Created": "2021-11-12T08:02:42.6212514Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T08:02:42.6212514Z"
+}

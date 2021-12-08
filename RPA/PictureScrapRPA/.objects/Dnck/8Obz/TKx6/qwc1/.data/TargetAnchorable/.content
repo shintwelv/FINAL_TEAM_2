@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable BrowserURL="http://www.horangi.kr/rtTour/festival.asp?nowpage=1&amp;nowyear=2021&amp;nowmonth=11&amp;f_area=1" ContentHash="BeMCwdIx_U2a8NYF_V789w" DesignTimeRectangle="780, 133, 83, 50" ElementType="DropDown" FriendlyName="'2021년'" FullSelectorArgument="&lt;webctrl tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' type='' aaname='' /&gt;" Guid="ba42a3d2-ea5d-4fe2-a724-4c6934588c7f" ScopeSelectorArgument="&lt;html app='chrome.exe' title='2021년 11월서울 축제/행사 안내' /&gt;" SearchSteps="FuzzySelector" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="InformativeScreenshot" originalValue="6523e11e5273e3d4fd43502a391fdff0.png" xmlns="">0ctS0GuzuUkOycGag8_NlQA</imageRef>
+</TargetAnchorable>

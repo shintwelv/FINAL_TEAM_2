@@ -1,0 +1,14 @@
+﻿{
+  "Id": "l-_4YamTYUeBMyDID4d8Aw",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/l-_4YamTYUeBMyDID4d8Aw",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/LnjImLA_Yk2PHk5Rs2yPKw",
+  "Name": "근현대사 추리여행, '사라진 열쇠를 찾아라",
+  "Type": "Element",
+  "TaxonomyType": "None",
+  "Created": "2021-11-12T08:25:17.1665467Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T08:25:17.1665467Z"
+}

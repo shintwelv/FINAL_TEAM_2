@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/뒷배경색"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/noticeboard5"
+        layout="@layout/toolbar" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button15"
+        android:layout_below="@id/noticeboard5"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/축제이름"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:height="34dp"
+                android:gravity="center"
+                android:text="이건희 컬렉션 이중섭 특별전"
+                android:textStyle="bold"
+                android:textColor="@color/파란글자색"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/지역간략화"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/축제이름"
+                android:layout_marginTop="8dp"
+                android:height="16dp"
+                android:gravity="center"
+                android:text="서귀포시 서귀포시내"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/메인이미지"
+                android:layout_width="match_parent"
+                android:layout_height="228dp"
+                android:layout_below="@+id/지역간략화"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:src="@drawable/p6" />
+
+            <TextView
+                android:id="@+id/시작일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:gravity="center|left"
+                android:text=" · 시작일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/종료일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 종료일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/장소"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 장소"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/주최"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 주최"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/요금"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 요금"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/홈페이지"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 홈페이지"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2021.09.05 (일)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2022.03.06 (화)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="260dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:gravity="center|left"
+                android:text="이중섭미술관(상설·기획전시실)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="서귀포시 문화예술과"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center|left"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="어른 1500원, 6세 이하 및 65세 이상 무료"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:gravity="center|left"
+                android:text="https://culture.seogwipo.go.kr/jslee/index.htm"
+                android:textColor="@color/black"
+                android:textColorLink="@color/파란글자색"
+                android:textSize="12dp" />
+
+            <FrameLayout
+                android:id="@+id/프레임"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/홈페이지">
+
+                <VideoView
+                    android:id="@+id/video5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="228dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="50px" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/축제소개"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/프레임"
+                android:layout_marginTop="16dp"
+                android:width="64dp"
+                android:height="24dp"
+                android:gravity="center"
+                android:text="축제소개"
+                android:textColor="@color/파란글자색"
+                android:textSize="16dp" />
+
+            <View
+                android:id="@+id/구분선"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/축제소개"
+                android:layout_margin="8dp"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/축제소개문"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/구분선"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:width="329dp"
+                android:text="이건희 컬렉션 이중섭 특별전 &lt;70년 만의 서귀포 귀향歸鄕&gt;은 삼성家로부터 기증받은 이중섭 원화 작품 12점(섶섬이 보이는 풍경, 해변의 가족 등)과 함께 이중섭 화가의 예술세계와 삶, 그리고 이중섭미술관의 역사를 다양한 자료로 소개하는 특별전시이다. 기증받은 원화작품을 활용한 미디어아트(영상)도 상영예정으로, 시각을 넘어 다채롭게 이중섭 원화 작품을 감상할 수 있다.
+
+서귀포와 이중섭 화백의 인연은 한국전쟁이 한창이던 1951년 1월 가족과 함께 피란을 오면서 시작되었다. 1년 남짓 서귀포에 머무르는 동안 이중섭 화백은 &lt;서귀포의 환상&gt;, &lt;섶섬이 보이는 풍경&gt;, &lt;바닷가의 아이들&gt; 등 유명 작품들을 창작하였다. 이번 &lt;70년 만의 서귀포 귀향&gt;은 &lt;섶섬이 보이는 풍경&gt;을 비롯하여 주옥같은 이중섭 화백의 작품 감상은 물론, 그의 삶과 예술세계를 느낄 수 있는 좋은 기회가 될 것이다.
+
+\n
+□ 관람 정보\n
+ - 관람시간 : 9시 30분 ~ 17시 20분(1일 8회차로 운영)\n
+    ※홈페이지 사전 예약을 통한 입장(시간당 인원 제한),\n        잔여 인원에 한해 현장발권 가능\n
+ - 휴 관 일 : 매주 월요일, 1월 1일, 설날·추석 당일"
+                android:textColor="@color/black" />
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="191dp"
+                android:id="@+id/구글지도"
+                tools:context="MapsActivity"
+                android:layout_below="@+id/축제소개문"
+                android:name="com.google.android.gms.maps.MapFragment"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="296dp"
+        android:layout_marginBottom="24dp"
+        android:height="28dp"
+        android:background="@color/파란글자색"
+        android:text="목록"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

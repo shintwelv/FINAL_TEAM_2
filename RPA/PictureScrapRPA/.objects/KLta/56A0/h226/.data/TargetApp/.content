@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" ContentHash="ZhfTimoHuEi7xCwM35IVhw" Selector="&lt;html app='chrome.exe' title='K-일러스트레이션페어 서울 2022_rtTour 축제/행사 소개'/&gt;" Url="http://www.horangi.kr/rtTour/festival_info.asp?fid=2665889" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="IconBase64" xmlns="">0qo2lTSrZMkK2qWXXlJ_Jwg</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="c52738b7b58dcfa5b8604f13e2eb3e4a.png" xmlns="">0ZpF27xucVkmQyJOXs2fuUA</imageRef>
+</TargetApp>

@@ -92,6 +92,33 @@ function UserInfo({ userState, userInfo, setLogin }) {
     }
   }
 
+  const showDropUserBtn = (userState) => {
+    if (userState == 'update') {
+      return (
+        <Button
+          className="user-info-btn d-block mb-2 mt-3"
+          type="button"
+          onClick={() => {
+            dropUser(userInfo.userId)
+          }}
+        >
+          회원탈퇴
+        </Button>
+      )
+    }
+  }
+
+  const dropUser = (userId) => {
+    axios
+      .post(`http://localhost:9000/user/delete?userId=${userId}`)
+      .then((res) => {
+        alert('탈퇴가 완료되었습니다. 안녕히가세요.')
+        setLogin(false)
+        history.push('/')
+      })
+      .catch((error) => console.log(error))
+  }
+
   return (
     <Container className="user-info-container">
       <Row>
@@ -282,6 +309,7 @@ function UserInfo({ userState, userInfo, setLogin }) {
             >
               {btn_modifyORSignUp(userState)}
             </Button>
+            {showDropUserBtn(userState)}
             <Button className="user-info-btn d-block mb-3">취소</Button>
           </Form>
         </Col>

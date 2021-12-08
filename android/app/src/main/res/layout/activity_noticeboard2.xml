@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/뒷배경색"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/noticeboard2"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button12"
+        android:layout_below="@id/noticeboard2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/축제이름"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:height="34dp"
+                android:gravity="center"
+                android:text="산지에 색을 입히다, 컬러풀 산지"
+                android:textStyle="bold"
+                android:textColor="@color/파란글자색"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/지역간략화"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/축제이름"
+                android:layout_marginTop="8dp"
+                android:height="16dp"
+                android:gravity="center"
+                android:text="제주시 제주시내"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/메인이미지"
+                android:layout_width="match_parent"
+                android:layout_height="228dp"
+                android:layout_below="@+id/지역간략화"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:src="@drawable/p3" />
+
+            <TextView
+                android:id="@+id/시작일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:gravity="center|left"
+                android:text=" · 시작일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/종료일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 종료일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/장소"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 장소"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/주최"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 주최"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/요금"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 요금"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/홈페이지"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 홈페이지"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2021.09.03 (금)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2021.11.27 (토)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="제주탐라문화광장"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="제주특별자치도, 제주관광공사"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="무료"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="260dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:text="https://ijto.or.kr/korean/"
+                android:textColor="@color/black"
+                android:textColorLink="@color/파란글자색"
+                android:textSize="16dp" />
+
+            <FrameLayout
+                android:id="@+id/프레임"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/홈페이지">
+
+                <VideoView
+                    android:id="@+id/video12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="228dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="50px" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/축제소개"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/프레임"
+                android:layout_marginTop="16dp"
+                android:width="64dp"
+                android:height="24dp"
+                android:gravity="center"
+                android:text="축제소개"
+                android:textColor="@color/파란글자색"
+                android:textSize="16dp" />
+
+            <View
+                android:id="@+id/구분선"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/축제소개"
+                android:layout_margin="8dp"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/축제소개문"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/구분선"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:width="329dp"
+                android:text="제주시 산지교 옆 산지천에 알록달록 화려한 작은 한라산이 세워졌다.
+
+제주관광공사는 9월3일(금)부터 11월 27일(토)까지 3개월간 탐라문화광장 일대에서 코로나19 장기화로 침체된 탐라문화광장 일대를 환하게 밝혀 활력을 불어넣기 위해 비대면 경관조성 사업인 「산지에 색을 입히다, 컬러풀산지(컬러풀산지)」를 개최한다.
+
+9월 26일(일)까지 개최되는 메인 프로그램 ‘힐링 미디어 넷 아트(Healing Media Net Art)’는 제주도와 함께 숨을 쉬고 있는 한라산과 오름을 모티브로 한 미디어아트 작품으로, 코로나19로 지친 우리들 마음의 휴식과 힐링을 위해 기획 전시되었다. 이 작품에는 2018 평창동계올림픽 문화올림픽 프로그램인 &lt;천년향&gt; 제작 총괄을 했던 한경아 연출감독과 평창동계올림픽 개/폐막식을 총괄했던 기술감독이 참여하고 있다.
+
+‘한라산의 외출’이라는 주제로 만들어진 이번 작품은 제주의 비와 바람에 견딜 수 있는 제주다운 소재인 그물과 한지를 활용한 15m 높이의 한라산과 그 주변의 오름을 형상화한 대형 아트워크(artwork)로, 화산폭발과 용암이 쌓이면서 만들어진 한라산의 탄생을 이야기하는 오프닝을 시작으로 한라산의 봄, 여름, 가을, 겨울의 이미지를 아름다운 음악, 영상과 조명으로 연출하고 있다.
+
+그 밖에도 11월 27일(토)까지 탐라문화광장 일대에 스트링전구를 설치하여 야간 산책이 가능하도록 하고 있으며, 산지천갤러리에서는 이준천 여행스케치 작가(세계일주여행자, 일러스트레이터)의 산지천컬러링맵을 배포하고 있다."
+                android:textColor="@color/black" />
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="191dp"
+                android:id="@+id/구글지도"
+                tools:context="MapsActivity"
+                android:layout_below="@+id/축제소개문"
+                android:name="com.google.android.gms.maps.MapFragment"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="296dp"
+        android:layout_marginBottom="24dp"
+        android:height="28dp"
+        android:background="@color/파란글자색"
+        android:text="목록"
+        android:textColor="@color/white"
+        />
+
+
+</RelativeLayout>

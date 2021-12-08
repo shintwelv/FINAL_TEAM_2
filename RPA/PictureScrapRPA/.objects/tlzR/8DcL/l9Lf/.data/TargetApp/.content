@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" ContentHash="T8eGpF7BOkipPgjMKgJ5JQ" Selector="&lt;html app='chrome.exe' title='제주도의 모든 축제와 행사를 한 눈에…'/&gt;" Url="https://www.visitjeju.net/kr/festival/list?menuId=DOM_000001718007000000&amp;cate1cd=cate0000001360#p1&amp;month=0" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="IconBase64" xmlns="">02XFrOPK0lUmteNJm8pz-5g</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="d0e53d7aef7768ed07bcedd1541a65b7.png" xmlns="">0Q30xx4WPxkubCbeVthtpow</imageRef>
+</TargetApp>

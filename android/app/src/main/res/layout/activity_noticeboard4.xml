@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/뒷배경색"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/noticeboard4"
+        layout="@layout/toolbar" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button14"
+        android:layout_below="@id/noticeboard4"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/축제이름"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:height="34dp"
+                android:gravity="center"
+                android:text="제주허브동산 핑크뮬리축제"
+                android:textStyle="bold"
+                android:textColor="@color/파란글자색"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/지역간략화"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/축제이름"
+                android:layout_marginTop="8dp"
+                android:height="16dp"
+                android:gravity="center"
+                android:text="서귀포시 표선"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/메인이미지"
+                android:layout_width="match_parent"
+                android:layout_height="228dp"
+                android:layout_below="@+id/지역간략화"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:src="@drawable/p5" />
+
+            <TextView
+                android:id="@+id/시작일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:gravity="center|left"
+                android:text=" · 시작일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/종료일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 종료일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/장소"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 장소"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/주최"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 주최"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/요금"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 요금"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/홈페이지"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 홈페이지"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2021.09.20 (월)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2021.11.30 (화)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="260dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:gravity="center|left"
+                android:text="제주특별자치도 서귀포시 표선면 돈오름로 170 제주허브동산"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="제주허브동산"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center|left"
+
+                android:layout_toRightOf="@+id/시작일"
+                android:text="성인 12,000원, 청소년 10,000원, 어린이 9,000원"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+
+            <TextView
+                android:layout_width="260dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:text="http://www.herbdongsan.com/"
+                android:textColor="@color/black"
+                android:textColorLink="@color/파란글자색"
+                android:textSize="16dp" />
+
+            <FrameLayout
+                android:id="@+id/프레임"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/홈페이지">
+
+                <VideoView
+                    android:id="@+id/video4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="228dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="50px" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/축제소개"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/프레임"
+                android:layout_marginTop="16dp"
+                android:width="64dp"
+                android:height="24dp"
+                android:gravity="center"
+                android:text="축제소개"
+                android:textColor="@color/파란글자색"
+                android:textSize="16dp" />
+
+            <View
+                android:id="@+id/구분선"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/축제소개"
+                android:layout_margin="8dp"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/축제소개문"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/구분선"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:width="329dp"
+                android:text="서귀포 표선면에 위치한 제주허브동산에서 9월 20일부터 핑크뮬리 축제를 진행한다. 제주허브동산 핑크뮬리 축제는 올해로 네 번째를 맞이하며 제주도에서 대표적인 핑크뮬리 축제로 자리매김했다.
+
+허브동산의 랜드마크인 핑크뮬리 종탑은 언덕 위에 우뚝 솟아 있으며 종탑 아래에는 백록담을 연상케하는 분화구가 있어, 핑크뮬리가 가득한 작은 한라산을 보는 느낌을 받을 수 있다. 핑크뮬리 종탑 언덕 뒤편에는 팜파스그라스에 둘러싸인 핑크뮬리 공원이 조성돼 있다.
+
+허브동산은 핑크뮬리 축제뿐만 아니라 365일 야간 불빛 축제를 진행 중이다. 허브동산 입장권은 주야간 통합권으로, 낮에는 핑크뮬리 축제를, 밤에는 야간 불빛 축제를 모두 즐길 수 있다. 또한 황금족욕 체험을 통해 여행의 피로를 말끔히 풀 수 있으며, 전망대, 웨딩홀 등 다양한 포토존이 마련돼 있어 다채로운 제주도에서의 추억을 만들 수 있다."
+                android:textColor="@color/black" />
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="191dp"
+                android:id="@+id/구글지도"
+                tools:context="MapsActivity"
+                android:layout_below="@+id/축제소개문"
+                android:name="com.google.android.gms.maps.MapFragment"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="296dp"
+        android:layout_marginBottom="24dp"
+        android:height="28dp"
+        android:background="@color/파란글자색"
+        android:text="목록"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

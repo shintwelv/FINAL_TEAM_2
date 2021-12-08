@@ -1,0 +1,13 @@
+﻿{
+  "Id": "l9LftaMc-kST18WR0287Dw",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/l9LftaMc-kST18WR0287Dw",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/8DcLhn7TEU2ViTBdUK1ftg",
+  "Name": "Chrome: 2021년 8월서울 축제/행사 안내",
+  "Type": "Screen",
+  "Created": "2021-11-12T07:32:31.280193Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T07:32:31.280193Z"
+}

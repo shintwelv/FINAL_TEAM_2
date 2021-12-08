@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/파란글자색"
+    tools:context=".member">
+
+    <ImageView
+        android:id="@+id/memberclose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="33dp"
+        android:src="@drawable/ic_launcher_3_foreground" />
+
+    <TextView
+        android:id="@+id/Profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="355dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="공지사항"/>
+
+    <TextView
+        android:id="@+id/Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Profile"
+        android:layout_marginTop="34dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="로그인"/>
+
+    <TextView
+        android:id="@+id/Sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Login"
+        android:layout_marginTop="34dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="회원가입"/>
+<!--    <TextView-->
+<!--        android:id="@+id/Logout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/Profile"-->
+<!--        android:layout_marginTop="34dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:text="로그아웃"/>-->
+
+
+
+</RelativeLayout>

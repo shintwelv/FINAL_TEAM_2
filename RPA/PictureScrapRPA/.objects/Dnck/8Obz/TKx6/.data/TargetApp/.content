@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" ContentHash="8Pve-1Isok6qO_ZJFIVAQQ" Selector="&lt;html app='chrome.exe' title='2021년 11월서울 축제/행사 안내'/&gt;" Url="http://www.horangi.kr/rtTour/festival.asp?nowpage=1&amp;nowyear=2021&amp;nowmonth=11&amp;f_area=1" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="IconBase64" xmlns="">0f94IyIjqxkGquN0NIGB1aw</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="04051a5f75625615241cca58fad5d2f8.png" xmlns="">0j10iJMhH7EW1PqjKT4bNOw</imageRef>
+</TargetApp>

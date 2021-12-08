@@ -1,0 +1,14 @@
+﻿{
+  "Id": "EdSE2JE1CUuSAgjoSMK5BQ",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/EdSE2JE1CUuSAgjoSMK5BQ",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/l9LftaMc-kST18WR0287Dw",
+  "Name": "1/4",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Created": "2021-11-12T07:32:53.4116822Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T07:32:53.4116822Z"
+}

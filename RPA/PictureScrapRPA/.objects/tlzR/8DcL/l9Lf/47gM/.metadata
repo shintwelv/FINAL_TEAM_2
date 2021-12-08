@@ -1,0 +1,14 @@
+﻿{
+  "Id": "47gMjCvme0SpYL93GJTxsg",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/47gMjCvme0SpYL93GJTxsg",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/l9LftaMc-kST18WR0287Dw",
+  "Name": "2021년",
+  "Type": "Element",
+  "TaxonomyType": "Dropdown",
+  "Created": "2021-11-12T07:32:35.5618886Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T07:32:35.5618886Z"
+}

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/뒷배경색"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/noticeboard1"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button11"
+        android:layout_below="@id/noticeboard1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/축제이름"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:height="34dp"
+                android:gravity="center"
+                android:text="휴애리 동백축제"
+                android:textStyle="bold"
+                android:textColor="@color/파란글자색"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/지역간략화"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/축제이름"
+                android:layout_marginTop="8dp"
+                android:height="16dp"
+                android:gravity="center"
+                android:text="서귀포시 남원"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/메인이미지"
+                android:layout_width="match_parent"
+                android:layout_height="228dp"
+                android:layout_below="@+id/지역간략화"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:src="@drawable/p2" />
+
+            <TextView
+                android:id="@+id/시작일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:gravity="center|left"
+                android:text=" · 시작일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/종료일"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 종료일"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/장소"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 장소"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/주최"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 주최"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/요금"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 요금"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/홈페이지"
+                android:layout_width="82dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginTop="16dp"
+                android:gravity="center|left"
+                android:text=" · 홈페이지"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/메인이미지"
+                android:layout_marginTop="32dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2021.11.12 (금)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/시작일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="2022.01.31 (월)"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/종료일"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="휴애리 자연생활공원 공원내"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/장소"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="휴애리 자연생활공원"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="48dp"
+                android:layout_below="@+id/주최"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:text="성인:13,000원/단체:11,000원/도민,장애우,유공자,경로우대:6,500원 \n청소년:11,000원/단체:9,000원/도민,장애우,유공자,경로우대,5,500원\n어린이:10,000원/단체:8,000원/도민,장애우,유공자,경로우대:5,000원"
+                android:textColor="@color/black"
+                android:textSize="8dp" />
+
+
+            <TextView
+                android:layout_width="229dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/요금"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/시작일"
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:text="http://hueree.com"
+                android:textColor="@color/black"
+                android:textColorLink="@color/파란글자색"
+                android:textSize="16dp" />
+
+            <FrameLayout
+                android:id="@+id/프레임"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/홈페이지">
+
+                <VideoView
+                    android:id="@+id/video11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="228dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="50px" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/축제소개"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/프레임"
+                android:layout_marginTop="16dp"
+                android:width="64dp"
+                android:height="24dp"
+                android:gravity="center"
+                android:text="축제소개"
+                android:textColor="@color/파란글자색"
+                android:textSize="16dp" />
+
+            <View
+                android:id="@+id/구분선"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/축제소개"
+                android:layout_margin="8dp"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/축제소개문"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/구분선"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:width="329dp"
+                android:text="2021 휴애리 동백축제는 서귀포시 남원읍 신례리에 위치한 휴애리의 대표 겨울축제이다.\n
+11월 12일부터 시작되는 이번 축제에는 공원 곳곳에 가득핀 동백꽃이 방문하는 모든 분들을 반기고 있다.\n
+휴애리 동백축제에는 동백꽃 포토존 뿐만 아니라 감귤 체험도 함께 할 수 있어, 아이를 동반한 가족에게는 교육과 학습의 시간을, 감귤을 좋아하시는 분들에겐 행복한 시간이 될 것이다.\n
+휴애리는 여러 해 전부터 지역사회 환원 차원에서 제주도내 장애인단체, 보육원, 양로원 등은 축제 때마다 무료입장(사전예약 필수)을 진행하고 있으며
+ 도민과 관광객 가운데 3자녀 이상(소인, 청소년) 입장료 50% 할인행사를 별도로 진행하고 있다.\n
+휴애리 동백축제는 답답한 일상에서 위로를 받고 싶은 분들에게 더욱 매력적인 시간이 될 것이다."
+                android:textColor="@color/black" />
+
+            <!--            <fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--                android:layout_below="@+id/축제소개문"-->
+            <!--                xmlns:map="http://schemas.android.  com/apk/res-auto"-->
+            <!--                android:id="@+id/구글지도"-->
+            <!--                android:name="com.google.android.gms.maps.MapFragment"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="181dp"-->
+            <!--                map:cameraTargetLat="33.30924482342332"-->
+            <!--                map:cameraTargetLng="126.63380188496484"-->
+            <!--                map:cameraZoom="10"/>-->
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="191dp"
+                android:id="@+id/구글지도"
+                tools:context="MapsActivity"
+                android:layout_below="@+id/축제소개문"
+                android:name="com.google.android.gms.maps.MapFragment"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="296dp"
+        android:layout_marginBottom="24dp"
+        android:height="28dp"
+        android:background="@color/파란글자색"
+        android:text="목록"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

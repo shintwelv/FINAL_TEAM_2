@@ -1,0 +1,14 @@
+﻿{
+  "Id": "z6OHxBZZo0eGLA7IyV7JbQ",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/z6OHxBZZo0eGLA7IyV7JbQ",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/pb49D-cU50e6_qce5_FyDw",
+  "Name": "이미지를 다른 이름으로 저장(V)…",
+  "Type": "Element",
+  "TaxonomyType": "None",
+  "Created": "2021-11-12T08:01:58.476382Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T08:01:58.476382Z"
+}

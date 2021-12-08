@@ -103,7 +103,7 @@ const Board = ({ board, process, setProcess, login }) => {
       .catch((error) => {
         console.log(error)
       })
-  }, [board, page])
+  }, [])
 
   return (
     <Container>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cookandroid.android">
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <permission
+        android:name="co.company.videoplay1.permission.MAPS_RECEIVE"
+        android:label="signature" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:name=".GlobalApplication"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Free_G_Activity"></activity>
+        <activity android:name=".Notice_G_Activity"></activity>
+        <activity android:name=".Qa_G_Activity"></activity>
+        <activity android:name=".Review_G_Activity"></activity>
+        <activity android:name=".Qa" />
+        <activity android:name=".Free" />
+        <activity android:name=".Festival_review" />
+        <activity android:name=".Notice" />
+        <activity android:name=".member" />
+        <activity android:name=".menu" />
+        <activity android:name=".LocalActivity" />
+        <activity android:name=".login" />
+        <activity android:name=".LoginSuccess" />
+        <activity android:name=".noticeboard5" />
+        <activity android:name=".noticeboard4" />
+        <activity android:name=".noticeboard3" />
+        <activity android:name=".noticeboard2" />
+        <activity android:name=".noticeboard1" />
+        <activity android:name=".mainpage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+<!--        <activity-->
+<!--            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+
+<!--                &lt;!&ndash; Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" &ndash;&gt;-->
+<!--                <data android:host="oauth"-->
+<!--                    android:scheme="kakaoa1eb371a5ab53f2a3d53b9bd01cb5604" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+        <activity android:name=".SignUpSuccess" />
+        <activity android:name=".SignUpActivity" />
+
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="a1eb371a5ab53f2a3d53b9bd01cb5604" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value=""/>
+
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+
+</manifest>

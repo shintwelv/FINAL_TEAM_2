@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable ContentHash="J5NTFUNaCU-b0L-lQJWKHg" DesignTimeRectangle="747, 496, 88, 26" ElementType="Button" FriendlyName="'unchecked'" FullSelectorArgument="&lt;wnd ctrlid='1' title='저장(&amp;amp;S)' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1' title='저장(&amp;amp;S)' check:text='unchecked' /&gt;" Guid="44295dbc-c9a3-48c9-bbf1-eed2c6d0ad23" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='다른 이름으로 저장' /&gt;" SearchSteps="Selector, FuzzySelector, Image" xmlns="http://schemas.uipath.com/workflow/activities/uix">
+  <imageRef attrName="ImageBase64" xmlns="">0wbC3WBakGkuGLnkRAR3mYg</imageRef>
+  <imageRef attrName="InformativeScreenshot" originalValue="3ab0b22f0f74cc1b3546bbdcdc76a03a.png" xmlns="">0EyCEtL04GUegH1hKgSAEKg</imageRef>
+</TargetAnchorable>

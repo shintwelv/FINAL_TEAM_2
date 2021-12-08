@@ -1,0 +1,14 @@
+﻿{
+  "Id": "jiS7okV4FU2Id52rrm94fQ",
+  "Reference": "96LAYhL2tk-S8vyplxZHLw/jiS7okV4FU2Id52rrm94fQ",
+  "ParentRef": "96LAYhL2tk-S8vyplxZHLw/pb49D-cU50e6_qce5_FyDw",
+  "Name": "K-일러스트레이션페어 서울 2022",
+  "Type": "Element",
+  "TaxonomyType": "None",
+  "Created": "2021-11-12T08:01:47.0991809Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=21.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=21.10.0.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2021-11-12T08:01:47.0991809Z"
+}

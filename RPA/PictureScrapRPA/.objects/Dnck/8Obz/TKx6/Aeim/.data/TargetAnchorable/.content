@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TargetAnchorable BrowserURL="http://www.horangi.kr/rtTour/festival.asp?nowpage=1&amp;nowyear=2021&amp;nowmonth=11&amp;f_area=1" ContentHash="-gQBIfqWOkehI66JNZpO3w" DesignTimeRectangle="867, 133, 63, 50" ElementType="DropDown" FriendlyName="'11월'" FullSelectorArgument="&lt;webctrl id='nowmonth' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='nowmonth' tag='SELECT' type='' aaname='' /&gt;" Guid="5142a345-01cf-4bc0-a47f-8c2011005775" ScopeSelectorArgument="&lt;html app='chrome.exe' title='2021년 11월서울 축제/행사 안내' /&gt;" SearchSteps="FuzzySelector" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TargetAnchorable.Anchors>
+    <scg:List x:TypeArguments="ITarget" Capacity="4">
+      <Target DesignTimeRectangle="900, 99, 22, 29" ElementType="Text" FriendlyName="'47'" FullSelectorArgument="&lt;webctrl id='rsltTotal' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='rsltTotal' tag='SPAN' type='' aaname='47' check:text='47' /&gt;" SearchSteps="FuzzySelector, Image">
+        <imageRef attrName="ImageBase64" xmlns="">0_e7Xte9eGUC_3MTu0NrGcw</imageRef>
+      </Target>
+    </scg:List>
+  </TargetAnchorable.Anchors>
+  <imageRef attrName="InformativeScreenshot" originalValue="6d494b15a591c964e4b79e1886427f23.png" xmlns="">01XiO1wCv4EWWsOclvGfHOA</imageRef>
+</TargetAnchorable>
