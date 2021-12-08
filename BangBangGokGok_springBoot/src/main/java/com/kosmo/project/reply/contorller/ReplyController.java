@@ -63,5 +63,18 @@ public class ReplyController {
 			return false;
 		}
 	}
+	
+	@RequestMapping(value = "deleteReplies.do")
+	public boolean deleteReplyOfArticle(@RequestParam("articleNo") int articleNo) {
+		System.out.println("articleNo: " + articleNo);
+		try {
+			service.deleteReplyByArticleNo(articleNo);	
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+		
+	}
 
 }

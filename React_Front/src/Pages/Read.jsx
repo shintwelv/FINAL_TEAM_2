@@ -163,9 +163,11 @@ const Read = ({ board, userInfo, login, setProcess }) => {
     let formData = new FormData()
     let processURL = ''
 
-    for (var key in article) {
-      formData.append(key, article[key])
-    }
+    // for (var key in article) {
+    //   formData.append(key, article[key])
+    // }
+
+    formData.append('articleNo', article['articleNo'])
 
     // if (board == 'notice') {
     //   processURL = '../notice/delete.do'
@@ -174,8 +176,25 @@ const Read = ({ board, userInfo, login, setProcess }) => {
     processURL = 'http://localhost:9000/article/delete.do'
 
     axios
-      .post(processURL, formData)
-      .then((res) => console.log(res.data))
+      .post('http://localhost:9000/reply/deleteReplies.do', formData)
+      .then((res) => {
+        if (res.data) {
+        } else {
+          alert('요청이 실패했습니다')
+        }
+      })
+      .then(
+        axios
+          .post('http://localhost:9000/article/delete.do', formData)
+          .then((res) => {
+            if (res.data) {
+              alert('요청을 처리했습니다')
+              history.push(`/${board}`)
+            } else {
+              alert('처리에 실패했습니다')
+            }
+          })
+      )
       .catch((error) => console.log(error))
   }
 
@@ -198,7 +217,7 @@ const Read = ({ board, userInfo, login, setProcess }) => {
   }
 
   const showReplyEditor = (login) => {
-    if (login) {
+    if (login && board != 'notice') {
       return (
         <section className="comment-wrapper">
           <div className="comment-input">

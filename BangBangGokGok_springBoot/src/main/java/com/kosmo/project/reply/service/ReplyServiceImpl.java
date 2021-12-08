@@ -53,5 +53,18 @@ public class ReplyServiceImpl implements ReplyService {
 			return false;
 		}
 	}
+	
+	@Override
+	public boolean deleteReplyByArticleNo(int articleNo) {
+		try {
+			repo.deleteByArticleNo(articleNo);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
 
 }

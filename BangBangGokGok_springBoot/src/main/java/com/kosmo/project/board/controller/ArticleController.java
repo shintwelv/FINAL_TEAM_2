@@ -25,7 +25,7 @@ import com.kosmo.project.util.Constants;
 @RequestMapping(value = "/article")
 public class ArticleController {
 	@Autowired
-	private ArticleService service;
+	private ArticleService articleService;
 	
 //	이 위치에 게시글의 사진 저장
 	private static final String FESTIVAL_IMAGE_LOCATION = Constants.DEFAULT_DIR;
@@ -42,7 +42,7 @@ public class ArticleController {
 	
 	@RequestMapping(value = "list.do")
 	public List<ArticleVO> getArticlesByArticleCode(String articleCode) {
-		List<ArticleVO> articles = service.getArticleByArticleCode(articleCode);
+		List<ArticleVO> articles = articleService.getArticleByArticleCode(articleCode);
 		
 		return articles;
 	}
@@ -50,7 +50,7 @@ public class ArticleController {
 	@RequestMapping(value = "page.do")
 	public List<ArticleVO> getArticleByArticleCodeOfPage(@RequestParam("articleCode") String articleCode, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
 		System.out.println("articleCode: " + articleCode + "\n" + "page: " + page + "\n" + "size: " + size);
-		Page<ArticleVO> articles = service.getArticleByArticleCodeOfPage(articleCode, PageRequest.of(page, size));
+		Page<ArticleVO> articles = articleService.getArticleByArticleCodeOfPage(articleCode, PageRequest.of(page, size));
 		
 		return articles.getContent();
 	}
@@ -60,7 +60,7 @@ public class ArticleController {
 		System.out.println(file);
 		try {
 			vo.setWriteDate(new Date());
-			service.createArticle(vo, file);
+			articleService.createArticle(vo, file);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -69,10 +69,10 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(value = "update.do")
-	public boolean updateArticle(ArticleVO vo, MultipartFile file) {
+	public boolean updateArticle(ArticleVO vo, @RequestParam("Image") MultipartFile file) {
 		try {
 			vo.setWriteDate(new Date());
-			service.updateArticle(vo, file);
+			articleService.updateArticle(vo, file);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -84,7 +84,7 @@ public class ArticleController {
 	public boolean deleteArticle(ArticleVO vo) {
 		System.out.println(vo);
 		try {
-			service.deleteArticle(vo);
+			articleService.deleteArticle(vo);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -96,7 +96,7 @@ public class ArticleController {
 	public ArticleVO getArticle(@RequestParam("articleNo") int articleNo) {
 		try {
 			countUp(articleNo);
-			return service.getArticleByArticleNo(articleNo);
+			return articleService.getArticleByArticleNo(articleNo);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return null;
@@ -106,16 +106,16 @@ public class ArticleController {
 	
 	@RequestMapping(value = "getArticleNum.do")
 	public Integer getArticleNum(@RequestParam("articleCode") String articleCode) {
-		List<ArticleVO> articles = service.getArticleByArticleCode(articleCode);
+		List<ArticleVO> articles = articleService.getArticleByArticleCode(articleCode);
 		
 		return articles.size();
 		
 	}
 	
 	private void countUp(int articleNo) {
-		ArticleVO article = service.getArticleByArticleNo(articleNo);
+		ArticleVO article = articleService.getArticleByArticleNo(articleNo);
 		article.setViewCount(article.getViewCount()+1);
-		service.updateArticle(article, null);
+		articleService.updateArticle(article, null);
 	}
 
 }

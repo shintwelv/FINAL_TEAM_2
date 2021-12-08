@@ -63,7 +63,7 @@ const Write = ({ login, board, process, userInfo }) => {
             <Form.Control
               type="file"
               onChange={onFileChangeHandler}
-              name="articleImage"
+              name="Image"
               style={{ background: 'none', border: 'none' }}
             />
           </Form.Group>

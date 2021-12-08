@@ -15,4 +15,6 @@ public interface ReplyService {
 
 	boolean deleteReply(ReplyVO vo);
 
+	boolean deleteReplyByArticleNo(int articleNo);
+
 }

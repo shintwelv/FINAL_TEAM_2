@@ -101,7 +101,13 @@ function UserInfo({ userState, userInfo, setLogin }) {
       </Row>
       <Row>
         <Col xs={12} className="user-info-profile-image mb-3 mt-3">
-          <Image src="./img/default_Profile.jpg" />
+          <Image
+            src={
+              userInfo.profileImage
+                ? `../img/${userInfo.profileImage}`
+                : './img/default_Profile.jpg'
+            }
+          />
         </Col>
       </Row>
       <Row>
