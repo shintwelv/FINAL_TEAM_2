@@ -5,7 +5,7 @@ import { useHistory } from 'react-router'
 class RequestPay extends React.Component {
   requestPay = () => {
     const { IMP } = window
-    IMP.init('imp40670158')
+    IMP.init('Insert Your Code')
     IMP.request_pay(
       {
         pg: 'kakaopay',
