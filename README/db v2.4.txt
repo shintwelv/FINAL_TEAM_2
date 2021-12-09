@@ -1,0 +1,450 @@
+ALTER TABLE ACCESS_LEVEL
+	DROP
+		CONSTRAINT FK_USERS_TO_ACCESS_LEVEL
+		CASCADE;
+
+ALTER TABLE ARTICLE
+	DROP
+		CONSTRAINT FK_ARTICLE_CODE_TO_ARTICLE
+		CASCADE;
+
+ALTER TABLE ARTICLE
+	DROP
+		CONSTRAINT FK_USERS_TO_ARTICLE
+		CASCADE;
+
+ALTER TABLE REPLY
+	DROP
+		CONSTRAINT FK_ARTICLE_CODE_TO_REPLY
+		CASCADE;
+
+ALTER TABLE REPLY
+	DROP
+		CONSTRAINT FK_ARTICLE_TO_REPLY
+		CASCADE;
+
+ALTER TABLE REPLY
+	DROP
+		CONSTRAINT FK_USERS_TO_REPLY
+		CASCADE;
+
+ALTER TABLE USERS
+	DROP
+		CONSTRAINT user_enable_ck 
+		CASCADE;
+
+ALTER TABLE USERS
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE ACCESS_LEVEL
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE SERVER_INFO
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE ARTICLE
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE ARTICLE_CODE
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+ALTER TABLE REPLY
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+DROP INDEX PK_USERS;
+
+DROP INDEX PK_ACCESS_LEVEL;
+
+DROP INDEX PK_SERVER_INFO;
+
+DROP INDEX PK_ARTICLE;
+
+DROP INDEX PK_ARTICLE_CODE;
+
+DROP INDEX PK_REPLY;
+
+/* 회원 */
+DROP TABLE USERS 
+	CASCADE CONSTRAINTS;
+
+/* 관리자 레벨 */
+DROP TABLE ACCESS_LEVEL 
+	CASCADE CONSTRAINTS;
+
+/* 서버정보 */
+DROP TABLE SERVER_INFO 
+	CASCADE CONSTRAINTS;
+
+/* 게시판 */
+DROP TABLE ARTICLE 
+	CASCADE CONSTRAINTS;
+
+/* 게시판코드 */
+DROP TABLE ARTICLE_CODE 
+	CASCADE CONSTRAINTS;
+
+/* 댓글 */
+DROP TABLE REPLY 
+	CASCADE CONSTRAINTS;
+
+/* 게시판시퀀스 */
+DROP SEQUENCE article_seq;
+
+/* 댓글시퀀스 */
+DROP SEQUENCE reply_seq;
+
+/* 게시판시퀀스 */
+CREATE SEQUENCE article_seq 
+	MINVALUE 1
+	INCREMENT BY 1
+	START WITH 1;
+
+/* 댓글시퀀스 */
+CREATE SEQUENCE reply_seq 
+	MINVALUE 1
+	INCREMENT BY 1
+	START WITH 1;
+
+/* 회원 */
+CREATE TABLE USERS (
+	user_id VARCHAR2(20) NOT NULL, /* 아이디  */
+	Admin CHAR(1), /* 관리자 */
+	user_pw VARCHAR2(80) NOT NULL, /* 비밀번호 */
+	user_name VARCHAR2(20) NOT NULL, /* 이름 */
+	nickname VARCHAR2(30) NOT NULL, /* 닉네임 */
+	email VARCHAR2(30), /* 이메일 */
+	phone_number VARCHAR2(12), /* 전화번호 */
+	user_basic_address VARCHAR2(50), /* 기본주소 */
+	user_detail_address VARCHAR2(50), /* 상세주소 */
+	profile_image VARCHAR2(100), /* 프로필이미지 */
+	birth DATE, /* 생년월일 */
+	gender VARCHAR2(10), /* 성별 */
+	enabled CHAR(1) /* 관리자활성화 */
+);
+
+COMMENT ON TABLE USERS IS '회원';
+
+COMMENT ON COLUMN USERS.user_id IS '아이디 ';
+
+COMMENT ON COLUMN USERS.Admin IS '관리자';
+
+COMMENT ON COLUMN USERS.user_pw IS '비밀번호';
+
+COMMENT ON COLUMN USERS.user_name IS '이름';
+
+COMMENT ON COLUMN USERS.nickname IS '닉네임';
+
+COMMENT ON COLUMN USERS.email IS '이메일';
+
+COMMENT ON COLUMN USERS.phone_number IS '전화번호';
+
+COMMENT ON COLUMN USERS.user_basic_address IS '기본주소';
+
+COMMENT ON COLUMN USERS.user_detail_address IS '상세주소';
+
+COMMENT ON COLUMN USERS.profile_image IS '프로필이미지';
+
+COMMENT ON COLUMN USERS.birth IS '생년월일';
+
+COMMENT ON COLUMN USERS.gender IS '성별';
+
+COMMENT ON COLUMN USERS.enabled IS '관리자활성화';
+
+CREATE UNIQUE INDEX PK_USERS
+	ON USERS (
+		user_id ASC
+	);
+
+ALTER TABLE USERS
+	ADD
+		CONSTRAINT PK_USERS
+		PRIMARY KEY (
+			user_id
+		);
+
+ALTER TABLE USERS
+	ADD
+		CONSTRAINT user_enable_ck 
+		CHECK (enabled = '0' OR enabled = '1');
+
+/* 관리자 레벨 */
+CREATE TABLE ACCESS_LEVEL (
+	admin_id VARCHAR2(20) NOT NULL, /* 아이디  */
+	admin_level VARCHAR2(2) NOT NULL /* 레벨 */
+);
+
+COMMENT ON TABLE ACCESS_LEVEL IS '관리자 레벨';
+
+COMMENT ON COLUMN ACCESS_LEVEL.admin_id IS '아이디 ';
+
+COMMENT ON COLUMN ACCESS_LEVEL.admin_level IS '레벨';
+
+CREATE UNIQUE INDEX PK_ACCESS_LEVEL
+	ON ACCESS_LEVEL (
+		admin_id ASC
+	);
+
+ALTER TABLE ACCESS_LEVEL
+	ADD
+		CONSTRAINT PK_ACCESS_LEVEL
+		PRIMARY KEY (
+			admin_id
+		);
+
+/* 서버정보 */
+CREATE TABLE SERVER_INFO (
+	data_index INT NOT NULL, /* 데이터ID */
+	datachecktime  DATE NOT NULL, /* 데이터체크시간 */
+	cpu_usage VARCHAR2(5) NOT NULL, /* CPU사용량 */
+	session_count INT NOT NULL, /* 세션카운트 */
+	memory_TotalPhysicalSize  INT NOT NULL, /* 메모리 크기 */
+	memory_FreePhysicalSize  INT NOT NULL, /* 메모리 유휴 크기 */
+	memory_UsagePercent  INT NOT NULL, /* 메모리 사용 퍼센트 */
+	memory_IdlePercent  INT NOT NULL, /* 메모리 유휴 퍼센트 */
+	HDD_Total  INT NOT NULL, /* HDD 크기 */
+	HDD_Usage  INT NOT NULL, /* HDD 사용량 */
+	HDD_Idle INT NOT NULL, /* HDD 유휴 크기 */
+	HDD_UsagePercent  INT NOT NULL, /* HDD 사용 퍼센트 */
+	HDD_IdlePercent  INT NOT NULL /* HDD 유휴 퍼센트 */
+);
+
+COMMENT ON TABLE SERVER_INFO IS '서버정보';
+
+COMMENT ON COLUMN SERVER_INFO.data_index IS '데이터ID';
+
+COMMENT ON COLUMN SERVER_INFO.datachecktime  IS '데이터체크시간';
+
+COMMENT ON COLUMN SERVER_INFO.cpu_usage IS 'CPU사용량';
+
+COMMENT ON COLUMN SERVER_INFO.session_count IS '세션카운트';
+
+COMMENT ON COLUMN SERVER_INFO.memory_TotalPhysicalSize  IS '메모리 크기';
+
+COMMENT ON COLUMN SERVER_INFO.memory_FreePhysicalSize  IS '메모리 유휴 크기';
+
+COMMENT ON COLUMN SERVER_INFO.memory_UsagePercent  IS '메모리 사용 퍼센트';
+
+COMMENT ON COLUMN SERVER_INFO.memory_IdlePercent  IS '메모리 유휴 퍼센트';
+
+COMMENT ON COLUMN SERVER_INFO.HDD_Total  IS 'HDD 크기';
+
+COMMENT ON COLUMN SERVER_INFO.HDD_Usage  IS 'HDD 사용량';
+
+COMMENT ON COLUMN SERVER_INFO.HDD_Idle IS 'HDD 유휴 크기';
+
+COMMENT ON COLUMN SERVER_INFO.HDD_UsagePercent  IS 'HDD 사용 퍼센트';
+
+COMMENT ON COLUMN SERVER_INFO.HDD_IdlePercent  IS 'HDD 유휴 퍼센트';
+
+CREATE UNIQUE INDEX PK_SERVER_INFO
+	ON SERVER_INFO (
+		data_index ASC
+	);
+
+ALTER TABLE SERVER_INFO
+	ADD
+		CONSTRAINT PK_SERVER_INFO
+		PRIMARY KEY (
+			data_index
+		);
+
+/* 게시판 */
+CREATE TABLE ARTICLE (
+	article_no INT NOT NULL, /* 게시글번호 */
+	article_code VARCHAR2(10) NOT NULL, /* 게시판코드 */
+	article_title VARCHAR2(100) NOT NULL, /* 제목 */
+	article_content VARCHAR2(4000), /* 내용 */
+	user_id VARCHAR2(20) NOT NULL, /* 작성자 */
+	write_date DATE NOT NULL, /* 작성일 */
+	view_count INT, /* 조회수 */
+	article_star FLOAT, /* 별점 */
+	article_like INT, /* 좋아요 */
+	article_image VARCHAR2(1000), /* 사진 */
+	festival_location VARCHAR2(10), /* 축제장소 */
+	festival_name varchar2(1000), /* 축제이름 */
+	festival_fee INT, /* 축제요금 */
+	festival_owner VARCHAR2(60), /* 축제주최자 */
+	festival_duration VARCHAR2(30) /* 축제기간 */
+);
+
+COMMENT ON TABLE ARTICLE IS '게시판';
+
+COMMENT ON COLUMN ARTICLE.article_no IS '게시글번호';
+
+COMMENT ON COLUMN ARTICLE.article_code IS '게시판코드';
+
+COMMENT ON COLUMN ARTICLE.article_title IS '제목';
+
+COMMENT ON COLUMN ARTICLE.article_content IS '내용';
+
+COMMENT ON COLUMN ARTICLE.user_id IS '작성자';
+
+COMMENT ON COLUMN ARTICLE.write_date IS '작성일';
+
+COMMENT ON COLUMN ARTICLE.view_count IS '조회수';
+
+COMMENT ON COLUMN ARTICLE.article_star IS '별점';
+
+COMMENT ON COLUMN ARTICLE.article_like IS '좋아요';
+
+COMMENT ON COLUMN ARTICLE.article_image IS '사진';
+
+COMMENT ON COLUMN ARTICLE.festival_location IS '축제장소';
+
+COMMENT ON COLUMN ARTICLE.festival_name IS '축제이름';
+
+COMMENT ON COLUMN ARTICLE.festival_fee IS '축제요금';
+
+COMMENT ON COLUMN ARTICLE.festival_owner IS '축제주최자';
+
+COMMENT ON COLUMN ARTICLE.festival_duration IS '축제기간';
+
+CREATE UNIQUE INDEX PK_ARTICLE
+	ON ARTICLE (
+		article_no ASC
+	);
+
+ALTER TABLE ARTICLE
+	ADD
+		CONSTRAINT PK_ARTICLE
+		PRIMARY KEY (
+			article_no
+		);
+
+/* 게시판코드 */
+CREATE TABLE ARTICLE_CODE (
+	article_code VARCHAR2(10) NOT NULL /* 게시판코드 */
+);
+
+COMMENT ON TABLE ARTICLE_CODE IS '게시판코드';
+
+COMMENT ON COLUMN ARTICLE_CODE.article_code IS '게시판코드';
+
+CREATE UNIQUE INDEX PK_ARTICLE_CODE
+	ON ARTICLE_CODE (
+		article_code ASC
+	);
+
+ALTER TABLE ARTICLE_CODE
+	ADD
+		CONSTRAINT PK_ARTICLE_CODE
+		PRIMARY KEY (
+			article_code
+		);
+
+/* 댓글 */
+CREATE TABLE REPLY (
+	reply_no INT NOT NULL, /* 댓글번호 */
+	article_code VARCHAR2(10) NOT NULL, /* 게시판코드 */
+	article_no INT NOT NULL, /* 게시글번호 */
+	reply_content VARCHAR2(600) NOT NULL, /* 내용 */
+	user_id VARCHAR2(20) NOT NULL, /* 작성자 */
+	write_date DATE NOT NULL, /* 작성일 */
+	reply_rating FLOAT /* 별점 */
+);
+
+COMMENT ON TABLE REPLY IS '댓글';
+
+COMMENT ON COLUMN REPLY.reply_no IS '댓글번호';
+
+COMMENT ON COLUMN REPLY.article_code IS '게시판코드';
+
+COMMENT ON COLUMN REPLY.article_no IS '게시글번호';
+
+COMMENT ON COLUMN REPLY.reply_content IS '내용';
+
+COMMENT ON COLUMN REPLY.user_id IS '작성자';
+
+COMMENT ON COLUMN REPLY.write_date IS '작성일';
+
+COMMENT ON COLUMN REPLY.reply_rating IS '별점';
+
+CREATE UNIQUE INDEX PK_REPLY
+	ON REPLY (
+		reply_no ASC
+	);
+
+ALTER TABLE REPLY
+	ADD
+		CONSTRAINT PK_REPLY
+		PRIMARY KEY (
+			reply_no
+		);
+
+ALTER TABLE ACCESS_LEVEL
+	ADD
+		CONSTRAINT FK_USERS_TO_ACCESS_LEVEL
+		FOREIGN KEY (
+			admin_id
+		)
+		REFERENCES USERS (
+			user_id
+		);
+
+ALTER TABLE ARTICLE
+	ADD
+		CONSTRAINT FK_ARTICLE_CODE_TO_ARTICLE
+		FOREIGN KEY (
+			article_code
+		)
+		REFERENCES ARTICLE_CODE (
+			article_code
+		);
+
+ALTER TABLE ARTICLE
+	ADD
+		CONSTRAINT FK_USERS_TO_ARTICLE
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES USERS (
+			user_id
+		);
+
+ALTER TABLE REPLY
+	ADD
+		CONSTRAINT FK_ARTICLE_CODE_TO_REPLY
+		FOREIGN KEY (
+			article_code
+		)
+		REFERENCES ARTICLE_CODE (
+			article_code
+		);
+
+ALTER TABLE REPLY
+	ADD
+		CONSTRAINT FK_ARTICLE_TO_REPLY
+		FOREIGN KEY (
+			article_no
+		)
+		REFERENCES ARTICLE (
+			article_no
+		);
+
+ALTER TABLE REPLY
+	ADD
+		CONSTRAINT FK_USERS_TO_REPLY
+		FOREIGN KEY (
+			user_id
+		)
+		REFERENCES USERS (
+			user_id
+		);

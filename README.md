@@ -1,36 +1,4 @@
-■ 게시판과 댓글을 각각 하나의 테이블로 만들었음
-
-■ article_code 데이터 삽입
-insert into article_code values ('free');
-insert into article_code values ('notice');
-insert into article_code values ('festival');
-insert into article_code values ('review');
-insert into article_code values ('transfer');
-commit;
-
-■ 초기 계정 생성 (이 계정으로 로그인은 할 수 없음, 단지 RPA로 축제 정보를 삽입하기 위한 계정)
-INSERT INTO USERS (USER_ID, ADMIN, USER_PW, USER_NAME, NICKNAME, ENABLED) VALUES ('admin', 'N', 'admin', '관리자', '관리자', 1);
-
-commit;
-
-
-■ 프로필 사진 업로드를 위해 cos-20.08 사용 (http://servlets.com/cos/)
-
-이 링크에서 바로 다운로드 가능
-http://servlets.com/cos/cos-20.08.zip
-
-com.oreilly import 오류시 
-cos-20.08.zip/lib/cos.jar을
-Spring의 WEB-INF/lib에 추가 바람
-
-■ 사진 저장 위치
-C:\Final_team2\React_Front\src\img
-
-■ Spring 설정
-실행시 tomcat server -> modules 에서 path를 /로 설정
-
-
-■ RPA로 축제데이터 DB에 삽입
+■ README 폴더 보고 설정 & 실행
 
 
 
@@ -61,7 +29,5 @@ C:\Final_team2\React_Front\src\img
             
   . form으로 데이터 넘길 때 enctype이 multipart/form-data일 경우 (  /webapp/WEB-INF/views/admin/insertBoard.jsp 파일 참고 )
             <form action="insertBoard.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
-  
-
-@@ 상기 Spring - Soon 내용 중 문의사항 있으면 윤순기에게 문의 부탁드려요.
+ 
 

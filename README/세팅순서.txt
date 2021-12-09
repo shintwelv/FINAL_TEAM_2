@@ -1,0 +1,112 @@
+########세팅#############
+● 해당 프로그램이 설치되어 있는지 확인
+	- node-v14.17.6-x64
+	- yarn
+	- Oracle 11g (32bit), Oracle 11g Client (32bit)
+	- Java 8
+	- CookAndroid(R_11.0)
+	- spring-tool-suite-3.9.12.RELEASE-e4.15.0-win32-x86_64
+	- UiPath Studio
+	- Visual Studio Code
+	- Apache Tomcat Server v9.0
+	- 
+
+	- Oracle 11g Client 설정은 '중요) UiPath_Oracle11gDB_연결방법' 참고
+
+● UiPath Chrome Extension 추가
+	좌측 네비바의 '도구' -> UiPath Extension 중 Chrome 선택하여 확장 프로그램 추가
+
+● 스프링, 스프링 부트 임포트
+
+● STS 설정
+	
+	Window > Preferences > General > Validation > 최하단의 XML Validation, XSL Validator 항목 체크 해제(Manual, Build)
+
+● STS에서 Tomcat 서버 생성
+	Servers 탭에서 우클릭 -> New -> Server -> "Tomcat v9.0 Server" 
+	-> Tomcat installation directory를 "C:\Program Files\Apache Software Foundation\Tomcat 9.0"로 설정 (Tomcat을 어디 설치했느냐에 따라 다를 수 있음)
+	-> BangBangGokGok_Spring을 Add -> Finish
+
+● STS Tomcat 서버 설정
+	Servers 탭의 "Tomcat v9.0 Server at localhost"를 더블클릭
+	새로 열린 창 아래쪽에 "Modules" 클릭
+	Path를 "/"로 설정 -> 저장
+
+● BangBangGokGok_springBoot의 com.kosmo.project.util.Constants에서 DEFAULT_DIR 값 변경
+	
+	public static final String DEFAULT_DIR = C:\~~프로젝트들이 있는 폴더~~\React_Front\public\img
+
+● React_Front/src/components/RequestPay.jsx
+	iamport.kr에 로그인하여 관리자 콘솔 진입
+	시스템 설정 -> 내정보에서 '가맹점 식별 코드'를 복사
+	8번째 줄의 IMP.init('Insert your Code')에 복사한 코드 삽입
+
+● React_Front/public/index.html
+	카카오 개발자센터에서 받은 API키를
+	52번째 줄의 src="Insert Your Code"에 삽입
+
+● cmd에서 C:\Final_team2\React_Front 진입 후 yarn install 또는 npm install 입력	
+	PowerShell로 하면 안됨
+
+● 안드로이드 ip, port 변경
+	android/app/src/main/java/com/cookandroid/android/login.java 파일 154번째 줄 -> http://내컴퓨터의ip:9000/user/
+	android/app/src/main/java/com/cookandroid/android/SignUpActivity.java 파일 108번째 줄 -> -> http://내컴퓨터의ip:9000/user/
+
+● 안드로이드 구글맵 API key 삽입
+	android/gradle.properties 24번째 줄 -> GOOGLE_MAPS_API_KEY="API키 삽입"
+
+● db 계정 생성
+
+sqlplus system/System1234
+create user finalproject identified by final1234;
+grant resource, connect to finalproject;
+conn finalproject;
+
+● 테이블 생성
+
+	db v2.4.txt를 cmd에 복붙
+
+● articleCode 레코드 생성
+
+insert into article_code values ('free');
+insert into article_code values ('notice');
+insert into article_code values ('festival');
+insert into article_code values ('review');
+insert into article_code values ('transfer');
+commit;
+
+● admin 계정 생성
+
+INSERT INTO USERS (USER_ID, ADMIN, USER_PW, USER_NAME, NICKNAME, ENABLED) VALUES ('admin', 'N', 'admin', '관리자', '관리자', 1);
+
+commit;
+
+● D드라이브에 파일 이동
+
+	D:/festival_data.csv
+
+● C:/tmp에 파일 이동
+
+	C:/tmp/OriginalFile.xlsx
+
+● RPADB_uipath 실행해서 db에 값 넣기
+
+● db에 축제 정보 들어갔는지 확인
+
+● BangBangGokGok_Spring 프로젝트 실행
+	STS에서 프로젝트 우클릭
+	run as -> run on server
+
+● BangBangGokGok_springBoot 프로젝트 실행
+	STS에서 프로젝트 우클릭
+	run as -> Spring Boot App
+
+● React_Front 실행
+	cmd에서 C:\Final_team2\React_Front 진입 후 yarn install 또는 npm install 입력
+
+● android 실행
+	CookAndroid 우측 상단 초록색 삼각형 눌러 가상폰/휴대폰으로 어플 실행
+
+################################
+다음으로 시연순서.txt		
+################################
